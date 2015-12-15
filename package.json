@@ -1,0 +1,16 @@
+{
+  "name": "for-ex",
+  "version": "1.0.0",
+  "description": "website for people who want to foreign exhange updates",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jordan chan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3",
+    "oanda-adapter": "^0.1.15",
+    "request": "^2.67.0"
+  }
+}
