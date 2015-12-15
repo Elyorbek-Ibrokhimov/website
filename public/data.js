@@ -23,10 +23,28 @@
     var responseObject = xhr.responseText;
     var priceList = JSON.parse(responseObject);
     var priceBox = document.getElementById('price-box');
-    console.log(priceList);
-  };
+    console.log(priceList.prices);
 
+    var value1 = document.getElementById('value1');
+    value1.textContent = priceList.prices[0].ask;
+  };
     xhr.open('POST', '/instruments/prices');
     xhr.send('EUR_USD');
+  
+}());
+
+(function fetchPrices () {
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function () {
+    var responseObject = xhr.responseText;
+    var priceList = JSON.parse(responseObject);
+    var priceBox = document.getElementById('price-box');
+    console.log(priceList.prices);
+
+    var value2 = document.getElementById('value2');
+    value2.textContent = priceList.prices[0].bid;
+  };
+    xhr.open('POST', '/instruments/prices');
+    xhr.send('AUD_CAD');
   
 }());
