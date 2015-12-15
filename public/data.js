@@ -10,23 +10,24 @@
   xhr.onload = function () {
     var responseObject = xhr.responseText;
     var instrumentList = JSON.parse(responseObject);
-    console.log(instrumentList);
+    // console.log(instrumentList);
   }
   xhr.open('GET', '/instruments');
   xhr.send();
 }());
 
+//Fetches prices for given instrument. Also grabs E-tag.
 
 (function fetchPrices () {
   var xhr = new XMLHttpRequest();
   xhr.onload = function () {
-    var responseObject = xhr.responseText;
-    var priceList = JSON.parse(responseObject);
+    var responseObject= JSON.parse(xhr.responseText);
+    var priceList = JSON.parse(responseObject.body)
     var priceBox = document.getElementById('price-box');
-    console.log(priceList.prices);
-
     var value1 = document.getElementById('value1');
+    var eTag = responseObject.headers
     value1.textContent = priceList.prices[0].ask;
+    console.log(eTag.etag);
   };
     xhr.open('POST', '/instruments/prices');
     xhr.send('EUR_USD');
