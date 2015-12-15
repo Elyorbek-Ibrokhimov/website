@@ -23,11 +23,10 @@
     var responseObject = xhr.responseText;
     var priceList = JSON.parse(responseObject);
     var priceBox = document.getElementById('price-box');
-    priceBox.innerHTML = priceList.prices[0].bid;
-    console.log(priceList.prices[0].bid);
-    console.log('got prices');
+    console.log(priceList);
   };
-    xhr.open('GET', '/instruments/price');
-    xhr.send();
+
+    xhr.open('POST', '/instruments/prices');
+    xhr.send('EUR_USD');
   
 }());
