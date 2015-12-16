@@ -5,6 +5,9 @@ var instruments = express.Router();
 var request = require('request');
 var bodyParser = require('body-parser');
 var parseText = bodyParser.text();
+var currencies = require('./public/currencies.json');
+
+// console.log(currencies)
 
 var client = new OANDAAdapter({
     // 'live', 'practice' or 'sandbox' 
@@ -14,9 +17,9 @@ var client = new OANDAAdapter({
 });
 
 //Sends instrument list for DOM 
-instruments.get('/', function(req, res){
-  res.sendFile( __dirname + '/public/instruments.json');
-});
+// instruments.get('/', function(req, res){
+//   res.sendFile( __dirname + '/public/currencies.json');
+// });
 
 //Generates price on request 
 /* 1) Get the response for price and send it to client/Save the E-tag property value
@@ -30,7 +33,7 @@ instruments.post('/prices', parseText, function(req, res) {
     if (error) {
       console.log(error)
     } else if (!error && response.statusCode === 200) {
-      res.send(body);
+      res.send(response);
     };
   });
 });
