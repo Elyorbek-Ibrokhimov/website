@@ -16,10 +16,10 @@ var client = new OANDAAdapter({
     username: 'jordac2'
 });
 
-//Sends instrument list for DOM 
-// instruments.get('/', function(req, res){
-//   res.sendFile( __dirname + '/public/currencies.json');
-// });
+// Sends instrument list for DOM 
+instruments.get('/', function(req, res){
+  res.send(currencies);
+});
 
 //Generates price on request 
 /* 1) Get the response for price and send it to client/Save the E-tag property value

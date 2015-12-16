@@ -18,6 +18,19 @@
 
 //Fetches prices for given instrument. Also grabs E-tag.
 
+var currencies = [];
+
+(function makeList () {
+  var xhr = new XMLHttpRequest;
+  xhr.onload = function () {
+    var responseObject = JSON.parse(xhr.responseText);
+    console.log(responseObject);
+    currencies.push(responseObject);
+  };
+  xhr.open('GET', '/instruments');
+  xhr.send();
+}());
+
 function fetchPrices () {
   var xhr = new XMLHttpRequest();
   xhr.onload = function () {
@@ -27,7 +40,6 @@ function fetchPrices () {
     var value1 = document.getElementById('value1');
     // var eTag = responseObject.headers
     value1.textContent = priceList.prices[0].ask;
-    console.log(priceList)
   };
     xhr.open('POST', '/instruments/prices');
     xhr.send('EUR_USD');
