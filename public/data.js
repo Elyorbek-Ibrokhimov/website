@@ -18,46 +18,44 @@
 
 //Fetches prices for given instrument. Also grabs E-tag.
 
-var fetchPrices = function (currencyData) {
-  // console.log(currencyData)
-  for (var i=0; i<currencyData.length; i++) {
-    // console.log('fetching');    
-    var priceBox = document.getElementById('price-box');
-    var value1 = document.getElementById('value1');
-    // var eTag = responseObject.headers
-    // console.log(currencyData[i].instrument);
-    var xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-      var responseObject = JSON.parse(xhr.responseText);
-      var bidPrice = JSON.parse(responseObject.body);
-      console.log(bidPrice.prices[0].ask)
-    }
-    xhr.open('POST', '/instruments/prices');
-    xhr.send(currencyData[i].instrument)
-  };
-};
+// var fetchPrices = function (currencyData) {
+//   // console.log(currencyData)
+//   for (var i=0; i<currencyData.length; i++) {  
 
-var currencies = [];
+//     var xhr = new XMLHttpRequest();
+//     xhr.onload = function () {
+//       var responseObject = JSON.parse(xhr.responseText);
+//       var bidPrice = JSON.parse(responseObject.body);
+//       console.log(bidPrice[i].prices[0].ask)
+//     }
+//     xhr.open('POST', '/instruments/prices');
+//     xhr.send(currencyData[i].instrument)
+//   };
+// };
 
 
-function makeList () {
+
+
+function gatherData () {
   var xhr = new XMLHttpRequest;
   xhr.onload = function () {
     var currencyList = JSON.parse(xhr.responseText);
     // console.log(responseObject);
-    for (var i=0; i<currencyList.length; i++){           
-      currencies.push(currencyList[i]);
-    };
-    fetchPrices(currencies);
+    var allInsruments = (function () { 
+      var instrumentString = currencyList[0].instrument
+      for (var i=1; i<currencyList.length; i++){           
+      instrumentString += '%2C' + currencyList[i].instrument;
+      console.log(instrumentString);
+      };
+    }());
+    // fetchPrices(currencies);
   };
 
   xhr.open('GET', '/instruments', true);
-  xhr.send();
-
-  
+  xhr.send();  
 };
 
-makeList();
+gatherData();
 
 // console.log(currencies);
 
