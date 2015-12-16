@@ -18,35 +18,57 @@
 
 //Fetches prices for given instrument. Also grabs E-tag.
 
-var currencies = [];
-
-(function makeList () {
-  var xhr = new XMLHttpRequest;
-  xhr.onload = function () {
-    var responseObject = JSON.parse(xhr.responseText);
-    console.log(responseObject);
-    currencies.push(responseObject);
-  };
-  xhr.open('GET', '/instruments');
-  xhr.send();
-}());
-
-function fetchPrices () {
-  var xhr = new XMLHttpRequest();
-  xhr.onload = function () {
-    var responseObject= JSON.parse(xhr.responseText);
-    var priceList = JSON.parse(responseObject.body)
+var fetchPrices = function (currencyData) {
+  // console.log(currencyData)
+  for (var i=0; i<currencyData.length; i++) {
+    // console.log('fetching');    
     var priceBox = document.getElementById('price-box');
     var value1 = document.getElementById('value1');
     // var eTag = responseObject.headers
-    value1.textContent = priceList.prices[0].ask;
-  };
+    // console.log(currencyData[i].instrument);
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      var responseObject = JSON.parse(xhr.responseText);
+      var bidPrice = JSON.parse(responseObject.body);
+      console.log(bidPrice.prices[0].ask)
+    }
     xhr.open('POST', '/instruments/prices');
-    xhr.send('EUR_USD');
+    xhr.send(currencyData[i].instrument)
+  };
+};
+
+var currencies = [];
+
+
+function makeList () {
+  var xhr = new XMLHttpRequest;
+  xhr.onload = function () {
+    var currencyList = JSON.parse(xhr.responseText);
+    // console.log(responseObject);
+    for (var i=0; i<currencyList.length; i++){           
+      currencies.push(currencyList[i]);
+    };
+    fetchPrices(currencies);
+  };
+
+  xhr.open('GET', '/instruments', true);
+  xhr.send();
+
   
 };
 
-fetchPrices()
+makeList();
+
+// console.log(currencies);
+
+
+
+
+
+
+
+
+
 
 // (function fetchPrices () {
 //   var xhr = new XMLHttpRequest();
