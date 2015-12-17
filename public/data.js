@@ -3,13 +3,17 @@
 
 // Fetches prices for given instrument.
 
-var fetchData = function (instrument) {
+var postData = function (instrument, dataJSON) {
   // console.log(currencyData) 
   var xhr = new XMLHttpRequest();
   xhr.onload = function () {
     var responseObject = JSON.parse(xhr.responseText);
-    var data = (JSON.parse(responseObject.body)).prices;
-    dataProperties(data, 'ask');
+    var data = (JSON.parse(responseObject.body)).prices; //Array of instrument objects
+    var displayNames = dataProperties(dataJSON, 'displayName') 
+    var askPrices = dataProperties(data, 'ask'); // Array of ask prices
+    var bidPrices = dataProperties(data, 'bid');
+
+    console.log(displayNames);
 
   }
   xhr.open('POST', '/instruments/prices');
@@ -21,7 +25,7 @@ function gatherInstruments () {
   var xhr = new XMLHttpRequest;
   xhr.onload = function () {
     var currencyList = JSON.parse(xhr.responseText);
-    // console.log(responseObject);
+    // console.log(currencyList);
     var allInstruments = currencyList[0].instrument
     var instrumentString = (function () {       
       for (var i=1; i<currencyList.length; i++){           
@@ -29,7 +33,7 @@ function gatherInstruments () {
       };     
     }());
     // console.log(allInstruments);
-    fetchData(allInstruments);
+    postData(allInstruments, currencyList);
   };
 
   xhr.open('GET', '/instruments', true);
@@ -39,11 +43,11 @@ function gatherInstruments () {
 gatherInstruments();
 
 function dataProperties (data, property) {
-  for (var x=0; x<data.length; x++) {
-    // var propertyList = data[i].property;
-    
-    console.log(data[x][property]);
+  var list = [];
+  for (var x=0; x<data.length; x++) {    
+    list.push((data[x][property]));
   }
+  return list;
 }
 
 
