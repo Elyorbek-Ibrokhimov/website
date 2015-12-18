@@ -5,7 +5,7 @@ var instruments = express.Router();
 var request = require('request');
 var bodyParser = require('body-parser');
 var parseText = bodyParser.text();
-var currencies = require('./public/currencies.json');
+var currencies = require('./public/json/currencies.json');
 
 // console.log(currencies)
 
