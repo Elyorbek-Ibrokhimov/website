@@ -1,20 +1,4 @@
-var count = [
-  {
-    instrument : "USD_CAD",
-    displayName : "USD CAD",
-    pip : "0.0001",
-    maxTradeUnits : 10000000
-  },
-  {
-    instrument : "EUR_JPY",
-    displayName : "EUR JPY",
-    pip : "0.01",
-    maxTradeUnits : 10000000
-  },
-]
-
-
-
+//Creates React class for currency cells 
 var dataCells = React.createClass({
   propTypes: {
     displayName: React.PropTypes.string,
@@ -36,19 +20,37 @@ var dataCells = React.createClass({
   }
 })
 
-var cells = count.map(function (cell) {
-  return (React.createElement(dataCells))
-})
+//Gets the currencies JSON and instaniates the class per instrument
+function getCurrencies () {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/instruments');
+  xhr.send();
+  xhr.onload = function () {
+    currencies = JSON.parse(xhr.responseText);
+    
+    var cells = currencies.map(function (cell) {
+      return (React.createElement(dataCells, {key : currencies.indexOf(cell)}
+      )
+    )
+  })
 
-var cellContainers = React.createElement('div', {}, cells)
+    for (var i=0; i<cells.length; i++) {
+      cells[i].key = i+1;
+    }
 
-// console.log(cells)
+    console.log(cells)
+    var cellContainers = React.createElement('div', {className: 'cell-list'}, cells)
+    ReactDOM.render(cellContainers, document.getElementById('data-table'))
+  }
+}
+getCurrencies();
 
-var firstCell = React.createElement(dataCells, {
-    displayName:'EUR USD', 
-    spread: 50,
-    bid: 10,
-    ask:5
-})
 
-ReactDOM.render(cellContainers, document.getElementById('data-table'))
+
+
+
+
+
+
+
+
