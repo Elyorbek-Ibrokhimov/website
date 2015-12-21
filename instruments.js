@@ -17,7 +17,7 @@ var client = new OANDAAdapter({
 });
 
 
-// Sends instrument list for DOM 
+// Sends instrument list for data.js 
 instruments.get('/', function(req, res){
   res.send(currencies);
 });

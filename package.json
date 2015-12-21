@@ -9,10 +9,15 @@
   "author": "jordan chan",
   "license": "ISC",
   "dependencies": {
+    "babel": "^6.3.13",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
+    "node-sass": "^3.4.2",
+    "node-sass-middleware": "^0.9.7",
     "oanda-adapter": "^0.1.15",
     "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "react-tools": "^0.13.3",
     "request": "^2.67.0"
   }
 }
