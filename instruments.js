@@ -8,7 +8,6 @@ var parseText = bodyParser.text();
 var currencies = require('./public/json/currencies.json');
 
 // console.log(currencies)
-
 var client = new OANDAAdapter({
     // 'live', 'practice' or 'sandbox' 
     environment: 'sandbox',   
@@ -16,6 +15,9 @@ var client = new OANDAAdapter({
     username: 'jordac2'
 });
 
+// (function calculateCells () {
+  
+// }());
 
 // Sends instrument list for data.js 
 instruments.get('/', function(req, res){

@@ -1,3 +1,20 @@
+var count = [
+  {
+    instrument : "USD_CAD",
+    displayName : "USD CAD",
+    pip : "0.0001",
+    maxTradeUnits : 10000000
+  },
+  {
+    instrument : "EUR_JPY",
+    displayName : "EUR JPY",
+    pip : "0.01",
+    maxTradeUnits : 10000000
+  },
+]
+
+
+
 var dataCells = React.createClass({
   propTypes: {
     displayName: React.PropTypes.string,
@@ -19,6 +36,14 @@ var dataCells = React.createClass({
   }
 })
 
+var cells = count.map(function (cell) {
+  return (React.createElement(dataCells))
+})
+
+var cellContainers = React.createElement('div', {}, cells)
+
+// console.log(cells)
+
 var firstCell = React.createElement(dataCells, {
     displayName:'EUR USD', 
     spread: 50,
@@ -26,4 +51,4 @@ var firstCell = React.createElement(dataCells, {
     ask:5
 })
 
-ReactDOM.render(firstCell, document.getElementById('data-table'))
+ReactDOM.render(cellContainers, document.getElementById('data-table'))
