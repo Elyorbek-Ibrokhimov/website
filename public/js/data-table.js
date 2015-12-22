@@ -28,17 +28,11 @@ function getCurrencies () {
   xhr.onload = function () {
     currencies = JSON.parse(xhr.responseText);
     
-    var cells = currencies.map(function (cell) {
-      return (React.createElement(dataCells, {key : currencies.indexOf(cell)}
-      )
+  var cells = currencies.map(function (cell) {
+    return (React.createElement(dataCells, {key : currencies.indexOf(cell)})
     )
   })
-
-    for (var i=0; i<cells.length; i++) {
-      cells[i].key = i+1;
-    }
-
-    console.log(cells)
+    // console.log(cells)
     var cellContainers = React.createElement('div', {className: 'cell-list'}, cells)
     ReactDOM.render(cellContainers, document.getElementById('data-table'))
   }

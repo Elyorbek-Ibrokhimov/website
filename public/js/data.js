@@ -4,31 +4,48 @@
 var postData = function (instrument, dataJSON) {
   // console.log(currencyData) 
   var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/instruments/prices');
+  xhr.send(instrument);
   xhr.onload = function () {
     var responseObject = JSON.parse(xhr.responseText);
     var data = (JSON.parse(responseObject.body)).prices; //Array of instrument objects
-    var displayNames = dataProperties(dataJSON, 'displayName') 
+    var instrumentNames = dataProperties(dataJSON, 'instrumentName') 
     var askPrices = dataProperties(data, 'ask'); // Array of ask prices
     var bidPrices = dataProperties(data, 'bid');
-    var spread = (function() {
+    var spread = makeSpread();
+
+    // console.log(spread)
+
+    function makeSpread () {
       var spreadArray =[]
-      function spreadRound (numb) {
-        spreadArray.push(Math.round(numb*1000)/1000)
+      function spreadRound (calculation) {
+        spreadArray.push(Math.round(calculation*1000)/1000)
       }
-      var spreadCalculation = function () {
+      function spreadCalculation () {
         return Math.pow(10,4)*(askPrices[i] - bidPrices[i])
       }
-      for (var i=0; i<displayNames.length; i++) {
-        var result = spreadCalculation()        
-        spreadRound(result);
+      for (var i=0; i<instrumentNames.length; i++) {
+        var calculation = spreadCalculation()        
+        spreadRound(calculation);
       }
       return spreadArray;
-    }());
-    console.log(spread)
-  }
-  // console.log(bidPrices);
-  xhr.open('POST', '/instruments/prices');
-  xhr.send(instrument);
+    }
+    var cellNames = 
+      spread.map(function(spreadData) {
+        return (React.createElement(dataCells, {
+          spread: spreadData, 
+          key: spread.indexOf(spreadData)
+
+          })
+        
+        )
+        console.log('second change')
+      })
+    
+    console.log(cellNames);
+    var cellContainers = React.createElement('div', {className: 'cell-list'}, cellNames)
+    ReactDOM.render(cellContainers, document.getElementById('data-table')); 
+  } //onload end
 };
 
 // Gathers all the insturment names to put in the url
@@ -45,14 +62,14 @@ function gatherInstruments () {
     }());
     // console.log(allInstruments);
     // postData(allInstruments, currencyList);
-    setInterval(postData(allInstruments,currencyList), 4000)
+    postData(allInstruments,currencyList)
   };
 
   xhr.open('GET', '/instruments', true);
   xhr.send();  
 };
 
-// gatherInstruments();
+gatherInstruments();
 
 //Gets each instrument propertiey in one list per instrument
 function dataProperties (data, property) {
@@ -62,6 +79,7 @@ function dataProperties (data, property) {
   }
   return list;
 }
+
 
 // setInterval(gatherInstruments, 4000)
 
