@@ -1,18 +1,26 @@
 //Component for each currency cell 
 var dataCells = React.createClass({
+
   highlight: function (event) {
     var cells = document.getElementsByClassName('cell');
     _.each(cells, function (eachCell){
       eachCell.classList.remove('highlight')
     })
     event.target.classList.add('highlight');
+    this.openHistory(event);
   },
+
+  openHistory: function (event) {
+    getHistory();
+  },
+
   propTypes: {
     displayName: React.PropTypes.string,
     bid: React.PropTypes.number,
     ask: React.PropTypes.number,
     spread: React.PropTypes.number
   },
+
   render: function () {
     return (
       React.DOM.div({className: 'cell',  onClick: this.highlight}, 
@@ -66,6 +74,7 @@ var postData = function (instrument, dataJSON) {
         return (
           React.createElement(dataCells, {
             key: spread.indexOf(spreadData),
+            historyId: instrumentNames[spread.indexOf(spreadData)].instrument,
             displayName: instrumentNames[spread.indexOf(spreadData)].displayName,
             bid: bidPrices[spread.indexOf(spreadData)],
             ask: askPrices[spread.indexOf(spreadData)],
@@ -73,10 +82,11 @@ var postData = function (instrument, dataJSON) {
             
             })        
         ) 
-      })   
+      })
+
     var cellContainers = React.createElement('div', {id: 'cell-list'}, cellUpdates)
     ReactDOM.render(cellContainers, document.getElementById('data-table'));
-    // console.log('fetching data');
+    console.log(cellContainers);
   } //onload end
 };
 

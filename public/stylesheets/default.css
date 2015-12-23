@@ -1,7 +1,8 @@
 /*------------------Data Table -------------*/
 #data-table {
   border: solid;
-  width: 500px; }
+  width: 500px;
+  display: inline-block; }
 
 .active-cell {
   background-color: blue; }
@@ -24,3 +25,10 @@
 }*/
 .highlight {
   background-color: red; }
+
+/*---------------History Table ----------------*/
+#history-table {
+  height: 400px;
+  width: 400px;
+  float: right;
+  border: solid; }
