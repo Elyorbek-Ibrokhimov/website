@@ -1,3 +1,24 @@
+//Component for each currency cell 
+var dataCells = React.createClass({
+  propTypes: {
+    // displayName: React.PropTypes.number,
+    bid: React.PropTypes.number,
+    ask: React.PropTypes.number,
+    spread: React.PropTypes.number
+  },
+  render: function () {
+    return (
+      React.DOM.div({className: 'cell'}, 
+        React.DOM.div({className: 'display-name'}, this.props.displayName),
+        React.DOM.div({className: 'spread'}, 'spread: ' + this.props.spread),
+        React.DOM.div({className: 'bid-ask-prices'},
+          React.DOM.div({className: 'bid-price'}, 'bid: ' + this.props.bid),
+          React.DOM.div({className: 'ask-price'}, 'ask: ' + this.props.ask)
+        )
+      )
+    )
+  }
+})
 
 // Fetches prices for given instrument.
 
@@ -9,42 +30,47 @@ var postData = function (instrument, dataJSON) {
   xhr.onload = function () {
     var responseObject = JSON.parse(xhr.responseText);
     var data = (JSON.parse(responseObject.body)).prices; //Array of instrument objects
-    var instrumentNames = dataProperties(dataJSON, 'instrumentName') 
+    var instrumentNames = dataJSON
     var askPrices = dataProperties(data, 'ask'); // Array of ask prices
     var bidPrices = dataProperties(data, 'bid');
     var spread = makeSpread();
 
+    // console.log(instrumentNames)
     // console.log(spread)
 
     function makeSpread () {
-      var spreadArray =[]
+      var spreadArray =[];
       function spreadRound (calculation) {
         spreadArray.push(Math.round(calculation*1000)/1000)
-      }
+      };
       function spreadCalculation () {
         return Math.pow(10,4)*(askPrices[i] - bidPrices[i])
-      }
+      };
       for (var i=0; i<instrumentNames.length; i++) {
         var calculation = spreadCalculation()        
         spreadRound(calculation);
-      }
+      };
       return spreadArray;
-    }
-    var cellNames = 
-      spread.map(function(spreadData) {
-        return (React.createElement(dataCells, {
-          spread: spreadData, 
-          key: spread.indexOf(spreadData)
+    };
 
-          })
-        
-        )
-        console.log('second change')
+    //Data update components
+    var cellUpdates =
+      spread.map(function(spreadData) {
+        return (
+          React.createElement(dataCells, {
+            key: spread.indexOf(spreadData),
+            displayName: instrumentNames[spread.indexOf(spreadData)].displayName,
+            bid: bidPrices[spread.indexOf(spreadData)],
+            ask: askPrices[spread.indexOf(spreadData)],
+            spread: spreadData
+            
+            })        
+        ) 
       })
     
-    console.log(cellNames);
-    var cellContainers = React.createElement('div', {className: 'cell-list'}, cellNames)
-    ReactDOM.render(cellContainers, document.getElementById('data-table')); 
+    var cellContainers = React.createElement('div', {className: 'cell-list'}, cellUpdates)
+    ReactDOM.render(cellContainers, document.getElementById('data-table'));
+    // console.log('fetching data');
   } //onload end
 };
 
@@ -69,9 +95,19 @@ function gatherInstruments () {
   xhr.send();  
 };
 
+// setInterval(gatherInstruments, 2000);
 gatherInstruments();
 
 //Gets each instrument propertiey in one list per instrument
+// function dataProperties (data, property) {
+//   var list = [];
+//   for (var x=0; x<data.length; x++) {    
+//     list.push((Math.round(data[x][property]*100))/100);
+//   }
+//   return list;
+// }
+
+
 function dataProperties (data, property) {
   var list = [];
   for (var x=0; x<data.length; x++) {    
@@ -81,7 +117,7 @@ function dataProperties (data, property) {
 }
 
 
-// setInterval(gatherInstruments, 4000)
+
 
 
 
