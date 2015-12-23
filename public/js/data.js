@@ -11,7 +11,11 @@ var dataCells = React.createClass({
   },
 
   openHistory: function (event) {
-    getHistory();
+    var instrumentName = event.target.childNodes[0].innerText;
+    var firstInsturment = instrumentName.slice(0, 3);
+    var secondInstrument = instrumentName.slice(4, 8);
+    var fullName = firstInsturment + '_' + secondInstrument;
+    getHistory(fullName);
   },
 
   propTypes: {
@@ -74,7 +78,6 @@ var postData = function (instrument, dataJSON) {
         return (
           React.createElement(dataCells, {
             key: spread.indexOf(spreadData),
-            historyId: instrumentNames[spread.indexOf(spreadData)].instrument,
             displayName: instrumentNames[spread.indexOf(spreadData)].displayName,
             bid: bidPrices[spread.indexOf(spreadData)],
             ask: askPrices[spread.indexOf(spreadData)],
@@ -86,7 +89,7 @@ var postData = function (instrument, dataJSON) {
 
     var cellContainers = React.createElement('div', {id: 'cell-list'}, cellUpdates)
     ReactDOM.render(cellContainers, document.getElementById('data-table'));
-    console.log(cellContainers);
+    // console.log(cellContainers);
   } //onload end
 };
 
