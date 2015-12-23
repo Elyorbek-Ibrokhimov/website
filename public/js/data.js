@@ -1,14 +1,21 @@
 //Component for each currency cell 
 var dataCells = React.createClass({
+  highlight: function (event) {
+    var cells = document.getElementsByClassName('cell');
+    _.each(cells, function (eachCell){
+      eachCell.classList.remove('highlight')
+    })
+    event.target.classList.add('highlight');
+  },
   propTypes: {
-    // displayName: React.PropTypes.number,
+    displayName: React.PropTypes.string,
     bid: React.PropTypes.number,
     ask: React.PropTypes.number,
     spread: React.PropTypes.number
   },
   render: function () {
     return (
-      React.DOM.div({className: 'cell'}, 
+      React.DOM.div({className: 'cell',  onClick: this.highlight}, 
         React.DOM.div({className: 'display-name'}, this.props.displayName),
         React.DOM.div({className: 'spread'}, 'spread: ' + this.props.spread),
         React.DOM.div({className: 'bid-ask-prices'},
@@ -66,9 +73,8 @@ var postData = function (instrument, dataJSON) {
             
             })        
         ) 
-      })
-    
-    var cellContainers = React.createElement('div', {className: 'cell-list'}, cellUpdates)
+      })   
+    var cellContainers = React.createElement('div', {id: 'cell-list'}, cellUpdates)
     ReactDOM.render(cellContainers, document.getElementById('data-table'));
     // console.log('fetching data');
   } //onload end
@@ -115,6 +121,8 @@ function dataProperties (data, property) {
   }
   return list;
 }
+
+
 
 
 

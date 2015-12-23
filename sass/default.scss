@@ -2,8 +2,11 @@
 
 #data-table {
   border: solid;
-  height: 500px;
   width: 500px;
+}
+
+.active-cell {
+  background-color: blue;
 }
 
 .cell {
@@ -28,4 +31,7 @@
   float: left;
 }*/
 
+.highlight {
+  background-color: red;
+}
 

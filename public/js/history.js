@@ -1,5 +1,8 @@
 //-------------History Graph Section-------------//
 
+//highlights the appropiate cell
+
+
 // Gets initial chart setting with days since last year as a filter
 function getHistory () {
   var xhr = new XMLHttpRequest;

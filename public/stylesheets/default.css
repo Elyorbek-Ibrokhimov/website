@@ -1,8 +1,10 @@
 /*------------------Data Table -------------*/
 #data-table {
   border: solid;
-  height: 500px;
   width: 500px; }
+
+.active-cell {
+  background-color: blue; }
 
 .cell {
   border: solid; }
@@ -20,3 +22,5 @@
 /*.bid-ask {
   float: left;
 }*/
+.highlight {
+  background-color: red; }
