@@ -44,7 +44,7 @@ instruments.post('/prices', parseText, function(req, res) {
 instruments.post('/history', parseText, function(req, res){
   var instrument = req.body;
   console.log(instrument)
-  var count = 1
+  var count = 3
   var url = 'https://api-sandbox.oanda.com/v1/candles?instrument='+ instrument +'&count=' + count + '&candleFormat=bidask&granularity=D&dailyAlignment=0&alignmentTimezone=America%2FNew_York'
   request(url, function(error, response, body){
     (error) ? console.log(error) : res.send(body)

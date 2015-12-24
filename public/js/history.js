@@ -12,19 +12,22 @@ var historyData = React.createClass({
 
 // Gets initial chart setting with days since last year as a filter
 function getHistory (fullName) {
-  // var xhr = new XMLHttpRequest;
-  // xhr.open('POST', '/instruments/history')
-  // xhr.send(fullName);
-  // xhr.onload = function() {
-  //   responseObject = JSON.parse(xhr.responseText);
-  //   dateList = responseObject.candles
- 
-  // }
-  drawChart();
+  var xhr = new XMLHttpRequest;
+  xhr.open('POST', '/instruments/history')
+  xhr.send(fullName);
+  xhr.onload = function() {
+    responseObject = JSON.parse(xhr.responseText);
+    dateList = responseObject.candles
+    console.log(dateList)
+  } //onload end
+
+  // drawChart();
+
 }
 
-// getHistory();
-// google.setOnLoadCallback(drawChart);  
+//for bids: low, opening, closing, high
+
+google.setOnLoadCallback(drawChart);  
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
     ['Mon', 20, 28, 38, 45],
@@ -39,14 +42,16 @@ function drawChart() {
     legend:'none'
   };
 
-  var chart = new google.visualization.CandlestickChart(document.getElementById('history-table'));
-  chart.draw(data, options);
-}
+//   var chart = new google.visualization.CandlestickChart(document.getElementById('history-table'));
+//   chart.draw(data, options);
+// }
 
 //CLEARED //Add onclick event to cell class. 
 //CLEARED //When a cell is clicked, itll execute a ReactDOM render for a react class
 //That react class will contain the info specific to the clicked event. 
 // Create a graph with the data 
+  //objects returned for now are one candlestick with each stick representing one day.
+  //A seperate chart is needed for bid and ask prices
 
 
 
