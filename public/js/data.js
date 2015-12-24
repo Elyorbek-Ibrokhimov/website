@@ -15,7 +15,8 @@ var dataCells = React.createClass({
     var firstInsturment = instrumentName.slice(0, 3);
     var secondInstrument = instrumentName.slice(4, 8);
     var fullName = firstInsturment + '_' + secondInstrument;
-    getHistory(fullName);
+    getHistory()
+
   },
 
   propTypes: {
