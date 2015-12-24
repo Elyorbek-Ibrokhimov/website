@@ -75,14 +75,14 @@ var postData = function (instrument, dataJSON) {
 
     //Data update components
     var cellUpdates =
-      spread.map(function(spreadData) {
+      spread.map(function(spreadData, i) {
         return (
           React.createElement(dataCells, {
-            key: spread.indexOf(spreadData),
-            displayName: instrumentNames[spread.indexOf(spreadData)].displayName,
-            bid: bidPrices[spread.indexOf(spreadData)],
-            ask: askPrices[spread.indexOf(spreadData)],
-            spread: spreadData
+            key: i,
+            displayName: instrumentNames[i].displayName,
+            bid: bidPrices[i],
+            ask: askPrices[i],
+            spread: spreadData,
             
             })        
         ) 
@@ -90,7 +90,6 @@ var postData = function (instrument, dataJSON) {
 
     var cellContainers = React.createElement('div', {id: 'cell-list'}, cellUpdates)
     ReactDOM.render(cellContainers, document.getElementById('data-table'));
-    // console.log(cellContainers);
   } //onload end
 };
 

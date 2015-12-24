@@ -21,13 +21,13 @@ function getHistory (fullName) {
     console.log(dateList)
   } //onload end
 
-  // drawChart();
+  drawChart();
 
 }
 
 //for bids: low, opening, closing, high
 
-google.setOnLoadCallback(drawChart);  
+// google.setOnLoadCallback(drawChart);  
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
     ['Mon', 20, 28, 38, 45],
@@ -42,9 +42,9 @@ function drawChart() {
     legend:'none'
   };
 
-//   var chart = new google.visualization.CandlestickChart(document.getElementById('history-table'));
-//   chart.draw(data, options);
-// }
+  var chart = new google.visualization.CandlestickChart(document.getElementById('history-table'));
+  chart.draw(data, options);
+}
 
 //CLEARED //Add onclick event to cell class. 
 //CLEARED //When a cell is clicked, itll execute a ReactDOM render for a react class
