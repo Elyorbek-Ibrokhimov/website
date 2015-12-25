@@ -17,26 +17,34 @@ function getHistory (fullName) {
   xhr.send(fullName);
   xhr.onload = function() {
     responseObject = JSON.parse(xhr.responseText);
-    dateList = responseObject.candles
-    console.log(dateList)
-  } //onload end
+    dateList = responseObject.candles;
+    // console.log(dateList)
 
-  drawChart();
+    
+    
+
+    drawChart(dateList);
+  } //onload end
 
 }
 
-//for bids: low, opening, closing, high
-
 // google.setOnLoadCallback(drawChart);  
-function drawChart() {
-  var data = google.visualization.arrayToDataTable([
-    ['Mon', 20, 28, 38, 45],
-    ['Tue', 31, 38, 55, 66],
-    ['Wed', 50, 55, 77, 80],
-    ['Thu', 77, 77, 66, 50],
-    ['Fri', 68, 66, 22, 15]
-    // Treat first row as data as well.
-  ], true);
+function drawChart(dateList) {
+  var chartValues = (function () {
+      var data = []
+      for (var i=0; i<dateList.length; i++) {
+        data.push([
+          (dateList[i].time).slice(0,10), 
+          dateList[i].lowBid, 
+          dateList[i].openBid, 
+          dateList[i].closeBid, 
+          dateList[i].highBid
+        ])
+      }
+      return data;
+    }());
+  
+  var data = google.visualization.arrayToDataTable(chartValues, true);
 
   var options = {
     legend:'none'
@@ -57,3 +65,25 @@ function drawChart() {
 
 // var displayHistory = React.createElement(historyGraph, {})
 //     ReactDOM.render(displayHistory, document.getElementById('history-table'))
+
+ // ['Mon', 20, 28, 38, 45],
+ //    ['Tue', 31, 38, 55, 66],
+ //    ['Wed', 50, 55, 77, 80],
+ //    ['Thu', 77, 77, 66, 50],
+ //    ['Fri', 68, 66, 22, 15],
+ //    ['Mon', 20, 28, 38, 45],
+ //    ['Tue', 31, 38, 55, 66],
+ //    ['Wed', 50, 55, 77, 80],
+ //    ['Thu', 77, 77, 66, 50],
+ //    ['Fri', 68, 66, 22, 15]
+
+// return  Array(dateList.length).fill(['Mon', 20, 28, 38, 45])
+
+
+
+
+
+
+
+
+

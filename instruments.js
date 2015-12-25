@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var OANDAAdapter = require('oanda-adapter');
 var instruments = express.Router();
 var request = require('request');
 var bodyParser = require('body-parser');
@@ -8,12 +7,7 @@ var parseText = bodyParser.text();
 var currencies = require('./public/json/currencies.json');
 
 // console.log(currencies)
-var client = new OANDAAdapter({
-    // 'live', 'practice' or 'sandbox' 
-    environment: 'sandbox',   
-    accessToken: '785859a1090608580772ae60f4ba9190-35e71ab4cadbc9787e3d6b2844e7dac1',
-    username: 'jordac2'
-});
+
 
 // (function calculateCells () {
   
@@ -43,8 +37,7 @@ instruments.post('/prices', parseText, function(req, res) {
 
 instruments.post('/history', parseText, function(req, res){
   var instrument = req.body;
-  console.log(instrument)
-  var count = 3
+  var count = 90
   var url = 'https://api-sandbox.oanda.com/v1/candles?instrument='+ instrument +'&count=' + count + '&candleFormat=bidask&granularity=D&dailyAlignment=0&alignmentTimezone=America%2FNew_York'
   request(url, function(error, response, body){
     (error) ? console.log(error) : res.send(body)
