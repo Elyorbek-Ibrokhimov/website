@@ -24,6 +24,17 @@
   float: left;
 }*/
 .highlight {
+  background-color: orange; }
+
+@keyframes fadeIn {
+  to {
+    opacity: 1; } }
+
+.show-increase {
+  background-color: green;
+  animation: fadeIn 1s ease-in; }
+
+.show-decrease {
   background-color: red; }
 
 /*---------------History Table ----------------*/

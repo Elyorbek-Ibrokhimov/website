@@ -1,9 +1,28 @@
 //Component for each currency cell 
 var dataCells = React.createClass({
 
+  // componentDidMount: function () {
+  //   var spreadText = this.currentSpread.textContent.slice(8);
+  //   var oldSpread = Number(spreadText); 
+  //    console.log(oldSpread)
+  // },
+
+  componentWillReceiveProps: function (nextProps) {
+    var nextSpread = nextProps.spread
+    var currentSpread = this.spreadCell.spread
+    if (currentSpread !== nextSpread && currentSpread < nextSpread) {
+    this.spreadCell.classList.add('show-increase');
+    } else if (currentSpread !== nextSpread && currentSpread > nextSpread) {
+      this.spreadCell.classList.add('show-decrease')
+    } else {
+      this.spreadCell.classList.remove('show-increase')
+      this.spreadCell.classList.remove('show-decrease')
+    }
+  },
+
   highlight: function (event) {
     var cells = document.getElementsByClassName('cell');
-    _.each(cells, function (eachCell){
+    _.each(cells, function (eachCell) {
       eachCell.classList.remove('highlight')
     })
     event.target.classList.add('highlight');
@@ -27,10 +46,13 @@ var dataCells = React.createClass({
   },
 
   render: function () {
+    var currentSpread 
+    var newSpread = this.props.spread;
+    // console.log(newSpread);
     return (
       React.DOM.div({className: 'cell',  onClick: this.highlight}, 
         React.DOM.div({className: 'display-name'}, this.props.displayName),
-        React.DOM.div({className: 'spread'}, 'spread: ' + this.props.spread),
+        React.DOM.div({className: 'spread', ref: (spreadComp) => this.spreadCell = spreadComp}, 'spread: ' + this.props.spread),
         React.DOM.div({className: 'bid-ask-prices'},
           React.DOM.div({className: 'bid-price'}, 'bid: ' + this.props.bid),
           React.DOM.div({className: 'ask-price'}, 'ask: ' + this.props.ask)
@@ -61,7 +83,7 @@ var postData = function (instrument, dataJSON) {
     function makeSpread () {
       var spreadArray =[];
       function spreadRound (calculation) {
-        spreadArray.push(Math.round(calculation*1000)/1000)
+        spreadArray.push(Math.round(calculation*100)/100)
       };
       function spreadCalculation () {
         return Math.pow(10,4)*(askPrices[i] - bidPrices[i])
@@ -87,7 +109,6 @@ var postData = function (instrument, dataJSON) {
             })        
         ) 
       })
-
     var cellContainers = React.createElement('div', {id: 'cell-list'}, cellUpdates)
     ReactDOM.render(cellContainers, document.getElementById('data-table'));
   } //onload end
@@ -116,15 +137,6 @@ function gatherInstruments () {
 
 // setInterval(gatherInstruments, 2000);
 gatherInstruments();
-
-//Gets each instrument propertiey in one list per instrument
-// function dataProperties (data, property) {
-//   var list = [];
-//   for (var x=0; x<data.length; x++) {    
-//     list.push((Math.round(data[x][property]*100))/100);
-//   }
-//   return list;
-// }
 
 
 function dataProperties (data, property) {
