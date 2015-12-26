@@ -38,7 +38,13 @@ instruments.post('/prices', parseText, function(req, res) {
 instruments.post('/history', parseText, function(req, res){
   var instrument = req.body;
   var count = 90
-  var url = 'https://api-sandbox.oanda.com/v1/candles?instrument='+ instrument +'&count=' + count + '&candleFormat=bidask&granularity=D&dailyAlignment=0&alignmentTimezone=America%2FNew_York'
+  var url = 'https://api-sandbox.oanda.com/v1/candles?' 
+  + 'instrument='+ instrument + '&' 
+  + 'count=' + count +'&' 
+  + 'candleFormat=bidask&' 
+  + 'granularity=D&' 
+  + 'dailyAlignment=0&' 
+  + 'alignmentTimezone=America%2FNew_York'
   request(url, function(error, response, body){
     (error) ? console.log(error) : res.send(body)
   })
