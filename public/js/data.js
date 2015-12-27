@@ -45,12 +45,15 @@ var dataCells = React.createClass({
   },
 
   render: function () {
-    var currentSpread 
-    var newSpread = this.props.spread;
-    // console.log(newSpread);
+    var firstInsturment = (this.props.displayName).slice(0,3);
+    var secondInstrument = (this.props.displayName).slice(4,8);
     return (
       React.DOM.div({className: 'cell',  onClick: this.highlight}, 
         React.DOM.div({className: 'display-name'}, this.props.displayName),
+        React.DOM.div({className: 'flags'},
+          React.DOM.div({className: firstInsturment.toLowerCase()}),
+          React.DOM.div({className: secondInstrument.toLowerCase()})
+          ),
         React.DOM.div({className: 'spread', ref: (spreadComp) => this.spreadCell = spreadComp}, 'spread: ' + this.props.spread),
         React.DOM.div({className: 'bid-ask-prices'},
           React.DOM.div({className: 'bid-price'}, 'bid: ' + this.props.bid),
@@ -134,7 +137,7 @@ function gatherInstruments () {
 };
 
 // setInterval(gatherInstruments, 2000);
-// gatherInstruments();
+gatherInstruments();
 
 
 function dataProperties (data, property) {

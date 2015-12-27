@@ -1,28 +1,45 @@
 /*Palleton Url: http://www.paletton.com/#uid=30P050kmdlz3Jrz6auuKQcgRXr3*/
 /*----------------Home Page-----------------*/
 body {
-  background-color: #031941; }
+  background-image: url(../images/back.jpeg);
+  background-size: cover;
+  background-attachment: fixed; }
 
 #home {
+  padding-left: 0px;
+  padding-right: 0px; }
+
+.navbar-brand a {
+  font-family: "Exo", sans-serif; }
+
+.navbar-brand span {
+  color: #D88600; }
+
+#hero-section {
   background-image: url(../images/background2.jpg);
   height: 500px;
   background-repeat: no-repeat;
   background-size: cover; }
 
 #info-section {
-  height: 400px; }
+  height: 200px;
+  margin-top: 100px;
+  margin-bottom: 100px; }
 
 /*------------------Data Table -------------*/
 #data-table {
   border: solid;
-  width: 500px;
-  display: inline-block; }
+  width: 100%;
+  height: 400px;
+  display: inline-block;
+  overflow: scroll; }
 
 .active-cell {
   background-color: blue; }
 
 .cell {
-  border: solid; }
+  border: solid;
+  width: 50%; }
 
 .cell > div {
   display: inline-block;
@@ -54,6 +71,19 @@ body {
 /*---------------History Table ----------------*/
 #history-table {
   height: 400px;
-  width: 800px;
+  width: 100%;
   float: right;
   border: solid; }
+
+/*-------------Flag Pictures----------------*/
+.usd {
+  background-image: url(../images/flags/usd.png);
+  background-size: cover;
+  height: 20px;
+  width: 30px; }
+
+.cad {
+  background-image: url(../images/flags/cad.png);
+  background-size: cover;
+  height: 20px;
+  width: 30px; }
