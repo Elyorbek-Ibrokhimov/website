@@ -1,3 +1,28 @@
+$gold: #D88600;
+$brown: #623C00;
+$chalk : #DCD2C2;
+$navyBlue: #838892;
+$darkBlue: #031941;
+
+/*Palleton Url: http://www.paletton.com/#uid=30P050kmdlz3Jrz6auuKQcgRXr3*/
+
+/*----------------Home Page-----------------*/
+
+body {
+  background-color: $darkBlue;
+}
+
+#home {
+  background-image: url(../images/background2.jpg);
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#info-section {
+  height: 400px;
+}
+
 /*------------------Data Table -------------*/
 
 #data-table {

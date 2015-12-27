@@ -1,3 +1,17 @@
+/*Palleton Url: http://www.paletton.com/#uid=30P050kmdlz3Jrz6auuKQcgRXr3*/
+/*----------------Home Page-----------------*/
+body {
+  background-color: #031941; }
+
+#home {
+  background-image: url(../images/background2.jpg);
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+#info-section {
+  height: 400px; }
+
 /*------------------Data Table -------------*/
 #data-table {
   border: solid;

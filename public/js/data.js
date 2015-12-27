@@ -1,4 +1,3 @@
-//Component for each currency cell 
 var dataCells = React.createClass({
 
   // componentDidMount: function () {
@@ -73,7 +72,7 @@ var postData = function (instrument, dataJSON) {
     var responseObject = JSON.parse(xhr.responseText);
     var data = (JSON.parse(responseObject.body)).prices; //Array of instrument objects
     var instrumentNames = dataJSON
-    var askPrices = dataProperties(data, 'ask'); // Array of ask prices
+    var askPrices = dataProperties(data, 'ask'); 
     var bidPrices = dataProperties(data, 'bid');
     var spread = makeSpread();
 
@@ -135,7 +134,7 @@ function gatherInstruments () {
 };
 
 // setInterval(gatherInstruments, 2000);
-gatherInstruments();
+// gatherInstruments();
 
 
 function dataProperties (data, property) {
