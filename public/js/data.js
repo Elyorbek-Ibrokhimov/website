@@ -34,7 +34,7 @@ var dataCells = React.createClass({
     var firstInsturment = instrumentName.slice(0, 3);
     var secondInstrument = instrumentName.slice(4, 8);
     var fullName = firstInsturment + '_' + secondInstrument;
-    getHistory(fullName);
+    getHistory(fullName, instrumentName);
 
   },
 
@@ -104,8 +104,7 @@ var postData = function (instrument, dataJSON) {
             displayName: instrumentNames[i].displayName,
             bid: bidPrices[i],
             ask: askPrices[i],
-            spread: spreadData,
-            
+            spread: spreadData,            
             })        
         ) 
       })
