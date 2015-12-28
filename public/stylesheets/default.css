@@ -34,12 +34,10 @@ body {
   display: inline-block;
   overflow: scroll; }
 
-.active-cell {
-  background-color: blue; }
-
 .cell {
   border: solid;
-  width: 50%; }
+  width: 50%;
+  height: 50px; }
 
 .cell > div {
   display: inline-block;
@@ -49,7 +47,7 @@ body {
   float: left; }
 
 .spread {
-  float: left; }
+  /*float: left;*/ }
 
 /*.bid-ask {
   float: left;
@@ -73,17 +71,29 @@ body {
   height: 400px;
   width: 100%;
   float: right;
-  border: solid; }
+  border: solid;
+  background-color: rgba(133, 143, 161, 0.5); }
 
 /*-------------Flag Pictures----------------*/
+.flags {
+  float: left; }
+  .flags div {
+    display: inline-block;
+    height: 20px;
+    width: 30px;
+    background-size: cover; }
+
 .usd {
-  background-image: url(../images/flags/usd.png);
-  background-size: cover;
-  height: 20px;
-  width: 30px; }
+  background-image: url(../images/flags/usd.png); }
 
 .cad {
   background-image: url(../images/flags/cad.png);
-  background-size: cover;
-  height: 20px;
-  width: 30px; }
+  background-size: cover; }
+
+.eur {
+  background-image: url(../images/flags/eur.png);
+  background-size: cover; }
+
+.jpy {
+  background-image: url(../images/flags/jpy.png);
+  background-size: cover; }

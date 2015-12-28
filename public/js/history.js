@@ -42,7 +42,9 @@ function drawChart(dateList) {
     }());  
   var data = google.visualization.arrayToDataTable(chartValues, true);
   var options = {
-    legend:'none'
+    legend:'none',
+    'height': 500,
+    backgroundColor: {fill: 'none'}
   };
   var chart = new google.visualization.CandlestickChart(document.getElementById('graph'));
   chart.draw(data, options);
