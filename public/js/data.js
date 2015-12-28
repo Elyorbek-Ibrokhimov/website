@@ -1,14 +1,7 @@
 var dataCells = React.createClass({
-
-  // componentDidMount: function () {
-  //   var spreadText = this.currentSpread.textContent.slice(8);
-  //   var oldSpread = Number(spreadText); 
-  //    console.log(oldSpread)
-  // },
-
   componentWillReceiveProps: function (nextProps) {
-    var nextSpread = nextProps.spread
-    var currentSpread = this.spreadCell.spread
+    var nextSpread = nextProps.spread;
+    var currentSpread = this.props.spread;
     if (currentSpread !== nextSpread && currentSpread < nextSpread) {
     this.spreadCell.classList.add('show-increase');
     } else if (currentSpread !== nextSpread && currentSpread > nextSpread) {
@@ -18,37 +11,32 @@ var dataCells = React.createClass({
       this.spreadCell.classList.remove('show-decrease')
     }
   },
-
-  highlight: function (event) {
+  highlight: function (event) {    
     var cells = document.getElementsByClassName('cell');
     _.each(cells, function (eachCell) {
       eachCell.classList.remove('highlight')
     })
-    event.target.classList.add('highlight');
-    this.openHistory(event);
+    this.selectedCell.classList.add('highlight');
+    this.openHistory(); 
   },
-
   openHistory: function (event) {
-    var instrumentName = event.target.childNodes[0].innerText;
+    var instrumentName = this.props.displayName;
     var firstInsturment = instrumentName.slice(0, 3);
     var secondInstrument = instrumentName.slice(4, 8);
     var fullName = firstInsturment + '_' + secondInstrument;
     getHistory(fullName, instrumentName);
-
   },
-
   propTypes: {
     displayName: React.PropTypes.string,
     bid: React.PropTypes.number,
     ask: React.PropTypes.number,
     spread: React.PropTypes.number
   },
-
   render: function () {
     var firstInsturment = (this.props.displayName).slice(0,3);
     var secondInstrument = (this.props.displayName).slice(4,8);
     return (
-      React.DOM.div({className: 'cell',  onClick: this.highlight}, 
+      React.DOM.div({className: 'cell', ref: (cellCont) => this.selectedCell = cellCont, onClick: this.highlight}, 
         React.DOM.div({className: 'display-name'}, this.props.displayName),
         React.DOM.div({className: 'flags'},
           React.DOM.div({className: firstInsturment.toLowerCase()}),
@@ -136,8 +124,8 @@ function gatherInstruments () {
   xhr.send();  
 };
 
-// setInterval(gatherInstruments, 2000);
-gatherInstruments();
+setInterval(gatherInstruments, 2000);
+// gatherInstruments();
 
 
 function dataProperties (data, property) {

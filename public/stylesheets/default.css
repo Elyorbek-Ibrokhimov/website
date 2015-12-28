@@ -36,8 +36,9 @@ body {
 
 .cell {
   border: solid;
-  width: 50%;
-  height: 50px; }
+  width: 33%;
+  height: 50px;
+  display: inline-block; }
 
 .cell > div {
   display: inline-block;
