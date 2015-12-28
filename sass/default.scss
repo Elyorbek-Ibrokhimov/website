@@ -106,20 +106,32 @@ body {
   background-color: rgba(133,143,161,.5);
 }
 
+.history-instrument {
+  text-align: center;
+}
+
 
 
 /*-------------Flag Pictures----------------*/
 
 .flags {
   float: left;
-
   div {
-  display: inline-block;
-  height: 20px;
-  width: 30px;
-  background-size: cover;
+    display: inline-block;
+    height: 20px;
+    width: 30px;
+    background-size: cover;
   }
+}
 
+.graph-flag {
+  text-align: center;
+  div {
+    display: inline-block;
+    height: 20px;
+    width: 30px;
+    background-size: cover;
+  }
 }
 
 .usd {

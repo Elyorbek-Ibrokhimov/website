@@ -1,29 +1,36 @@
 //-------------History Graph Section-------------//
 
-var historyData = React.createClass({
+var historyData = React.createClass({  
+  propTypes: {
+    displayName: React.PropTypes.string
+  },
   render: function (){
+    var firstInsturment = (this.props.displayName).slice(0,3);
+    var secondInstrument = (this.props.displayName).slice(4,8);
     return(
-      React.DOM.div({id: 'history-info'}, 
-      React.DOM.h3({className: 'history-info'}, this.props.name),
+      React.DOM.div({id: 'history-info'},    
+      React.DOM.h3({className: 'history-instrument'}, this.props.displayName),
+      React.DOM.div({className:'graph-flag'},
+        React.DOM.div({className: firstInsturment.toLowerCase()}),
+        React.DOM.div({className: secondInstrument.toLowerCase()})
+      ),
       React.DOM.div({id: 'graph'})
       )
     )
   }
 });
 
-// Gets initial chart setting with days since last year as a filter
 function getHistory (fullName, instrumentName) {
   var xhr = new XMLHttpRequest;
   xhr.open('POST', '/instruments/history')
   xhr.send(fullName);
-  var historyInfo = React.createElement(historyData, {name: instrumentName});
+  var historyInfo = React.createElement(historyData, {displayName: instrumentName});
   ReactDOM.render(historyInfo, document.getElementById('history-table'))
   xhr.onload = function() {
     responseObject = JSON.parse(xhr.responseText);
     dateList = responseObject.candles;
     drawChart(dateList);
   } //onload end
-
 }
  
 function drawChart(dateList) {

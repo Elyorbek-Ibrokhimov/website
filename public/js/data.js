@@ -2,9 +2,9 @@ var dataCells = React.createClass({
   componentWillReceiveProps: function (nextProps) {
     var nextSpread = nextProps.spread;
     var currentSpread = this.props.spread;
-    if (currentSpread !== nextSpread && currentSpread < nextSpread) {
+    if (currentSpread !== nextSpread && currentSpread > nextSpread) {
     this.spreadCell.classList.add('show-increase');
-    } else if (currentSpread !== nextSpread && currentSpread > nextSpread) {
+    } else if (currentSpread !== nextSpread && currentSpread < nextSpread) {
       this.spreadCell.classList.add('show-decrease')
     } else {
       this.spreadCell.classList.remove('show-increase')
@@ -19,7 +19,7 @@ var dataCells = React.createClass({
     this.selectedCell.classList.add('highlight');
     this.openHistory(); 
   },
-  openHistory: function (event) {
+  openHistory: function () {
     var instrumentName = this.props.displayName;
     var firstInsturment = instrumentName.slice(0, 3);
     var secondInstrument = instrumentName.slice(4, 8);
@@ -42,7 +42,7 @@ var dataCells = React.createClass({
           React.DOM.div({className: firstInsturment.toLowerCase()}),
           React.DOM.div({className: secondInstrument.toLowerCase()})
           ),
-        React.DOM.div({className: 'spread', ref: (spreadComp) => this.spreadCell = spreadComp}, 'spread: ' + this.props.spread),
+        React.DOM.div({className: 'spread', ref: (spreadCont) => this.spreadCell = spreadCont}, 'spread: ' + this.props.spread),
         React.DOM.div({className: 'bid-ask-prices'},
           React.DOM.div({className: 'bid-price'}, 'bid: ' + this.props.bid),
           React.DOM.div({className: 'ask-price'}, 'ask: ' + this.props.ask)
@@ -52,24 +52,26 @@ var dataCells = React.createClass({
   }
 })
 
-// Fetches prices for given instrument.
+function dataProperties (data, property) {
+  var list = [];
+  for (var x=0; x<data.length; x++) {    
+    list.push((data[x][property]));
+  }
+  return list;
+}
 
-var postData = function (instrument, dataJSON) {
+function postData (instrument, dataJSON) {
   // console.log(currencyData) 
   var xhr = new XMLHttpRequest();
   xhr.open('POST', '/instruments/prices');
   xhr.send(instrument);
   xhr.onload = function () {
     var responseObject = JSON.parse(xhr.responseText);
-    var data = (JSON.parse(responseObject.body)).prices; //Array of instrument objects
+    var data = (JSON.parse(responseObject.body)).prices; 
     var instrumentNames = dataJSON
     var askPrices = dataProperties(data, 'ask'); 
     var bidPrices = dataProperties(data, 'bid');
     var spread = makeSpread();
-
-    // console.log(instrumentNames)
-    // console.log(spread)
-
     function makeSpread () {
       var spreadArray =[];
       function spreadRound (calculation) {
@@ -84,8 +86,6 @@ var postData = function (instrument, dataJSON) {
       };
       return spreadArray;
     };
-
-    //Data update components
     var cellUpdates =
       spread.map(function(spreadData, i) {
         return (
@@ -108,15 +108,12 @@ function gatherInstruments () {
   var xhr = new XMLHttpRequest;
   xhr.onload = function () {
     var currencyList = JSON.parse(xhr.responseText);
-    // console.log(currencyList);
     var allInstruments = currencyList[0].instrument
     var instrumentString = (function () {       
       for (var i=1; i<currencyList.length; i++){           
         allInstruments += '%2C' + currencyList[i].instrument;      
       };     
     }());
-    // console.log(allInstruments);
-    // postData(allInstruments, currencyList);
     postData(allInstruments,currencyList)
   };
 
@@ -124,17 +121,11 @@ function gatherInstruments () {
   xhr.send();  
 };
 
-setInterval(gatherInstruments, 2000);
-// gatherInstruments();
+// setInterval(gatherInstruments, 2000);
+gatherInstruments();
 
 
-function dataProperties (data, property) {
-  var list = [];
-  for (var x=0; x<data.length; x++) {    
-    list.push((data[x][property]));
-  }
-  return list;
-}
+
 
 
 

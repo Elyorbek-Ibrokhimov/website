@@ -75,10 +75,21 @@ body {
   border: solid;
   background-color: rgba(133, 143, 161, 0.5); }
 
+.history-instrument {
+  text-align: center; }
+
 /*-------------Flag Pictures----------------*/
 .flags {
   float: left; }
   .flags div {
+    display: inline-block;
+    height: 20px;
+    width: 30px;
+    background-size: cover; }
+
+.graph-flag {
+  text-align: center; }
+  .graph-flag div {
     display: inline-block;
     height: 20px;
     width: 30px;
