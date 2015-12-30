@@ -1,4 +1,7 @@
 var dataCells = React.createClass({
+  getInitialState: function() {
+    return {draggableCells: this.selectedCell};
+  },
   componentWillReceiveProps: function (nextProps) {
     var nextSpread = nextProps.spread;
     var currentSpread = this.props.spread;
@@ -12,13 +15,19 @@ var dataCells = React.createClass({
     }
   },
   dragStart: function (event) {
-    
-  }
+    this.dragged = event.currentTarget;
+    event.DataTransfer.effectAllowed = 'move';
+  },
+  dragEnd: function (event) {
+    this.dragged.style.display = 'block';
+    // var currentCell = this.state
+
+  },
   highlight: function (event) {    
     var cells = document.getElementsByClassName('cell');
     _.each(cells, function (eachCell) {
       eachCell.classList.remove('highlight')
-    })
+    });
     this.selectedCell.classList.add('highlight');
     this.openHistory(); 
   },
