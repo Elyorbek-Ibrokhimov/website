@@ -1,5 +1,12 @@
 /*Palleton Url: http://www.paletton.com/#uid=30P050kmdlz3Jrz6auuKQcgRXr3*/
 /*----------------Home Page-----------------*/
+li.placeholder {
+  background: #fff078; }
+
+li.placeholder:before {
+  content: "Drop here";
+  color: #e1d25a; }
+
 body {
   background-image: url(../images/back.jpeg);
   background-size: cover;

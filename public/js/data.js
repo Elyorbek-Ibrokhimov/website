@@ -1,3 +1,6 @@
+var placeholder = document.createElement("li");
+placeholder.className = "placeholder";
+
 var dataCells = React.createClass({
   getInitialState: function() {
     return {draggableCells: this.draggableCells};
@@ -18,21 +21,28 @@ var dataCells = React.createClass({
     var allCells = document.getElementsByClassName('cell');    
     _.each(allCells, function (eachCell, i) {
       eachCell.setAttribute('data-dragId', i);
-    });
-    
+    });    
   },
-  dragStart: function (event) {
+  startDrag: function (event) {
     this.dragged = event.currentTarget;
     event.DataTransfer.effectAllowed = 'move';
   },
-  dragEnd: function (event) {
-    this.dragged.style.display = 'block';
-    var draggedCells = this.state.draggableCells;
-    var from = Number(this.dragged.dataset.dragId);
-    var to = Number(this.over.dataset.dragId);
-    if (from < to) to --;
-    draggedCells.splice(to, 0, draggedCells.splice(from, 1)[0]);
-    this.setState({draggableCells: draggedCells});
+  endDrag: function (event) {
+    console.log('drag end')
+    // this.dragged.style.display = 'block';
+    // var draggedCells = this.state.draggableCells;
+    // var from = Number(this.dragged.dataset.dragId);
+    // var to = Number(this.over.dataset.dragId);
+    // if (from < to) to --;
+    // draggedCells.splice(to, 0, draggedCells.splice(from, 1)[0]);
+    // this.setState({draggableCells: draggedCells});
+  },
+   dragOver: function(event) {
+    event.preventDefault();
+    this.dragged.style.display = "none";
+    if(event.target.className == "placeholder") return;
+    this.over = event.target;
+    event.target.parentNode.insertBefore(placeholder, event.target);
   },
   highlight: function (event) {    
     var cells = document.getElementsByClassName('cell');
@@ -59,7 +69,14 @@ var dataCells = React.createClass({
     var firstInsturment = (this.props.displayName).slice(0,3);
     var secondInstrument = (this.props.displayName).slice(4,8);
     return (
-      React.DOM.div({className: 'cell', ref: (cellCont) => this.selectedCell = cellCont, onClick: this.highlight, onDragOver: this.dragOver}, 
+      React.DOM.div({className: 'cell', 
+        ref: (cellCont) => this.selectedCell = cellCont, 
+        draggable: true,
+        onClick: this.highlight,         
+        onDragstart: this.startDrag,
+        onDragend: this.endDrag,        
+        onDragover: this.dragOver
+      }, 
         React.DOM.div({className: 'display-name'}, this.props.displayName),
         React.DOM.div({className: 'flags'},
           React.DOM.div({className: firstInsturment.toLowerCase()}),
@@ -117,10 +134,7 @@ function postData (instrument, dataJSON) {
             displayName: instrumentNames[i].displayName,
             bid: bidPrices[i],
             ask: askPrices[i],
-            spread: spreadData,   
-            draggable: true,
-            onDragEnd: this.dragEnd,
-            onDragStart: this.dragStart      
+            spread: spreadData,                
             })        
         ) 
       })
