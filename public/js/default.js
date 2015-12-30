@@ -1,4 +1,5 @@
 function switchPages(event) {
+  event.preventDefault();
   var navigationBar = document.getElementById('navigation');
   var pages = document.getElementsByClassName('page');
   for (var i=0; i<pages.length; i++) {

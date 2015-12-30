@@ -11,6 +11,9 @@ var dataCells = React.createClass({
       this.spreadCell.classList.remove('show-decrease')
     }
   },
+  dragStart: function (event) {
+    
+  }
   highlight: function (event) {    
     var cells = document.getElementsByClassName('cell');
     _.each(cells, function (eachCell) {
@@ -36,7 +39,7 @@ var dataCells = React.createClass({
     var firstInsturment = (this.props.displayName).slice(0,3);
     var secondInstrument = (this.props.displayName).slice(4,8);
     return (
-      React.DOM.div({className: 'cell', ref: (cellCont) => this.selectedCell = cellCont, onClick: this.highlight}, 
+      React.DOM.div({className: 'cell', ref: (cellCont) => this.selectedCell = cellCont, onClick: this.highlight, onDragOver: this.dragOver}, 
         React.DOM.div({className: 'display-name'}, this.props.displayName),
         React.DOM.div({className: 'flags'},
           React.DOM.div({className: firstInsturment.toLowerCase()}),
@@ -90,11 +93,15 @@ function postData (instrument, dataJSON) {
       spread.map(function(spreadData, i) {
         return (
           React.createElement(dataCells, {
-            key: i,
+            key: i,            
             displayName: instrumentNames[i].displayName,
             bid: bidPrices[i],
             ask: askPrices[i],
-            spread: spreadData,            
+            spread: spreadData,   
+            dragId: i,
+            draggable: true,
+            onDragEnd: this.dragEnd,
+            onDragStart: this.dragStart         
             })        
         ) 
       })
