@@ -15,7 +15,10 @@ var dataCells = React.createClass({
     }
   },
   componentDidMount: function () {
-    var allCells = document.getElementsByClassName('cell');
+    var allCells = document.getElementsByClassName('cell');    
+    _.each(allCells, function (eachCell, i) {
+      eachCell.setAttribute('data-dragId', i);
+    });
     
   },
   dragStart: function (event) {
@@ -24,9 +27,12 @@ var dataCells = React.createClass({
   },
   dragEnd: function (event) {
     this.dragged.style.display = 'block';
-    var draggableCells = this.state.draggableCells;
-    var from = Number(this.dragged.dataset.id);
-    var to = Number(this.over.dataset.id);
+    var draggedCells = this.state.draggableCells;
+    var from = Number(this.dragged.dataset.dragId);
+    var to = Number(this.over.dataset.dragId);
+    if (from < to) to --;
+    draggedCells.splice(to, 0, draggedCells.splice(from, 1)[0]);
+    this.setState({draggableCells: draggedCells});
   },
   highlight: function (event) {    
     var cells = document.getElementsByClassName('cell');
@@ -112,17 +118,15 @@ function postData (instrument, dataJSON) {
             bid: bidPrices[i],
             ask: askPrices[i],
             spread: spreadData,   
-            dragId: i,
             draggable: true,
             onDragEnd: this.dragEnd,
-            onDragStart: this.dragStart, 
-            className: 'sjkfdslfj'        
+            onDragStart: this.dragStart      
             })        
         ) 
       })
     
     var cellContainers = React.createElement('div', {id: 'cell-list', ref: (cellList) => this.draggableCells = cellList}, cellUpdates);
-    console.log(cellUpdates)
+    // console.log(cellUpdates)
     ReactDOM.render(cellContainers, document.getElementById('data-table'));
   } //onload end
 };
