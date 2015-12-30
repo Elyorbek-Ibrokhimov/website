@@ -1,6 +1,6 @@
 var dataCells = React.createClass({
   getInitialState: function() {
-    return {draggableCells: this.selectedCell};
+    return {draggableCells: this.draggableCells};
   },
   componentWillReceiveProps: function (nextProps) {
     var nextSpread = nextProps.spread;
@@ -14,14 +14,19 @@ var dataCells = React.createClass({
       this.spreadCell.classList.remove('show-decrease')
     }
   },
+  componentDidMount: function () {
+    var allCells = document.getElementsByClassName('cell');
+    
+  },
   dragStart: function (event) {
     this.dragged = event.currentTarget;
     event.DataTransfer.effectAllowed = 'move';
   },
   dragEnd: function (event) {
     this.dragged.style.display = 'block';
-    // var currentCell = this.state
-
+    var draggableCells = this.state.draggableCells;
+    var from = Number(this.dragged.dataset.id);
+    var to = Number(this.over.dataset.id);
   },
   highlight: function (event) {    
     var cells = document.getElementsByClassName('cell');
@@ -110,11 +115,14 @@ function postData (instrument, dataJSON) {
             dragId: i,
             draggable: true,
             onDragEnd: this.dragEnd,
-            onDragStart: this.dragStart         
+            onDragStart: this.dragStart, 
+            className: 'sjkfdslfj'        
             })        
         ) 
       })
-    var cellContainers = React.createElement('div', {id: 'cell-list'}, cellUpdates)
+    
+    var cellContainers = React.createElement('div', {id: 'cell-list', ref: (cellList) => this.draggableCells = cellList}, cellUpdates);
+    console.log(cellUpdates)
     ReactDOM.render(cellContainers, document.getElementById('data-table'));
   } //onload end
 };
