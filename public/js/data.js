@@ -1,9 +1,11 @@
-var placeholder = document.createElement("li");
-placeholder.className = "placeholder";
+
 
 var dataCells = React.createClass({
   getInitialState: function() {
-    return {draggableCells: this.draggableCells};
+    return {
+      usdChecked: false,
+      eurChecked: false 
+    }
   },
   componentWillReceiveProps: function (nextProps) {
     var nextSpread = nextProps.spread;
@@ -18,32 +20,9 @@ var dataCells = React.createClass({
     }
   },
   
-  startDrag: function (event) {
-    this.dragged = event.currentTarget;
-    event.dataTransfer.effectAllowed = 'move';
-  },
-  endDrag: function (event) {
-    event.preventDefault();
-    // this.dragged.style.display = 'block';
-    var draggedCells = this.state.draggableCells;
-    console.log(draggedCells);
-    var from = Number(this.dragged.dataset.dragId);
-    var to = Number(this.over.dataset.dragId);
-    // console.log(draggedCells)
-    if (from < to) to --;
-    draggedCells.splice(to, 0, draggedCells.splice(from, 1)[0]);
-    // this.setState({draggableCells: draggedCells});
-    
-  },
-   dragOver: function(event) {
-  //   event.preventDefault();
-  //   this.dragged.style.display = "none";
-  //   if(event.target.className == "placeholder") return;
-    this.over = event.target;
-  //   event.target.parentNode.insertBefore(placeholder, event.target);
-  },
+ 
   highlight: function (event) {
-    console.log(this.draggableCells)    
+    console.log(this.state)    
     var cells = document.getElementsByClassName('cell');
     _.each(cells, function (eachCell) {
       eachCell.classList.remove('highlight')
@@ -63,8 +42,15 @@ var dataCells = React.createClass({
     _.each(allCells, function (eachCell, i) {
       eachCell.setAttribute('data-dragId', i);
       eachCell.addEventListener('dragstart', this.startDrag)
-    });    
+    });
+    // var parent = document.getElementById('cell-list');  
+
   },
+  // checkBoxes: function () {
+  //   return (
+  //     React.createElement('input', {className: 'usdFilter', type: checkbox})
+  //   )
+  // },
   propTypes: {
     displayName: React.PropTypes.string,
     bid: React.PropTypes.number,
@@ -75,19 +61,19 @@ var dataCells = React.createClass({
     var firstInsturment = (this.props.displayName).slice(0,3);
     var secondInstrument = (this.props.displayName).slice(4,8);
     return (
+      React.createElement('input', {className: 'usdFilter', type: 'checkbox'}),
       React.DOM.div({className: 'cell', 
         ref: (cellCont) => this.selectedCell = cellCont, 
-        draggable: true,
         onClick: this.highlight,   
         onDragStart: this.startDrag,     
         onDragEnd: this.endDrag,        
         onDragOver: this.dragOver
-      }, 
+      },
         React.DOM.div({className: 'display-name'}, this.props.displayName),
         React.DOM.div({className: 'flags'},
           React.DOM.div({className: firstInsturment.toLowerCase()}),
           React.DOM.div({className: secondInstrument.toLowerCase()})
-          ),
+        ),
         React.DOM.div({className: 'spread', ref: (spreadCont) => this.spreadCell = spreadCont}, 'spread: ' + this.props.spread),
         React.DOM.div({className: 'bid-ask-prices'},
           React.DOM.div({className: 'bid-price'}, 'bid: ' + this.props.bid),
@@ -179,7 +165,30 @@ gatherInstruments();
 
 
 
-
+ // startDrag: function (event) {
+ //    this.dragged = event.currentTarget;
+ //    event.dataTransfer.effectAllowed = 'move';
+ //  },
+ //  endDrag: function (event) {
+ //    event.preventDefault();
+ //    // this.dragged.style.display = 'block';
+ //    var draggedCells = this.state.draggableCells;
+ //    console.log(draggedCells);
+ //    var from = Number(this.dragged.dataset.dragId);
+ //    var to = Number(this.over.dataset.dragId);
+ //    // console.log(draggedCells)
+ //    if (from < to) to --;
+ //    // draggedCells.splice(to, 0, draggedCells.splice(from, 1)[0]);
+ //    // this.setState({draggableCells: draggedCells});
+    
+ //  },
+ //   dragOver: function(event) {
+ //  //   event.preventDefault();
+ //  //   this.dragged.style.display = "none";
+ //  //   if(event.target.className == "placeholder") return;
+ //    this.over = event.target;
+ //  //   event.target.parentNode.insertBefore(placeholder, event.target);
+ //  },
 
 
 
