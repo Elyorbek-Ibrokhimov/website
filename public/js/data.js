@@ -18,8 +18,7 @@ var dataCells = React.createClass({
       this.spreadCell.classList.remove('show-decrease')
     }
   }, 
-  highlight: function (event) {
-    console.log(this.state)    
+  highlight: function (event) {   
     var cells = document.getElementsByClassName('cell');
     _.each(cells, function (eachCell) {
       eachCell.classList.remove('highlight')
@@ -34,13 +33,6 @@ var dataCells = React.createClass({
     var fullName = firstInsturment + '_' + secondInstrument;
     getHistory(fullName, instrumentName);
   },
-  componentDidMount: function () {
-    var allCells = document.getElementsByClassName('cell');
-    var firstInsturment = (this.props.displayName).slice(0,3).toLowerCase();    
-    _.each(allCells, function (eachCell, i) {
-      eachCell.setAttribute('data-filter', firstInsturment)
-    });
-  },
   propTypes: {
     displayName: React.PropTypes.string,
     bid: React.PropTypes.number,
@@ -50,11 +42,11 @@ var dataCells = React.createClass({
   render: function () {
     var firstInsturment = (this.props.displayName).slice(0,3);
     var secondInstrument = (this.props.displayName).slice(4,8);
-    var instrumentFilter = firstInsturment.toLowerCase() + 'Filter';
     return (
-      React.DOM.div({className: 'cell ' + instrumentFilter, 
+      React.DOM.div({className: 'cell ',
         ref: (cellCont) => this.selectedCell = cellCont, 
-        onClick: this.highlight           
+        onClick: this.highlight,
+        data: firstInsturment.toLowerCase()           
       },
         React.DOM.div({className: 'display-name'}, this.props.displayName),
         React.DOM.div({className: 'flags'},

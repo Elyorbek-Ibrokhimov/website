@@ -51,7 +51,8 @@ function drawChart(dateList) {
   var options = {
     legend:'none',
     'height': 500,
-    backgroundColor: {fill: 'none'}
+    backgroundColor: {fill: 'none'},
+    'width': 1550
   };
   var chart = new google.visualization.CandlestickChart(document.getElementById('graph'));
   chart.draw(data, options);

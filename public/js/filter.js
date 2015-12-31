@@ -1,6 +1,11 @@
-// $(document).ready(function (){
-//   function filter (instrument) {
-//     var instrumentCells = $('')
-//   }
-//   $('usd-filter').
-// }) 
+// $(document).ready(function () {
+//   console.log($('.cell'))
+//   // $('.cell').each(function () {
+//   //   console.log('each cell')
+//   // })
+// })
+
+var eachCell = document.getElementsByClassName('cell');
+
+
+console.log(eachCell);
