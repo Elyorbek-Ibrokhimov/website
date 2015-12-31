@@ -19,29 +19,31 @@ var dataCells = React.createClass({
   },
   
   startDrag: function (event) {
-    console.log(event.target);
-    // this.dragged = event.currentTarget;
-    // event.DataTransfer.effectAllowed = 'move';
-    // event.DataTransfer.setData('text/html', event.currentTarget);
+    this.dragged = event.currentTarget;
+    event.dataTransfer.effectAllowed = 'move';
   },
-  // endDrag: function (event) {
+  endDrag: function (event) {
+    event.preventDefault();
+    // this.dragged.style.display = 'block';
+    var draggedCells = this.state.draggableCells;
+    console.log(draggedCells);
+    var from = Number(this.dragged.dataset.dragId);
+    var to = Number(this.over.dataset.dragId);
+    // console.log(draggedCells)
+    if (from < to) to --;
+    draggedCells.splice(to, 0, draggedCells.splice(from, 1)[0]);
+    // this.setState({draggableCells: draggedCells});
     
-  //   this.dragged.style.display = 'block';
-  //   var draggedCells = this.state.draggableCells;
-  //   var from = Number(this.dragged.dataset.dragId);
-  //   var to = Number(this.over.dataset.dragId);
-  //   if (from < to) to --;
-  //   draggedCells.splice(to, 0, draggedCells.splice(from, 1)[0]);
-  //   this.setState({draggableCells: draggedCells});
-  // },
-  //  dragOver: function(event) {
+  },
+   dragOver: function(event) {
   //   event.preventDefault();
   //   this.dragged.style.display = "none";
   //   if(event.target.className == "placeholder") return;
-  //   this.over = event.target;
+    this.over = event.target;
   //   event.target.parentNode.insertBefore(placeholder, event.target);
-  // },
-  highlight: function (event) {    
+  },
+  highlight: function (event) {
+    console.log(this.draggableCells)    
     var cells = document.getElementsByClassName('cell');
     _.each(cells, function (eachCell) {
       eachCell.classList.remove('highlight')
@@ -77,9 +79,9 @@ var dataCells = React.createClass({
         ref: (cellCont) => this.selectedCell = cellCont, 
         draggable: true,
         onClick: this.highlight,   
-        onDragStart: this.startDrag     
-        // onDragend: this.endDrag,        
-        // onDragover: this.dragOver
+        onDragStart: this.startDrag,     
+        onDragEnd: this.endDrag,        
+        onDragOver: this.dragOver
       }, 
         React.DOM.div({className: 'display-name'}, this.props.displayName),
         React.DOM.div({className: 'flags'},
