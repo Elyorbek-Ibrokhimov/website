@@ -17,33 +17,30 @@ var dataCells = React.createClass({
       this.spreadCell.classList.remove('show-decrease')
     }
   },
-  componentDidMount: function () {
-    var allCells = document.getElementsByClassName('cell');    
-    _.each(allCells, function (eachCell, i) {
-      eachCell.setAttribute('data-dragId', i);
-    });    
-  },
+  
   startDrag: function (event) {
-    this.dragged = event.currentTarget;
-    event.DataTransfer.effectAllowed = 'move';
+    console.log(event.target);
+    // this.dragged = event.currentTarget;
+    // event.DataTransfer.effectAllowed = 'move';
+    // event.DataTransfer.setData('text/html', event.currentTarget);
   },
-  endDrag: function (event) {
-    console.log('drag end')
-    // this.dragged.style.display = 'block';
-    // var draggedCells = this.state.draggableCells;
-    // var from = Number(this.dragged.dataset.dragId);
-    // var to = Number(this.over.dataset.dragId);
-    // if (from < to) to --;
-    // draggedCells.splice(to, 0, draggedCells.splice(from, 1)[0]);
-    // this.setState({draggableCells: draggedCells});
-  },
-   dragOver: function(event) {
-    event.preventDefault();
-    this.dragged.style.display = "none";
-    if(event.target.className == "placeholder") return;
-    this.over = event.target;
-    event.target.parentNode.insertBefore(placeholder, event.target);
-  },
+  // endDrag: function (event) {
+    
+  //   this.dragged.style.display = 'block';
+  //   var draggedCells = this.state.draggableCells;
+  //   var from = Number(this.dragged.dataset.dragId);
+  //   var to = Number(this.over.dataset.dragId);
+  //   if (from < to) to --;
+  //   draggedCells.splice(to, 0, draggedCells.splice(from, 1)[0]);
+  //   this.setState({draggableCells: draggedCells});
+  // },
+  //  dragOver: function(event) {
+  //   event.preventDefault();
+  //   this.dragged.style.display = "none";
+  //   if(event.target.className == "placeholder") return;
+  //   this.over = event.target;
+  //   event.target.parentNode.insertBefore(placeholder, event.target);
+  // },
   highlight: function (event) {    
     var cells = document.getElementsByClassName('cell');
     _.each(cells, function (eachCell) {
@@ -59,6 +56,13 @@ var dataCells = React.createClass({
     var fullName = firstInsturment + '_' + secondInstrument;
     getHistory(fullName, instrumentName);
   },
+  componentDidMount: function () {
+    var allCells = document.getElementsByClassName('cell');    
+    _.each(allCells, function (eachCell, i) {
+      eachCell.setAttribute('data-dragId', i);
+      eachCell.addEventListener('dragstart', this.startDrag)
+    });    
+  },
   propTypes: {
     displayName: React.PropTypes.string,
     bid: React.PropTypes.number,
@@ -72,10 +76,10 @@ var dataCells = React.createClass({
       React.DOM.div({className: 'cell', 
         ref: (cellCont) => this.selectedCell = cellCont, 
         draggable: true,
-        onClick: this.highlight,         
-        onDragstart: this.startDrag,
-        onDragend: this.endDrag,        
-        onDragover: this.dragOver
+        onClick: this.highlight,   
+        onDragStart: this.startDrag     
+        // onDragend: this.endDrag,        
+        // onDragover: this.dragOver
       }, 
         React.DOM.div({className: 'display-name'}, this.props.displayName),
         React.DOM.div({className: 'flags'},
@@ -134,7 +138,7 @@ function postData (instrument, dataJSON) {
             displayName: instrumentNames[i].displayName,
             bid: bidPrices[i],
             ask: askPrices[i],
-            spread: spreadData,                
+            spread: spreadData,                     
             })        
         ) 
       })
