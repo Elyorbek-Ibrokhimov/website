@@ -1,5 +1,4 @@
 
-
 var dataCells = React.createClass({
   getInitialState: function() {
     return {
@@ -18,9 +17,7 @@ var dataCells = React.createClass({
       this.spreadCell.classList.remove('show-increase')
       this.spreadCell.classList.remove('show-decrease')
     }
-  },
-  
- 
+  }, 
   highlight: function (event) {
     console.log(this.state)    
     var cells = document.getElementsByClassName('cell');
@@ -38,19 +35,12 @@ var dataCells = React.createClass({
     getHistory(fullName, instrumentName);
   },
   componentDidMount: function () {
-    var allCells = document.getElementsByClassName('cell');    
+    var allCells = document.getElementsByClassName('cell');
+    var firstInsturment = (this.props.displayName).slice(0,3).toLowerCase();    
     _.each(allCells, function (eachCell, i) {
-      eachCell.setAttribute('data-dragId', i);
-      eachCell.addEventListener('dragstart', this.startDrag)
+      eachCell.setAttribute('data-filter', firstInsturment)
     });
-    // var parent = document.getElementById('cell-list');  
-
   },
-  // checkBoxes: function () {
-  //   return (
-  //     React.createElement('input', {className: 'usdFilter', type: checkbox})
-  //   )
-  // },
   propTypes: {
     displayName: React.PropTypes.string,
     bid: React.PropTypes.number,
@@ -60,14 +50,11 @@ var dataCells = React.createClass({
   render: function () {
     var firstInsturment = (this.props.displayName).slice(0,3);
     var secondInstrument = (this.props.displayName).slice(4,8);
+    var instrumentFilter = firstInsturment.toLowerCase() + 'Filter';
     return (
-      React.createElement('input', {className: 'usdFilter', type: 'checkbox'}),
-      React.DOM.div({className: 'cell', 
+      React.DOM.div({className: 'cell ' + instrumentFilter, 
         ref: (cellCont) => this.selectedCell = cellCont, 
-        onClick: this.highlight,   
-        onDragStart: this.startDrag,     
-        onDragEnd: this.endDrag,        
-        onDragOver: this.dragOver
+        onClick: this.highlight           
       },
         React.DOM.div({className: 'display-name'}, this.props.displayName),
         React.DOM.div({className: 'flags'},
@@ -165,30 +152,7 @@ gatherInstruments();
 
 
 
- // startDrag: function (event) {
- //    this.dragged = event.currentTarget;
- //    event.dataTransfer.effectAllowed = 'move';
- //  },
- //  endDrag: function (event) {
- //    event.preventDefault();
- //    // this.dragged.style.display = 'block';
- //    var draggedCells = this.state.draggableCells;
- //    console.log(draggedCells);
- //    var from = Number(this.dragged.dataset.dragId);
- //    var to = Number(this.over.dataset.dragId);
- //    // console.log(draggedCells)
- //    if (from < to) to --;
- //    // draggedCells.splice(to, 0, draggedCells.splice(from, 1)[0]);
- //    // this.setState({draggableCells: draggedCells});
-    
- //  },
- //   dragOver: function(event) {
- //  //   event.preventDefault();
- //  //   this.dragged.style.display = "none";
- //  //   if(event.target.className == "placeholder") return;
- //    this.over = event.target;
- //  //   event.target.parentNode.insertBefore(placeholder, event.target);
- //  },
+
 
 
 
