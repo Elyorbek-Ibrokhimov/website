@@ -37,7 +37,7 @@ instruments.post('/prices', parseText, function(req, res) {
 
 instruments.post('/history', parseText, function(req, res){
   var instrument = req.body;
-  var count = 90
+  var count = 180
   var url = 'https://api-sandbox.oanda.com/v1/candles?' 
   + 'instrument='+ instrument + '&' 
   + 'count=' + count +'&' 

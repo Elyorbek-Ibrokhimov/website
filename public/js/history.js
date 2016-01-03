@@ -52,13 +52,17 @@ function drawChart(dateList) {
     legend:'none',
     'height': 500,
     backgroundColor: {fill: 'none'},
-    'width': 1550
+    'width': 2200
   };
+ 
   var chart = new google.visualization.CandlestickChart(document.getElementById('graph'));
   chart.draw(data, options);
+  console.log(chart)
 }
 
-
+ while ($('#graph').css('width') > 950) {
+   
+  }
 
 
 

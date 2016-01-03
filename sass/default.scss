@@ -9,16 +9,12 @@ $logo:'Exo', sans-serif;
 
 /*----------------Home Page-----------------*/
 
-li.placeholder {background: rgb(255,240,120);}
-li.placeholder:before {
-  content: "Drop here";
-  color: rgb(225,210,90);
-}
-
 body {
   background-image: url(../images/back.jpeg);
   background-size: cover;
   background-attachment: fixed;
+  transform: translateZ(0);
+
 }
 
 #home {  
@@ -26,6 +22,13 @@ body {
   padding-right: 0px;
 }
 
+#navigation  {
+  margin-bottom: 50px;
+}
+
+.navbar {
+  height: 60px;
+}
 .navbar-brand {
   a {
     font-family: $logo;
@@ -52,26 +55,47 @@ body {
 /*------------------Data Table -------------*/
 
 #data-table {
-  border: solid;
+/*  border: solid;*/
  /* width: 100%;*/
-  height: 400px;
+  height: 550px;
   display: inline-block;
   overflow: scroll;
+  padding-top: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 
 .cell {
-  border: solid;
+  border-radius: (10px, 10px, 10px, 10px);
+  margin-bottom: 20px;
   width: 20%;
   height: 5%;
   display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+
+  div {
+    padding-bottom: 10px;
+  }
 }
 
-.cell > div {
- 
-  
+.cell:hover {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 }
-
 
 .display-name {
   text-align: center;
@@ -85,6 +109,15 @@ body {
 
 .bid-ask-prices {
  text-align: center;
+}
+
+.bid-price {
+  display: inline-block;
+}
+
+.ask-price {
+  display: inline-block;
+  margin-left: 10px;
 }
 
 .highlight {
@@ -103,17 +136,23 @@ body {
 /*---------------History Table ----------------*/
 
 #history-table {
-  height: 600px;
+  /*height: 600px*/;
   width: 100%;
   float: right;
-  border: solid;
-  background-color: rgba(133,143,161,.5);
+  background-color: rgba(133,143,161,.3);
 }
 
 .history-instrument {
   text-align: center;
 }
 
+#graph {
+  position: relative;
+  left: -100px;
+  top: -50px;
+  overflow: scroll;
+  overflow-y: hidden;
+}
 
 
 /*-------------Flag Pictures----------------*/
@@ -123,11 +162,11 @@ body {
 
   div {
     display: inline-block;
-    height: 20px;
-    width: 30px;
-    background-size: cover;
+    height: 25px;
+    width: 40px;
+    background-size: 100%;
     margin-left: 8px;
-    
+    background-repeat: no-repeat;
   }
 }
 
@@ -142,9 +181,7 @@ body {
 }
 
 .usd {
-  background-image: url(../images/flags/usd.png);
-  
-  
+  background-image: url(../images/flags/usd.png); 
 }
 
 .cad {
@@ -162,8 +199,90 @@ body {
   background-size: cover;
 }
 
+.aud {
+  background-image: url(../images/flags/aud.png);
+  background-size: cover;
+}
 
+.gbp {
+  background-image: url(../images/flags/gbp.png);
+  background-size: cover;
+}
 
+.chf {
+  background-image: url(../images/flags/chf.png);
+  background-size: cover;
+}
+
+.nzd {
+  background-image: url(../images/flags/nzd.png);
+  background-size: cover;
+}
+
+.hkd {
+  background-image: url(../images/flags/hkd.png);
+  background-size: cover;
+}
+
+.cny {
+  background-image: url(../images/flags/cny.png);
+  background-size: cover;
+}
+
+.cnh {
+  background-image: url(../images/flags/cnh.png);
+  background-size: cover;
+}
+
+.mxn {
+  background-image: url(../images/flags/mxn.png);
+  background-size: cover;
+}
+
+.nok {
+  background-image: url(../images/flags/nok.png);
+  background-size: cover;
+}
+
+.czk {
+  background-image: url(../images/flags/czk.png);
+  background-size: cover;
+}
+
+.try {
+  background-image: url(../images/flags/try.png);
+  background-size: cover;
+}
+
+.dkk {
+  background-image: url(../images/flags/dkk.png);
+  background-size: cover;
+}
+
+.huf {
+  background-image: url(../images/flags/huf.png);
+  background-size: cover;
+}
+
+.pln {
+  background-image: url(../images/flags/pln.png);
+  background-size: cover;
+}
+
+.sek {
+  background-image: url(../images/flags/sek.png);
+  background-size: cover;
+}
+
+.sgd {
+  background-image: url(../images/flags/sgd.png);
+  background-size: cover;
+}
+
+.zar {
+  background-image: url(../images/flags/zar.png);
+  background-size: cover;
+}
 
 
 

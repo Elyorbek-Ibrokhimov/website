@@ -11,15 +11,14 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">   
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigator" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#" data-page="home">For<span>€x</span>Spress</a>
         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="navigator">
           <ul class="nav navbar-nav">
             <li><a href="#" data-page="data">Market Watch</a></li>         
           </ul>
@@ -76,15 +75,24 @@
 </div>
 
 <!-- Data Page -->
-  <div class="container-fluid page show" data-page="data">
+  <div class="container-fluid page" data-page="data">
+    <div class="row">
+      <div class="btn-group col-md-3" role="group" aria-label="...">
+        <button id="data-button" type="button" class="btn btn-default">Live Data</button>
+        <button id="history-button" type="button" class="btn btn-default">Historical Graph</button>
+      </div>
+    </div>
+    <div class="row">
+      <div id="history-table" class="col-md-12 hidden">
+        <div class="row">
+          <h2>Select a instrument to view history </h2>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div id="data-table" class="col-md-12 col-sm-12"></div>
     </div>
-    <div class="row">
-      <div id="history-table" class="col-md-12">
-        <h2>Select a instrument to view history </h2>
-      </div>
-    </div>
+    
   </div>
 
 

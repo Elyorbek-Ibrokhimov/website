@@ -14,3 +14,17 @@ function switchPages(event) {
 }
 
 document.getElementById('navigation').addEventListener('click', switchPages)
+
+var dataBtn = document.getElementById('data-button');
+var historyBtn = document.getElementById('history-button');
+
+historyBtn.onclick = function () {
+
+  document.getElementById('history-table').classList.remove('hidden')
+  document.getElementById('data-table').classList.add('hidden')
+}
+
+dataBtn.onclick = function () {
+  document.getElementById('data-table').classList.remove('hidden')
+  document.getElementById('history-table').classList.add('hidden')
+}

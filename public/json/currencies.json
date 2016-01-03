@@ -6,22 +6,10 @@
     "maxTradeUnits" : 10000000
   },
   {
-    "instrument" : "EUR_JPY",
-    "displayName" : "EUR JPY",
-    "pip" : "0.01",
-    "maxTradeUnits" : 10000000
-  },
-  {
-    "instrument" : "EUR_USD",
-    "displayName" : "EUR USD",
-    "pip" : "0.0001",
-    "maxTradeUnits" : 10000000
-  },
-  {
-    "instrument" : "EUR_CHF",
-    "displayName" : "EUR CHF",
-    "pip" : "0.0001",
-    "maxTradeUnits" : 10000000
+      "instrument" : "USD_TRY",
+      "displayName" : "USD\/TRY",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
   },
   {
     "instrument" : "USD_CHF",
@@ -30,33 +18,261 @@
     "maxTradeUnits" : 10000000
   },
   {
-    "instrument" : "EUR_GBP",
-    "displayName" : "EUR GBP",
+      "instrument" : "USD_JPY",
+      "displayName" : "USD\/JPY",
+      "pip" : "0.01",
+      "maxTradeUnits" : 10000000
+    },
+  {
+      "instrument" : "USD_MXN",
+      "displayName" : "USD\/MXN",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+  },
+  {
+      "instrument" : "USD_HKD",
+      "displayName" : "USD\/HKD",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+  {
+      "instrument" : "USD_CNH",
+      "displayName" : "USD\/CNH",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+  },
+  {
+      "instrument" : "USD_CNY",
+      "displayName" : "USD\/CNY",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+  },
+  {
+      "instrument" : "USD_NOK",
+      "displayName" : "USD\/NOK",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+  },
+  {
+      "instrument" : "EUR_AUD",
+      "displayName" : "EUR\/AUD",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_CAD",
+      "displayName" : "EUR\/CAD",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_CHF",
+      "displayName" : "EUR\/CHF",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_CZK",
+      "displayName" : "EUR\/CZK",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_DKK",
+      "displayName" : "EUR\/DKK",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_GBP",
+      "displayName" : "EUR\/GBP",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_HKD",
+      "displayName" : "EUR\/HKD",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_HUF",
+      "displayName" : "EUR\/HUF",
+      "pip" : "0.01",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_JPY",
+      "displayName" : "EUR\/JPY",
+      "pip" : "0.01",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_NOK",
+      "displayName" : "EUR\/NOK",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_NZD",
+      "displayName" : "EUR\/NZD",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_PLN",
+      "displayName" : "EUR\/PLN",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_SEK",
+      "displayName" : "EUR\/SEK",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_SGD",
+      "displayName" : "EUR\/SGD",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_TRY",
+      "displayName" : "EUR\/TRY",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_USD",
+      "displayName" : "EUR\/USD",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "EUR_ZAR",
+      "displayName" : "EUR\/ZAR",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },  
+  {
+    "instrument" : "GBP_AUD",
+    "displayName" : "GBP\/AUD",
     "pip" : "0.0001",
     "maxTradeUnits" : 10000000
   },
   {
-    "instrument" : "GBP_USD",
-    "displayName" : "GBP USD",
-    "pip" : "0.0001",
-    "maxTradeUnits" : 10000000
-  },
-  {
-    "instrument" : "AUD_CAD",
-    "displayName" : "AUD CAD",
-    "pip" : "0.0001",
-    "maxTradeUnits" : 10000000
-  },
-  {
-    "instrument" : "NZD_USD",
-    "displayName" : "NZD USD",
+    "instrument" : "GBP_CAD",
+    "displayName" : "GBP\/CAD",
     "pip" : "0.0001",
     "maxTradeUnits" : 10000000
   },
   {
     "instrument" : "GBP_CHF",
-    "displayName" : "GBP CHF",
+    "displayName" : "GBP\/CHF",
     "pip" : "0.0001",
     "maxTradeUnits" : 10000000
-  }
+  },
+  {
+    "instrument" : "GBP_HKD",
+    "displayName" : "GBP\/HKD",
+    "pip" : "0.0001",
+    "maxTradeUnits" : 10000000
+  },
+  {
+    "instrument" : "GBP_JPY",
+    "displayName" : "GBP\/JPY",
+    "pip" : "0.01",
+    "maxTradeUnits" : 10000000
+  },
+  {
+    "instrument" : "GBP_NZD",
+    "displayName" : "GBP\/NZD",
+    "pip" : "0.0001",
+    "maxTradeUnits" : 10000000
+  },
+  {
+      "instrument" : "CHF_JPY",
+      "displayName" : "CHF\/JPY",
+      "pip" : "0.01",
+      "maxTradeUnits" : 10000000
+  }, 
+  {
+    "instrument" : "CHF_HKD",
+    "displayName" : "CHF\/HKD",
+    "pip" : "0.0001",
+    "maxTradeUnits" : 10000000
+  },
+  {
+    "instrument" : "CHF_JPY",
+    "displayName" : "CHF\/JPY",
+    "pip" : "0.01",
+    "maxTradeUnits" : 10000000
+  },
+  {
+      "instrument" : "AUD_HKD",
+      "displayName" : "AUD\/HKD",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "AUD_JPY",
+      "displayName" : "AUD\/JPY",
+      "pip" : "0.01",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "CAD_CHF",
+      "displayName" : "CAD\/CHF",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "CAD_HKD",
+      "displayName" : "CAD\/HKD",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "CAD_JPY",
+      "displayName" : "CAD\/JPY",
+      "pip" : "0.01",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "CAD_SGD",
+      "displayName" : "CAD\/SGD",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "HKD_JPY",
+      "displayName" : "HKD\/JPY",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "NZD_CAD",
+      "displayName" : "NZD\/CAD",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "NZD_CHF",
+      "displayName" : "NZD\/CHF",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "NZD_HKD",
+      "displayName" : "NZD\/HKD",
+      "pip" : "0.0001",
+      "maxTradeUnits" : 10000000
+    },
+    {
+      "instrument" : "NZD_JPY",
+      "displayName" : "NZD\/JPY",
+      "pip" : "0.01",
+      "maxTradeUnits" : 10000000
+    }   
 ]

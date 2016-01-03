@@ -31,7 +31,7 @@
       "maxTradeUnits" : 10000000
     },
     {
-      "instrument" : "AUD_NZD",
+      "instrumentent" : "AUD_NZD",
       "displayName" : "AUD\/NZD",
       "pip" : "0.0001",
       "maxTradeUnits" : 10000000
