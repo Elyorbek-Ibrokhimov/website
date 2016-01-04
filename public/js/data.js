@@ -1,4 +1,3 @@
-
 var dataCells = React.createClass({
   getInitialState: function() {
     return {
@@ -116,7 +115,6 @@ function postData (instrument, dataJSON) {
   } //onload end
 };
 
-// Gathers all the insturment names to put in the url
 function gatherInstruments () {
   var xhr = new XMLHttpRequest;
   xhr.onload = function () {

@@ -62,11 +62,6 @@ function drawChart(dateList) {
   console.log(chart)
 }
 
- while ($('#graph').css('width') > 950) {
-   
-  }
-
-
 
 
 
