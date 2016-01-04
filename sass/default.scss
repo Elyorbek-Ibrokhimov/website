@@ -129,11 +129,33 @@ body {
 
 .show-increase {
   background-color: green;
-  animation: fadeIn 1s ease-in;
+  webkit-transition: all 1s ease-in-out;
+  moz-transition: all 1s ease-in-out;
+  ms-transition: all 1s ease-in-out;
+  o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  background-color: none;
+  transition: background-color 1s ease-in-out;
 }
 
 .show-decrease {
   background-color: red;
+  webkit-transition: all 1s ease-in-out;
+  moz-transition: all 1s ease-in-out;
+  ms-transition: all 1s ease-in-out;
+  o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  background-color: 0;
+  transition: background-color 1s ease-in-out;
+}
+
+.show-no-change {
+  background-color: rgba(0,0,0,0);
+  ebkit-transition: all 1s ease-in-out;
+  moz-transition: all 1s ease-in-out;
+  ms-transition: all 1s ease-in-out;
+  o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 /*---------------History Table ----------------*/
 
