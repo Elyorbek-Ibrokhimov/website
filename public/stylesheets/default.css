@@ -75,7 +75,9 @@ body {
   text-align: center; }
 
 .spread {
-  text-align: center; }
+  text-align: center;
+  width: 100px;
+  margin: auto; }
 
 .bid-ask-prices {
   text-align: center; }

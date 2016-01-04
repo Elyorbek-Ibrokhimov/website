@@ -52,7 +52,9 @@ function drawChart(dateList) {
     legend:'none',
     'height': 500,
     backgroundColor: {fill: 'none'},
-    'width': 2200
+    'width': 2200,
+    fallingColor: { strokeWidth: 0, color: '#a52714' },
+    risingColor: { strokeWidth: 0, color: '#0f9d58' }
   };
  
   var chart = new google.visualization.CandlestickChart(document.getElementById('graph'));
