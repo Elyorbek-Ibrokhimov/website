@@ -18,8 +18,9 @@ document.getElementById('navigation').addEventListener('click', switchPages)
 
 $(document).ready(function () {
   $('#history-button').click(function (){
-    $('#history-table').removeClass('hidden');     
-    $('#data-table').addClass('hidden')
+    $('#history-table').slideToggle()
+    // $('#history-table').removeClass('hidden');     
+    // $('#data-table').addClass('hidden')
   })
   $('#data-button').click(function () {
     $('#history-table').addClass('hidden');

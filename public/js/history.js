@@ -59,7 +59,6 @@ function drawChart(dateList) {
  
   var chart = new google.visualization.CandlestickChart(document.getElementById('graph'));
   chart.draw(data, options);
-  console.log(chart)
 }
 
 

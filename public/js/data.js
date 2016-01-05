@@ -9,14 +9,16 @@ var dataCells = React.createClass({
     var nextSpread = nextProps.spread;
     var currentSpread = this.props.spread;
     if (currentSpread !== nextSpread && currentSpread > nextSpread) {
-    this.spreadCell.classList.remove('show-decrease')
-    this.spreadCell.classList.add('show-increase');
-    this.spreadCell.classList.remove('show-no-change');
-    } else if (currentSpread !== nextSpread && currentSpread < nextSpread) {
+      this.spreadCell.classList.remove('show-decrease')
+      this.spreadCell.classList.add('show-increase');
+      this.spreadCell.classList.remove('show-no-change');
+    } 
+    else if (currentSpread !== nextSpread && currentSpread < nextSpread) {
       this.spreadCell.classList.remove('shßow-increase')
       this.spreadCell.classList.add('show-decrease');
       this.spreadCell.classList.remove('show-no-change');
-    } else {
+    } 
+    else {
       this.spreadCell.classList.add('show-no-change')
       this.spreadCell.classList.remove('show-increase')
       this.spreadCell.classList.remove('show-decrease')
