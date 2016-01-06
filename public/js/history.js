@@ -61,7 +61,7 @@ function drawChart(dateList) {
   chart.draw(data, options);
 }
 
-
+// getHistory('EUR_AUD', 'EUR/AUD');
 
 
 

@@ -15,15 +15,14 @@ function switchPages(event) {
 
 document.getElementById('navigation').addEventListener('click', switchPages)
 
+function highlightToggle () {
+  $(document).ready(function () {
+    $('#history-table').slideToggle()
+  })
+}
 
 $(document).ready(function () {
-  $('#history-button').click(function (){
-    $('#history-table').slideToggle()
-    // $('#history-table').removeClass('hidden');     
-    // $('#data-table').addClass('hidden')
-  })
-  $('#data-button').click(function () {
-    $('#history-table').addClass('hidden');
-    $('#data-table').removeClass('hidden');
+  $('#history-button').click(function () {
+    $('#history-table').slideToggle()    
   })
 })
