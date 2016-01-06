@@ -17,23 +17,32 @@ var historyData = React.createClass({
         React.DOM.div({className: firstInsturment.toLowerCase()}),
         React.DOM.div({className: secondInstrument.toLowerCase()})
       ),
-      React.DOM.div({id: 'graph'}, 
-        React.DOM.img({src: '../images/loading.gif', id: 'load-icon'})
-      )
-      )
+      React.DOM.div({id: 'graph'}) 
+      )     
     )
   }
 });
 
 function getHistory (fullName, instrumentName) {
   var xhr = new XMLHttpRequest;
+  var historyHelp = document.getElementById('history-help');
+  var loadingImage = document.createElement('img');
+  var historyTable= document.getElementById('history-table');
+  loadingImage.setAttribute('id', 'history-load-icon');
+  loadingImage.setAttribute('src', '../images/loading.gif');  
+  function loading () {    
+    if (historyHelp) {historyHelp.textContent = ''};
+    if (!document.getElementById('graph')) {historyTable.appendChild(loadingImage)};
+  }
+  
+  xhr.addEventListener('loadstart', loading)
   xhr.open('POST', '/instruments/history')
-  xhr.send(fullName);
-  var historyInfo = React.createElement(historyData, {displayName: instrumentName});
-  ReactDOM.render(historyInfo, document.getElementById('history-table'))
+  xhr.send(fullName); 
   xhr.onload = function() {
+    var historyInfo = React.createElement(historyData, {displayName: instrumentName});
     responseObject = JSON.parse(xhr.responseText);
-    dateList = responseObject.candles;
+    dateList = responseObject.candles;    
+    ReactDOM.render(historyInfo, document.getElementById('history-table'))
     drawChart(dateList);
   } 
 }
