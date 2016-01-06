@@ -2,6 +2,7 @@
 <html>
 <head>
   <link href='https://fonts.googleapis.com/css?family=Exo:600' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
   <link rel="stylesheet" type="text/css" href="/stylesheets/default.css">
   <title>Forex</title>
@@ -20,7 +21,9 @@
         </div>
         <div class="collapse navbar-collapse" id="navigator">
           <ul class="nav navbar-nav">
-            <li><a href="#" data-page="data">Market Watch</a></li>         
+            <li><button id="history-button" type="button" class="btn btn-default">Historical Graph
+          <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+        </button></li>         
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Log In</a></li>
@@ -30,7 +33,7 @@
       </div>
     </nav>
   </div>
-  <div id="home" class="container page hidden" data-page="home">
+ <!--  <div id="home" class="container page hidden" data-page="home">
     <div id="hero-section" class="row">
       
     </div>
@@ -69,16 +72,13 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Data Page -->
   <div class="container-fluid page" data-page="data">
     <div class="row">
       <div class="btn-group col-md-3" role="group" aria-label="...">
         <!-- <button id="data-button" type="button" class="btn btn-default">Live Data</button> -->
-        <button id="history-button" type="button" class="btn btn-default">Historical Graph
-          <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
-        </button>
       </div>
     </div>
     <div class="row">

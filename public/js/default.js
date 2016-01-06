@@ -13,7 +13,7 @@ function switchPages(event) {
   }
 }
 
-document.getElementById('navigation').addEventListener('click', switchPages)
+// document.getElementById('navigation').addEventListener('click', switchPages)
 
 function highlightToggle () {
   $(document).ready(function () {

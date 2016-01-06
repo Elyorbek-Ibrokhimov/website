@@ -1,7 +1,3 @@
-// var streamStatus = React.createClass({
-//   render: function 
-// })
-
 var dataCells = React.createClass({
   getInitialState: function() {
     return {
@@ -60,18 +56,18 @@ var dataCells = React.createClass({
         ref: (cellCont) => this.selectedCell = cellCont, 
         onClick: this.highlight,
         data: firstInsturment.toLowerCase()           
-      },
-        React.DOM.div({className: 'display-name'}, this.props.displayName),
+      },        
         React.DOM.div({className: 'flags'},
           React.DOM.div({className: firstInsturment.toLowerCase()}),
           React.DOM.div({className: secondInstrument.toLowerCase()})
         ),
-        React.DOM.div({className: 'spread', ref: (spreadCont) => this.spreadCell = spreadCont}, 'spread: ' + this.props.spread),
+        React.DOM.div({className: 'display-name'}, this.props.displayName),
         React.DOM.div({className: 'bid-ask-prices'},
           React.DOM.div({className: 'bid-price'}, 'bid: ' + this.props.bid),
           React.DOM.div({className: 'ask-price'}, 'ask: ' + this.props.ask)
-        )
-      )
+        ),
+        React.DOM.div({className: 'spread', ref: (spreadCont) => this.spreadCell = spreadCont}, this.props.spread) 
+      )       
     )
   }
 })

@@ -1,3 +1,4 @@
+/* 700 and 400*/
 /*Palleton Url: http://www.paletton.com/#uid=30P050kmdlz3Jrz6auuKQcgRXr3*/
 /*----------------Home Page-----------------*/
 body {
@@ -11,16 +12,24 @@ body {
   padding-right: 0px; }
 
 #navigation {
-  margin-bottom: 50px; }
+  margin-bottom: 0px; }
 
 .navbar {
   height: 60px; }
 
-.navbar-brand a {
-  font-family: "Exo", sans-serif; }
+.nav {
+  height: 100%; }
 
-.navbar-brand span {
-  color: #D88600; }
+#history-button {
+  height: 55px;
+  border: none; }
+
+.navbar-brand {
+  font-size: 30px; }
+  .navbar-brand a {
+    font-family: "Exo", sans-serif; }
+  .navbar-brand span {
+    color: #D88600; }
 
 #hero-section {
   background-image: url(../images/background2.jpg);
@@ -35,9 +44,8 @@ body {
 
 /*------------------Data Table -------------*/
 #data-table {
-  /*  border: solid;*/
   width: 100%;
-  height: 550px;
+  height: 645px;
   display: inline-block;
   overflow: scroll;
   padding-top: 20px;
@@ -49,10 +57,13 @@ body {
   left: 0; }
 
 .cell {
+  background-color: white;
   border-radius: 5px 5px 5px 5px;
-  margin-bottom: 20px;
-  width: 20%;
-  height: 5%;
+  width: 15%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  margin-bottom: 40px;
+  height: 200px;
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: translateZ(0);
@@ -65,28 +76,55 @@ body {
   transition-duration: 0.3s;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow; }
-  .cell div {
-    padding-bottom: 10px; }
 
 .cell:hover {
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6); }
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); }
+
+.flags {
+  text-align: center;
+  margin-top: 15px; }
+  .flags div {
+    margin-left: 20px;
+    display: inline-block;
+    height: 50px;
+    width: 60px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    /*-webkit-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.75);*/ }
 
 .display-name {
-  text-align: center; }
+  text-align: left;
+  font-family: "Exo", sans-serif;
+  font-size: 20px;
+  margin-top: 10px;
+  padding-left: 10px; }
 
 .spread {
+  margin-top: 10px;
   text-align: center;
-  width: 100px;
+  width: 170px;
   margin: auto;
-  border-radius: 5px 5px 5px 5px; }
+  margin-top: 10px;
+  border-radius: 5px 5px 5px 5px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 25px; }
 
 .bid-ask-prices {
-  text-align: center; }
+  text-align: left;
+  padding-left: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 15px; }
 
 .bid-price {
+  margin-top: 0px;
   display: inline-block; }
 
 .ask-price {
+  margin-top: 0px;
   display: inline-block;
   margin-left: 10px; }
 
@@ -131,21 +169,22 @@ body {
   display: none; }
 
 .history-instrument {
-  text-align: center; }
+  text-align: center;
+  font-family: "Exo", sans-serif;
+  font-weight: 700;
+  font-size: 30px; }
 
 #graph {
   width: 110%;
   position: relative;
   left: -10%;
   overflow: scroll;
-  overflow-y: hidden;
-  /*  height: 350px;*/ }
+  overflow-y: hidden; }
 
 #data-load-icon {
   display: block;
   height: 150px;
   width: 150px;
-  /*text-align: center;*/
   margin-left: auto;
   margin-right: auto;
   margin-top: 150px; }
@@ -154,22 +193,11 @@ body {
   display: block;
   height: 150px;
   width: 150px;
-  /*text-align: center;*/
   margin-left: auto;
   margin-right: auto;
   margin-top: 150px; }
 
 /*-------------Flag Pictures----------------*/
-.flags {
-  text-align: center; }
-  .flags div {
-    display: inline-block;
-    height: 25px;
-    width: 40px;
-    background-size: 100%;
-    margin-left: 8px;
-    background-repeat: no-repeat; }
-
 .graph-flag {
   text-align: center; }
   .graph-flag div {
@@ -182,8 +210,7 @@ body {
   background-image: url(../images/flags/usd.png); }
 
 .cad {
-  background-image: url(../images/flags/cad.png);
-  background-size: cover; }
+  background-image: url(../images/flags/cad.png); }
 
 .eur {
   background-image: url(../images/flags/eur.png);

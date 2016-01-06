@@ -4,6 +4,7 @@ $chalk : #DCD2C2;
 $navyBlue: #838892;
 $darkBlue: #031941;
 $logo:'Exo', sans-serif;
+$numbers: 'Montserrat', sans-serif; /* 700 and 400*/
 
 /*Palleton Url: http://www.paletton.com/#uid=30P050kmdlz3Jrz6auuKQcgRXr3*/
 
@@ -23,21 +24,33 @@ body {
 }
 
 #navigation  {
-  margin-bottom: 50px;
+  margin-bottom: 0px;
 }
 
 .navbar {
   height: 60px;
+
 }
+
+.nav {
+    height: 100%;
+}
+
+#history-button {
+  height: 55px;
+  border: none;
+}
+
 .navbar-brand {
+  font-size: 30px;
   a {
     font-family: $logo;
   }
-
  span {
     color: $gold;
   }
 }
+
 
 #hero-section {
   background-image: url(../images/background2.jpg);
@@ -55,9 +68,8 @@ body {
 /*------------------Data Table -------------*/
 
 #data-table {
-/*  border: solid;*/
   width: 100%;
-  height: 550px;
+  height: 645px;
   display: inline-block;
   overflow: scroll;
   padding-top: 20px;
@@ -71,10 +83,13 @@ body {
 
 
 .cell {
+  background-color: white;
   border-radius: 5px 5px 5px 5px;
-  margin-bottom: 20px;
-  width: 20%;
-  height: 5%;
+  width: 15%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  margin-bottom: 40px;
+  height: 200px;
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: translateZ(0);
@@ -87,38 +102,68 @@ body {
   transition-duration: 0.3s;
   -webkit-transition-property: box-shadow;
   transition-property: box-shadow;
-
-  div {
-    padding-bottom: 10px;
-  }
 }
 
 .cell:hover {
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.flags {
+  text-align: center;
+  margin-top: 15px;
+
+  div {
+    margin-left: 20px;
+    display: inline-block;
+    height: 50px;
+    width: 60px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    /*-webkit-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.75);*/
+  }
 }
 
 .display-name {
-  text-align: center;
+  text-align: left;
+  font-family: $logo;
+  font-size: 20px;
+  margin-top: 10px;
+  padding-left: 10px;
+
 
 }
 
 .spread {
+  margin-top: 10px;
   text-align: center;
-  width: 100px;
+  width: 170px;
   margin: auto;
+  margin-top: 10px;
   border-radius: 5px 5px 5px 5px;
+  font-family: $numbers;
+  font-weight: 700;
+  font-size: 25px;
 
 }
 
 .bid-ask-prices {
- text-align: center;
+ text-align: left;
+ padding-left: 10px;
+ font-family: $numbers;
+ font-weight: 400;
+ font-size: 15px;
+
 }
 
 .bid-price {
+  margin-top: 0px;
   display: inline-block;
 }
 
 .ask-price {
+  margin-top: 0px;
   display: inline-block;
   margin-left: 10px;
 }
@@ -172,6 +217,9 @@ body {
 
 .history-instrument {
   text-align: center;
+  font-family: $logo;
+  font-weight: 700;
+  font-size: 30px;
 }
 
 #graph {
@@ -180,14 +228,12 @@ body {
   left: -10%;
   overflow: scroll;
   overflow-y: hidden;
-/*  height: 350px;*/
 }
 
 #data-load-icon {
   display: block;
   height: 150px;
   width: 150px;
-  /*text-align: center;*/
   margin-left: auto;
   margin-right: auto;
   margin-top: 150px;
@@ -196,7 +242,6 @@ body {
   display: block;
   height: 150px;
   width: 150px;
-  /*text-align: center;*/
   margin-left: auto;
   margin-right: auto;
   margin-top: 150px;
@@ -204,18 +249,7 @@ body {
 
 /*-------------Flag Pictures----------------*/
 
-.flags {
-  text-align: center;
 
-  div {
-    display: inline-block;
-    height: 25px;
-    width: 40px;
-    background-size: 100%;
-    margin-left: 8px;
-    background-repeat: no-repeat;
-  }
-}
 
 .graph-flag {
   text-align: center;
@@ -233,7 +267,6 @@ body {
 
 .cad {
   background-image: url(../images/flags/cad.png);
-  background-size: cover;
 }
 
 .eur {
