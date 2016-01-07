@@ -111,7 +111,7 @@ function postData (instrument, dataJSON) {
         return spreadArray;
       };
       var cellUpdates =
-        spread.map(function(spreadData, i) {
+        spread.map(function (spreadData, i) {
           return (
             React.createElement(dataCells, {
               key: i,            
@@ -151,7 +151,7 @@ function gatherInstruments () {
 setInterval(gatherInstruments, 2000);
 // gatherInstruments();
 
-
+console.log(ReactDOM.unmountComponentAtNode(document.getElementById('data-table')))
 
 
 
