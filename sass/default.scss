@@ -11,7 +11,8 @@ $numbers: 'Montserrat', sans-serif; /* 700 and 400*/
 /*----------------Home Page-----------------*/
 
 body {
-  background-image: url(../images/back.jpeg);
+  /*background-image: url(../images/back.jpeg);*/
+  background-color: #F0F0F0;
   background-size: cover;
   background-attachment: fixed;
   transform: translateZ(0);
@@ -83,8 +84,9 @@ body {
 
 
 .cell {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.2);
   background-color: white;
-  border-radius: 5px 5px 5px 5px;
+  /*border-radius: 5px 5px 5px 5px;*/
   width: 15%;
   margin-left: 2.5%;
   margin-right: 2.5%;
@@ -92,7 +94,7 @@ body {
   height: 200px;
   display: inline-block;
   vertical-align: middle;
-  -webkit-transform: translateZ(0);
+  /*-webkit-transform: translateZ(0);
   transform: translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   -webkit-backface-visibility: hidden;
@@ -101,7 +103,7 @@ body {
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
+  transition-property: box-shadow;*/
 }
 
 .cell:hover {
@@ -263,15 +265,15 @@ body {
 }
 
 .usd {
-  background-image: url(../images/flags/usd.png); 
+  background-image: url(../images/flags-test/usd.png); 
 }
 
 .cad {
-  background-image: url(../images/flags/cad.png);
+  background-image: url(../images/flags-test/cad.png);
 }
 
 .eur {
-  background-image: url(../images/flags/eur.png);
+  background-image: url(../images/flags-test/eur.png);
   background-size: cover;
 }
 
@@ -286,7 +288,7 @@ body {
 }
 
 .gbp {
-  background-image: url(../images/flags/gbp.png);
+  background-image: url(../images/flags-test/gbp.png);
   background-size: cover;
 }
 
