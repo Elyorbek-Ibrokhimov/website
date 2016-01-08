@@ -21,9 +21,7 @@
         </div>
         <div class="collapse navbar-collapse" id="navigator">
           <ul class="nav navbar-nav">
-            <li><button id="history-button" type="button" class="btn btn-default">Historical Graph
-          <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
-        </button></li>         
+                
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Log In</a></li>
@@ -38,7 +36,15 @@
   <div class="container-fluid page" data-page="data">
     <div class="row">
       <div class="btn-group col-md-3" role="group" aria-label="...">
-        <!-- <button id="data-button" type="button" class="btn btn-default">Live Data</button> -->
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <ul id="data-buttons">
+          <li> 
+            <button id="history-button" type="button" class="btn btn-default">Historical Graph<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></button>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="row">
@@ -52,7 +58,8 @@
       <div id="data-table" class="col-md-12">
         <div>
           <img src = "../images/loading.gif" id="data-load-icon">
-        <div>
+        </div>
+      </div>
     </div>    
   </div>
 

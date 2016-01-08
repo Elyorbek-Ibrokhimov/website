@@ -8,7 +8,7 @@ var cell = React.createClass({
   },
   highlight: function (event) {
     var historyDisplay = document.getElementById('history-table').getAttribute('style');   
-    var cells = document.getElementsByClassName('cell');
+    var cells = document.getElementsByClassName('select-box');
     _.each(cells, function (eachCell) {
       eachCell.classList.remove('highlight')
     });
@@ -47,6 +47,7 @@ var cell = React.createClass({
     var secondInstrument = (this.props.name).slice(4,8);
     return (
       React.DOM.div({
+        className: 'select-box',
         ref: (cellCont) => this.selectedCell = cellCont,
         onClick: this.openHistory,
         onClick: this.highlight
@@ -97,16 +98,20 @@ var dataCells = React.createClass({
         React.createElement('div', {
         className: 'cell',
         key: i,
-        // onClick: console.log('yas'),
         'data-filter': eachInstrument.displayName.slice(0,3).toLowerCase()
         }, eachCell) 
       ) 
     })
-    // console.log(createCells.props)
+
     return (
-      React.createElement('div', {id: 'cell-list'}, createCells,
-        React.createElement('input', {type: 'button', value: 'EUR', onClick: this.filterEUR})
-      )
+      React.createElement('div', {id: 'cell-list'}, 
+        React.DOM.div({id: 'filters'}, 
+          React.DOM.label({}, 
+            React.DOM.input({type: 'checkbox', defaultChecked: true}),
+            React.DOM.span({}, 'EUR')
+          ) 
+        ),
+        createCells)    
     )        
   }
 })
