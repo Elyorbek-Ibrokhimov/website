@@ -5,7 +5,6 @@ var historyData = React.createClass({
     displayName: React.PropTypes.string
   },
   render: function () {
-    console.log(this.spreadCell)
     var firstInsturment = (this.props.displayName).slice(0,3);
     var secondInstrument = (this.props.displayName).slice(4,8);
     return (
