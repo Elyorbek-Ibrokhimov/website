@@ -26,3 +26,12 @@ $(document).ready(function () {
     $('#history-table').slideToggle()    
   })
 })
+
+function filterByName (name) {
+  var allCells = document.getElementsByClassName('cell');
+  _.each(allCells, function (eachCell) {
+    if (eachCell.getAttribute('data-filter') === name) {
+      eachCell.classList.toggle('hidden');
+    }
+  })  
+}

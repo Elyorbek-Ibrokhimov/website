@@ -74,14 +74,11 @@ var cell = React.createClass({
 })
 
 var dataCells = React.createClass({
-  // filterEUR: function (event) {
-  //   var allCells = document.getElementsByClassName('cell');
-  //   for (var i=0; i<allCells.length; i++) {
-  //     if (allCells[i].getAttribute('data-filter') !== 'eur') {
-  //       allCells[i].classList.add('hidden');
-  //     }
-  //   }
-  // },
+  filter: function (event) {
+    var filterId = event.target.getAttribute('id');
+    var filterName = filterId.slice(0,3);
+    filterByName(filterName);
+  },
   
   render: function () {
     var bidList = this.props.bidList;
@@ -107,9 +104,17 @@ var dataCells = React.createClass({
       React.createElement('div', {id: 'cell-list'}, 
         React.DOM.div({id: 'filters'}, 
           React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', defaultChecked: true}),
+            React.DOM.input({type: 'checkbox', id:'eur-filter', onClick: this.filter, defaultChecked: true}),
             React.DOM.span({}, 'EUR')
-          ) 
+          ), 
+          React.DOM.label({}, 
+            React.DOM.input({type: 'checkbox', id:'usd-filter', onClick: this.filter, defaultChecked: true}),
+            React.DOM.span({}, 'USD')
+          ),
+          React.DOM.label({}, 
+            React.DOM.input({type: 'checkbox', id:'gbp-filter', onClick: this.filter, defaultChecked: true}),
+            React.DOM.span({}, 'GBP')
+          )
         ),
         createCells)    
     )        
