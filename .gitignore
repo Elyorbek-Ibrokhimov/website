@@ -1,0 +1,5 @@
+# dependency direcotry
+node_modules
+
+#sass cache
+./public/.sass-cache

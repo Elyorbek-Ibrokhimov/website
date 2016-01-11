@@ -30,8 +30,15 @@ $(document).ready(function () {
 function filterByName (name) {
   var allCells = document.getElementsByClassName('cell');
   _.each(allCells, function (eachCell) {
-    if (eachCell.getAttribute('data-filter') === name) {
-      eachCell.classList.toggle('hidden');
+    if (name === 'hideAll') {
+      console.log(name);
     }
+    else if (eachCell.getAttribute('data-filter') === name) {
+      eachCell.classList.toggle('hidden');
+    }    
   })  
+}
+
+function deselectAll () {
+  console.log('yas')
 }

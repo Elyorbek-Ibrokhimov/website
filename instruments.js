@@ -31,6 +31,7 @@ instruments.post('/prices', parseText, function(req, res) {
       console.log(error)
     } else if (!error && response.statusCode === 200) {
       res.send(response);
+            
     };
   });
 });

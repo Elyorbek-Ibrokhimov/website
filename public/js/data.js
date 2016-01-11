@@ -74,12 +74,43 @@ var cell = React.createClass({
 })
 
 var dataCells = React.createClass({
-  filter: function (event) {
+  getInitialState: function () {
+    return ({
+      filterStates: {      
+        eurChecked: true,
+        usdChecked: true,
+        gbpChecked: true, 
+        chfChecked: true,
+        audChecked: true,
+        cadChecked: true,
+        nzdChecked: true,
+        stateChange: function (instrument) {
+          this[instrument] = !(this[instrument]);
+          console.log(this[instrument]);
+        }
+      }
+    })
+  },
+  filter: function (event) {    
     var filterId = event.target.getAttribute('id');
     var filterName = filterId.slice(0,3);
+    var filterNameState = filterName + 'Checked';
+    this.state.filterStates.stateChange(filterNameState)
+    if (this.state.filterStates[filterNameState] = false) {
+      this.state.filterStates[filterNameState] = true
+    }
+    else {this.state.filterStates.stateChange(filterNameState)}
+    
     filterByName(filterName);
   },
-  
+  deselect: function (event) {
+    // if (this.state.isChecked = true) {
+    //   this.setState({
+    //     isChecked: !(this.state.isChecked)
+    //   })
+    // }
+    // filterByName('hideAll')
+  },
   render: function () {
     var bidList = this.props.bidList;
     var askList = this.props.bidList;
@@ -104,19 +135,36 @@ var dataCells = React.createClass({
       React.createElement('div', {id: 'cell-list'}, 
         React.DOM.div({id: 'filters'}, 
           React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'eur-filter', onClick: this.filter, defaultChecked: true}),
+            React.DOM.input({type: 'checkbox', id:'eur-filter', onChange: this.filter, checked: this.state.filterStates.eurChecked}),
             React.DOM.span({}, 'EUR')
           ), 
           React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'usd-filter', onClick: this.filter, defaultChecked: true}),
+            React.DOM.input({type: 'checkbox', id:'usd-filter', onChange: this.filter, defaultChecked: this.state.filterStates}),
             React.DOM.span({}, 'USD')
           ),
           React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'gbp-filter', onClick: this.filter, defaultChecked: true}),
+            React.DOM.input({type: 'checkbox', id:'gbp-filter', onChange: this.filter, defaultChecked: this.state.filterStates}),
             React.DOM.span({}, 'GBP')
-          )
+          ),
+          React.DOM.label({}, 
+            React.DOM.input({type: 'checkbox', id:'chf-filter', onChange: this.filter, defaultChecked: this.state.filterStates}),
+            React.DOM.span({}, 'CHF')
+          ),
+          React.DOM.label({}, 
+            React.DOM.input({type: 'checkbox', id:'aud-filter', onChange: this.filter, defaultChecked: this.state.filterStates}),
+            React.DOM.span({}, 'AUD')
+          ),
+          React.DOM.label({}, 
+            React.DOM.input({type: 'checkbox', id:'cad-filter', onChange: this.filter, defaultChecked: this.state.filterStates}),
+            React.DOM.span({}, 'CAD')
+          ),
+          React.DOM.label({}, 
+            React.DOM.input({type: 'checkbox', id:'nzd-filter', onChange: this.filter, defaultChecked: this.state.filterStates}),
+            React.DOM.span({}, 'NZD')
+          ),
+          React.DOM.input({id: 'deselect', type: 'button', value: 'Deselect All', onClick: this.deselect})
         ),
-        createCells)    
+      createCells)    
     )        
   }
 })
@@ -135,13 +183,13 @@ function postData (instrument, dataJSON) {
   xhr.open('POST', '/instruments/prices');
   xhr.send(instrument);  
   xhr.onload = function () {
-    if (xhr.status === 404) {
-      console.log('404 error')
+    if (xhr.status !== 200) {
+      console.log('error')
     }
     else if (xhr.status === 200) {
       var responseObject = JSON.parse(xhr.responseText);
       var data = (JSON.parse(responseObject.body)).prices; 
-      var instrumentNames = dataJSON
+      var instrumentNames = dataJSON;
       var askPrices = dataProperties(data, 'ask'); 
       var bidPrices = dataProperties(data, 'bid');
       var spread = makeSpread();
@@ -166,6 +214,7 @@ function postData (instrument, dataJSON) {
         bidList: bidPrices,
         spreadList: spread
       });
+      console.log(responseObject)
       ReactDOM.render(cellTable, document.getElementById('data-table'));      
     }; //onload end
   };
