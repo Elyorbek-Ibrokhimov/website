@@ -214,7 +214,6 @@ function postData (instrument, dataJSON) {
         bidList: bidPrices,
         spreadList: spread
       });
-      console.log(responseObject)
       ReactDOM.render(cellTable, document.getElementById('data-table'));      
     }; //onload end
   };
@@ -242,6 +241,7 @@ function gatherInstruments () {
 
 setInterval(gatherInstruments, 2000);
 // gatherInstruments();
+
 
 
 

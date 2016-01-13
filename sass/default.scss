@@ -1,8 +1,9 @@
 $gold: #D88600;
 $brown: #623C00;
-$chalk : #DCD2C2;
+$chalk : #e2e2e2;
 $navyBlue: #838892;
 $darkBlue: #031941;
+$lightGrey: rgb(238, 238, 238);
 $logo:'Exo', sans-serif;
 $numbers: 'Montserrat', sans-serif; /* 700 and 400*/
 
@@ -11,30 +12,65 @@ $numbers: 'Montserrat', sans-serif; /* 700 and 400*/
 /*----------------Home Page-----------------*/
 
 body {
+  margin-left: 64px;
+  margin-right: 64px;
   /*background-image: url(../images/back.jpeg);*/
-  background-color: #F0F0F0;
+  /*background-color: #F0F0F0;*/
+  background-color: $chalk;
   background-size: cover;
   background-attachment: fixed;
   transform: translateZ(0);
+  margin-top: 34px;
+  margin-bottom: 34px;
+  border-style: solid;
+  border-width: .9px;
+  border-color: #E4D9BC;
+  -webkit-font-smoothing: antialiased;
+  
 
+}
+
+#shadow-container {
+  -webkit-box-shadow: 0px 0px 71px -18px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 71px -18px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 71px -18px rgba(0,0,0,0.75);
+}
+
+.container-fluid {
+  padding: 0px;
 }
 
 #home {  
   padding-left: 0px;
   padding-right: 0px;
 }
+#navigation {
+  width: 100%;
+  height: 60px;
+  background-color: black;
+}
 
-#navigation  {
-  margin-bottom: 0px;
+.navbar-default  {
+  background-color: black;
+  /*margin-bottom: 0px;*/
+  width: 100%;
 }
 
 .navbar {
   height: 60px;
-
+  margin-bottom: 0px;
 }
 
 .nav {
+  margin-right: 1%;
     height: 100%;
+    display: inline-block;
+    a {
+      display: inline-block;
+    }
+    li {
+      display: inline-block;
+    }
 }
 
 #history-button {
@@ -53,17 +89,21 @@ body {
 }
 
 
-#hero-section {
+#hero {
   background-image: url(../images/background2.jpg);
-  height: 500px;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
+  height: 500px;
+  width: 100%;
 }
 
 #info-section {
   height: 200px;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  background-color: $lightGrey;
+}
+
+.buttons {
+  width: 100%;
 }
 
 /*------------------Data Table -------------*/
@@ -73,13 +113,16 @@ body {
   height: 645px;
   display: inline-block;
   overflow: scroll;
-  padding-top: 20px;
   overflow-x: hidden;
   overflow-y: auto;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  background-color: white;
+   -webkit-box-shadow: 0px 0px 57px -27px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 57px -27px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 57px -27px rgba(0,0,0,0.75);
 }
 
 #filters {
@@ -93,6 +136,8 @@ body {
 
 #data-buttons {
   list-style-type: none;
+  margin-bottom: 0px;
+  padding: 0px;
 }
 
 .cell {
@@ -227,12 +272,16 @@ body {
 /*---------------History Table ----------------*/
 
 #history-table {
-  height: 600px;
+  height: 645px;
   width: 100%;
   float: right;
   background-color: rgba(133,143,161,.3);
   position: relative;
   display: none;
+  margin-bottom: 34px;
+  border-bottom-style: solid;
+  border-bottom-width: .9px;
+  border-bottom-color: #E4D9BC;  
 }
 
 .history-instrument {

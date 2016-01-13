@@ -23,7 +23,8 @@ function highlightToggle () {
 
 $(document).ready(function () {
   $('#history-button').click(function () {
-    $('#history-table').slideToggle()    
+    $('#history-table').slideToggle()
+    $('#data-table').slideToggle()  
   })
 })
 
