@@ -9,6 +9,16 @@ $numbers: 'Montserrat', sans-serif; /* 700 and 400*/
 
 /*Palleton Url: http://www.paletton.com/#uid=30P050kmdlz3Jrz6auuKQcgRXr3*/
 
+/*-----Bootstrap modification -------*/
+
+.btn:focus {
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+}
+
 /*----------------Home Page-----------------*/
 
 body {
@@ -73,11 +83,6 @@ body {
     }
 }
 
-#history-button {
-  height: 55px;
-  border: none;
-}
-
 .navbar-brand {
   font-size: 30px;
   a {
@@ -126,8 +131,14 @@ body {
 }
 
 #filters {
+  background-color: white;
+  position: fixed;
+  bottom: 650px;
+  width: 100%;
+  padding: 20px;
   label {
     padding-right: 10px;
+    font-size: 17px;
     span {
     padding-left: 5px;
     }    
@@ -148,7 +159,7 @@ body {
   margin-left: 2.5%;
   margin-right: 2.5%;
   margin-bottom: 40px;
-  height: 200px;
+/*  height: 200px;*/
   display: inline-block;
   vertical-align: middle;
   /*-webkit-transform: translateZ(0);
@@ -169,7 +180,7 @@ body {
 
 .flags {
   text-align: center;
-  margin-top: 15px;
+  /*margin-top: 15px;*/
   background-color: black;
 
   div {
@@ -233,11 +244,10 @@ body {
   width: 100%;
 }
 
-.highlight {
-  background-color: rgba(216,134,0,.5);
-
+.history-button {
+/*  height: 55px;*/
+  border: none;
 }
-
 
 .show-increase {
   background-color: green;
@@ -275,7 +285,7 @@ body {
   height: 645px;
   width: 100%;
   float: right;
-  background-color: rgba(133,143,161,.3);
+  background-color: white;
   position: relative;
   display: none;
   margin-bottom: 34px;
@@ -284,8 +294,15 @@ body {
   border-bottom-color: #E4D9BC;  
 }
 
+#history-info {
+  height: 100%;
+}
+
+
+
 .history-instrument {
-  text-align: center;
+  margin-left: 30px;
+  display: inline-block;
   font-family: $logo;
   font-weight: 700;
   font-size: 30px;
@@ -296,6 +313,20 @@ body {
   position: relative;
   overflow: scroll;
   overflow-y: hidden;
+  height: 85%;
+}
+
+.graph-flag {
+  margin-left: 20px;
+  text-align: left;
+  width: 120px;
+  height: 40px;
+  div {
+    display: inline-block;
+    height: 40px;
+    width: 50px;
+    margin-left: 10px;
+  }
 }
 
 #data-load-icon {
@@ -315,30 +346,36 @@ body {
   margin-top: 150px;
 }
 
-/*-------------Flag Pictures----------------*/
-
-
-
-.graph-flag {
-  text-align: center;
-  div {
-    display: inline-block;
-    height: 20px;
-    width: 30px;
-    background-size: cover;
-  }
+.graph-close {
+  float: right;
+  display: inline;
+  padding-right: 25px;
+  padding-top: 20px;
 }
 
+.close-button {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 20px;
+  border: none;
+  background-color: white;
+}
+
+.close-arrow {
+  font-size: 20px;
+}
+/*-------------Flag Pictures----------------*/
+
 .usd {
-  background-image: url(../images/flags-test/usd.png); 
+  background-image: url(../images/flags/usd.png); 
 }
 
 .cad {
-  background-image: url(../images/flags-test/cad.png);
+  background-image: url(../images/flags/cad.png);
 }
 
 .eur {
-  background-image: url(../images/flags-test/eur.png);
+  background-image: url(../images/flags/eur.png);
   background-size: cover;
 }
 
@@ -353,7 +390,7 @@ body {
 }
 
 .gbp {
-  background-image: url(../images/flags-test/gbp.png);
+  background-image: url(../images/flags/gbp.png);
   background-size: cover;
 }
 

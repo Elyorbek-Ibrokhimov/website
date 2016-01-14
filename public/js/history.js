@@ -1,6 +1,9 @@
 //-------------History Graph Section-------------//
 
 var historyData = React.createClass({  
+  closeHistory: function () {
+    historyToggle();
+  },
   propTypes: {
     displayName: React.PropTypes.string
   },
@@ -10,6 +13,13 @@ var historyData = React.createClass({
     return (
       React.DOM.div({id: 'history-info'},    
       React.DOM.h3({className: 'history-instrument'}, this.props.displayName),
+      React.DOM.div({onClick: this.closeHistory, className: 'graph-close'},
+        React.DOM.input({
+          type: 'button', 
+          className: 'close-button',                   
+          value: 'Close'}), 
+        React.DOM.i({className: 'glyphicon glyphicon-remove close-arrow'}) 
+      ),
       React.DOM.div({className:'graph-flag'},
         React.DOM.div({className: firstInsturment.toLowerCase()}),
         React.DOM.div({className: secondInstrument.toLowerCase()})
@@ -71,7 +81,6 @@ function drawChart(dateList) {
   var chart = new google.visualization.CandlestickChart(document.getElementById('graph'));
   chart.draw(data, options);
 }
-
 
 
 

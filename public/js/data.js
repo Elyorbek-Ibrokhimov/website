@@ -1,9 +1,11 @@
 var cell = React.createClass({
   openHistory: function () {
+     var historyDisplay = document.getElementById('history-table').getAttribute('style');
     var instrumentName = this.props.name;
     var firstInsturment = instrumentName.slice(0, 3);
     var secondInstrument = instrumentName.slice(4, 8);
     var fullName = firstInsturment + '_' + secondInstrument;
+    historyToggle()
     getHistory(fullName, instrumentName);
   },
   highlight: function (event) {
@@ -12,11 +14,10 @@ var cell = React.createClass({
     _.each(cells, function (eachCell) {
       eachCell.classList.remove('highlight')
     });
-    this.selectedCell.classList.add('highlight');
     if (historyDisplay !== 'display: block;') {highlightToggle()};
     this.openHistory(); 
   },
-    componentWillReceiveProps: function (nextProps) {
+  componentWillReceiveProps: function (nextProps) {
     var nextSpread = nextProps.spread;
     var currentSpread = this.props.spread;
     var spread = this.spreadCell;
@@ -46,12 +47,7 @@ var cell = React.createClass({
     var firstInsturment = (this.props.name).slice(0,3);
     var secondInstrument = (this.props.name).slice(4,8);
     return (
-      React.DOM.div({
-        className: 'select-box',
-        ref: (cellCont) => this.selectedCell = cellCont,
-        onClick: this.openHistory,
-        onClick: this.highlight
-        },
+      React.DOM.div({},
         React.DOM.div({className: 'flags'},
           React.DOM.div({className: firstInsturment.toLowerCase()}),
           React.DOM.div({className: secondInstrument.toLowerCase()})
@@ -67,7 +63,13 @@ var cell = React.createClass({
           ref: (spreadCont) => this.spreadCell = spreadCont
           }, 
           this.props.spread
-        )
+        ),
+        React.DOM.input({
+          value: 'History',
+          type: 'button',
+          className: 'history-button',
+          onClick: this.openHistory
+        })
       )
     )
   }    
@@ -75,32 +77,20 @@ var cell = React.createClass({
 
 var dataCells = React.createClass({
   getInitialState: function () {
-    return ({
-      filterStates: {      
-        eurChecked: true,
-        usdChecked: true,
-        gbpChecked: true, 
-        chfChecked: true,
-        audChecked: true,
-        cadChecked: true,
-        nzdChecked: true,
-        stateChange: function (instrument) {
-          this[instrument] = !(this[instrument]);
-          console.log(this[instrument]);
-        }
-      }
+    return ({      
+      eurChecked: true,
+      usdChecked: true,
+      gbpChecked: true, 
+      chfChecked: true,
+      audChecked: true,
+      cadChecked: true,
+      nzdChecked: true        
     })
   },
   filter: function (event) {    
     var filterId = event.target.getAttribute('id');
     var filterName = filterId.slice(0,3);
     var filterNameState = filterName + 'Checked';
-    this.state.filterStates.stateChange(filterNameState)
-    if (this.state.filterStates[filterNameState] = false) {
-      this.state.filterStates[filterNameState] = true
-    }
-    else {this.state.filterStates.stateChange(filterNameState)}
-    
     filterByName(filterName);
   },
   deselect: function (event) {
@@ -135,34 +125,36 @@ var dataCells = React.createClass({
       React.createElement('div', {id: 'cell-list'}, 
         React.DOM.div({id: 'filters'}, 
           React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'eur-filter', onChange: this.filter, checked: this.state.filterStates.eurChecked}),
+            React.DOM.input({
+              type: 'checkbox', 
+              id:'eurChecked', 
+              onChange: this.filter, defaultChecked: this.state.eurChecked}),
             React.DOM.span({}, 'EUR')
           ), 
           React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'usd-filter', onChange: this.filter, defaultChecked: this.state.filterStates}),
+            React.DOM.input({type: 'checkbox', id:'usdChecked', onChange: this.filter, defaultChecked: this.state.usdChecked}),
             React.DOM.span({}, 'USD')
           ),
           React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'gbp-filter', onChange: this.filter, defaultChecked: this.state.filterStates}),
+            React.DOM.input({type: 'checkbox', id:'gbpChecked', onChange: this.filter, defaultChecked: this.state.gbpChecked}),
             React.DOM.span({}, 'GBP')
           ),
           React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'chf-filter', onChange: this.filter, defaultChecked: this.state.filterStates}),
+            React.DOM.input({type: 'checkbox', id:'chfChecked', onChange: this.filter, defaultChecked: this.state.chfChecked}),
             React.DOM.span({}, 'CHF')
           ),
           React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'aud-filter', onChange: this.filter, defaultChecked: this.state.filterStates}),
+            React.DOM.input({type: 'checkbox', id:'audChecked', onChange: this.filter, defaultChecked: this.state.audChecked}),
             React.DOM.span({}, 'AUD')
           ),
           React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'cad-filter', onChange: this.filter, defaultChecked: this.state.filterStates}),
+            React.DOM.input({type: 'checkbox', id:'cadChecked', onChange: this.filter, defaultChecked: this.state.cadChecked}),
             React.DOM.span({}, 'CAD')
           ),
           React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'nzd-filter', onChange: this.filter, defaultChecked: this.state.filterStates}),
+            React.DOM.input({type: 'checkbox', id:'nzdChecked', onChange: this.filter, defaultChecked: this.state.nzdChecked}),
             React.DOM.span({}, 'NZD')
-          ),
-          React.DOM.input({id: 'deselect', type: 'button', value: 'Deselect All', onClick: this.deselect})
+          )
         ),
       createCells)    
     )        

@@ -44,4 +44,3 @@ instruments.post('/history', parseText, function(req, res){
 })
 
 module.exports = instruments
-

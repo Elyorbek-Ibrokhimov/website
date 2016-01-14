@@ -5,8 +5,8 @@ var express = require('express');
     path = require('path');
     
 app.use(express.static('public'));
+app.use(express.static('vendor'));
 app.use('/instruments', instruments);
-
 
 app.get('/', function(req,res){
   res.sendFile(__dirname + '/index.html');

@@ -15,16 +15,17 @@ function switchPages(event) {
 
 // document.getElementById('navigation').addEventListener('click', switchPages)
 
-function highlightToggle () {
+function historyToggle () {
   $(document).ready(function () {
     $('#history-table').slideToggle()
+    $('#data-table').slideToggle() 
   })
 }
 
 $(document).ready(function () {
   $('#history-button').click(function () {
     $('#history-table').slideToggle()
-    $('#data-table').slideToggle()  
+     
   })
 })
 
@@ -38,8 +39,4 @@ function filterByName (name) {
       eachCell.classList.toggle('hidden');
     }    
   })  
-}
-
-function deselectAll () {
-  console.log('yas')
 }
