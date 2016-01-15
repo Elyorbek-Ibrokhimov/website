@@ -37,6 +37,14 @@ var cell = React.createClass({
       spread.classList.remove('show-decrease');
     }
   },
+  // componentDidMount: function () {
+  //   var button = document.getElementsByClassName('open-history');
+  //   var arrow = document.createElement('span');
+  //   button.setAttribute('class', 'glyphicon glyphicon-menu-down');
+  //   _.each(button, function (eachBtn) {
+  //     eachBtn.appendChild(arrow);
+  //   })
+  // },
   propTypes: {
     displayName: React.PropTypes.string,
     bid: React.PropTypes.number,
@@ -62,12 +70,14 @@ var cell = React.createClass({
           className: 'spread', 
           ref: (spreadCont) => this.spreadCell = spreadCont
           }, 
-          this.props.spread
+          this.props.spread, 
+          React.DOM.span({className: glyphicon })
         ),
         React.DOM.input({
+          // ref: (button) => this.openHistory = button,
           value: 'History',
           type: 'button',
-          className: 'history-button',
+          className: 'open-history btn btn-default',
           onClick: this.openHistory
         })
       )
