@@ -70,8 +70,7 @@ var cell = React.createClass({
           className: 'spread', 
           ref: (spreadCont) => this.spreadCell = spreadCont
           }, 
-          this.props.spread, 
-          React.DOM.span({className: glyphicon })
+          'Spread: ', this.props.spread
         ),
         React.DOM.input({
           // ref: (button) => this.openHistory = button,
