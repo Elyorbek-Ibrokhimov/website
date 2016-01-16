@@ -2,8 +2,8 @@
 function historyToggle () {
   $(document).ready(function () {
     $('#filters').toggleClass('hidden');
-    $('#history-table').slideToggle()
-    $('#data-table').slideToggle() 
+    $('#history-table').slideToggle();
+    $('#data-table').slideToggle();
   })
 }
 

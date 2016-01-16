@@ -37,14 +37,6 @@ var cell = React.createClass({
       spread.classList.remove('show-decrease');
     }
   },
-  // componentDidMount: function () {
-  //   var button = document.getElementsByClassName('open-history');
-  //   var arrow = document.createElement('span');
-  //   button.setAttribute('class', 'glyphicon glyphicon-menu-down');
-  //   _.each(button, function (eachBtn) {
-  //     eachBtn.appendChild(arrow);
-  //   })
-  // },
   propTypes: {
     displayName: React.PropTypes.string,
     bid: React.PropTypes.number,
