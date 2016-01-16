@@ -66,6 +66,20 @@ body {
   height: 500px;
   width: 100%; }
 
+@media (max-width: 700px) {
+  #hero {
+    height: 300px; }
+  .hero-title {
+    top: -200px;
+    font-size: 35px; }
+  .sub-title {
+    top: -200px;
+    font-size: 15px; } }
+
+@media (max-width: 500px) {
+  #hero {
+    height: 300px; } }
+
 .buttons {
   width: 100%; }
 
@@ -96,7 +110,6 @@ body {
   .technologies {
     margin-top: 70px; }
   .tech-img {
-    display: inline-block;
     height: 100px;
     width: 200px;
     margin-left: 20px; } }
@@ -105,10 +118,19 @@ body {
   #info-section {
     height: 350px; }
   .tech-img {
-    display: inline-block;
     height: 70px;
-    width: 150px;
-    margin-left: 20px; } }
+    width: 150px; } }
+
+@media (max-width: 700px) {
+  .technologies {
+    margin-top: 40px; } }
+
+@media (max-width: 500px) {
+  .technologies {
+    margin-top: 20px; }
+  .tech-img {
+    height: 50px;
+    width: 100px; } }
 
 /*------------------Data Table -------------*/
 #data-table {

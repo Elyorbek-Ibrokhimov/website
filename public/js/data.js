@@ -94,14 +94,6 @@ var dataCells = React.createClass({
     var filterNameState = filterName + 'Checked';
     filterByName(filterName);
   },
-  deselect: function (event) {
-    // if (this.state.isChecked = true) {
-    //   this.setState({
-    //     isChecked: !(this.state.isChecked)
-    //   })
-    // }
-    // filterByName('hideAll')
-  },
   render: function () {
     var bidList = this.props.bidList;
     var askList = this.props.bidList;
@@ -121,7 +113,6 @@ var dataCells = React.createClass({
         }, eachCell) 
       ) 
     })
-
     return (
       React.createElement('div', {id: 'cell-list'}, 
         React.DOM.div({id: 'filters'}, 
@@ -171,7 +162,6 @@ function dataProperties (data, property) {
 }
 
 function postData (instrument, dataJSON) {
-  // console.log(currencyData) 
   var xhr = new XMLHttpRequest();
   xhr.open('POST', '/instruments/prices');
   xhr.send(instrument);  
@@ -199,8 +189,7 @@ function postData (instrument, dataJSON) {
           spreadRound(calculation);
         };
         return spreadArray;
-      };
-          
+      };          
       var cellTable = React.createElement(dataCells, {
         nameList: instrumentNames,
         askList: askPrices,
@@ -208,7 +197,7 @@ function postData (instrument, dataJSON) {
         spreadList: spread
       });
       ReactDOM.render(cellTable, document.getElementById('data-table'));      
-    }; //onload end
+    };
   };
 };
 
@@ -227,28 +216,9 @@ function gatherInstruments () {
     }());
     postData(allInstruments,currencyList)
   };
-
   xhr.open('GET', '/instruments', true);
   xhr.send();  
 };
 
-setInterval(gatherInstruments, 2000);
-// gatherInstruments();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// setInterval(gatherInstruments, 2000);
+gatherInstruments();
