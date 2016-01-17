@@ -196,7 +196,9 @@ body {
   transition-property: box-shadow;*/ }
 
 .flags {
-  background-color: #373536; }
+  background-color: #4D4D4D;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px; }
   .flags div {
     padding: 8px;
     display: inline-block;
