@@ -4,15 +4,8 @@ var instruments = express.Router();
 var request = require('request');
 var bodyParser = require('body-parser');
 var parseText = bodyParser.text();
-var currencies = require('./public/json/currencies.json');
 
-instruments.get('/', function(req, res){
-  // res.send(currencies);
-});
-
-instruments.post('/prices', parseText, function(req, res) {
-  // var accessToken = 'Bearer 7c976fabc657d1e43ed9f9bb41e89384-3ed6e173de731a96ecc5399ba5a2377d'
-  // req.headers.authorization = accessToken;  
+instruments.post('/prices', parseText, function(req, res) { 
   var query = req.body
   var prices = 'https://api-fxpractice.oanda.com/v1/prices?instruments=' + query;
   request(prices, {

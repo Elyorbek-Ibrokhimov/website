@@ -27,7 +27,7 @@ var cell = React.createClass({
       spread.classList.remove('show-no-change');
     } 
     else if (currentSpread !== nextSpread && currentSpread < nextSpread) {
-      spread.classList.remove('shßow-increase');
+      spread.classList.remove('show-increase');
       spread.classList.add('show-decrease');
       spread.classList.remove('show-no-change');
     } 
@@ -65,7 +65,6 @@ var cell = React.createClass({
           'Spread: ', this.props.spread
         ),
         React.DOM.input({
-          // ref: (button) => this.openHistory = button,
           value: 'History',
           type: 'button',
           className: 'open-history btn btn-default',

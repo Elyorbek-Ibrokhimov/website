@@ -1,4 +1,3 @@
-
 function historyToggle () {
   $(document).ready(function () {
     $('#filters').toggleClass('hidden');

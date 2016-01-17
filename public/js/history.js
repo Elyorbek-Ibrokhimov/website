@@ -1,5 +1,3 @@
-//-------------History Graph Section-------------//
-
 var historyData = React.createClass({  
   closeHistory: function () {
     historyToggle();
