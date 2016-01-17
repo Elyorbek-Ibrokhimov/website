@@ -216,9 +216,9 @@ function gatherInstruments () {
     }());
     postData(allInstruments,currencyList)
   };
-  xhr.open('GET', '/instruments', true);
+  xhr.open('GET', '/currencies', true);
   xhr.send();  
 };
 
-// setInterval(gatherInstruments, 2000);
-gatherInstruments();
+setInterval(gatherInstruments, 2000);
+// gatherInstruments();

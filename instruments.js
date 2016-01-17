@@ -7,7 +7,7 @@ var parseText = bodyParser.text();
 var currencies = require('./public/json/currencies.json');
 
 instruments.get('/', function(req, res){
-  res.send(currencies);
+  // res.send(currencies);
 });
 
 instruments.post('/prices', parseText, function(req, res) {
