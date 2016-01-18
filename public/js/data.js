@@ -219,5 +219,5 @@ function gatherInstruments () {
   xhr.send();  
 };
 
-// setInterval(gatherInstruments, 2000);
-gatherInstruments();
+setInterval(gatherInstruments, 2000);
+// gatherInstruments();

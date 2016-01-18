@@ -7,8 +7,6 @@ $lightGrey: rgb(238, 238, 238);
 $logo:'Exo', sans-serif;
 $numbers: 'Montserrat', sans-serif; /* 700 and 400*/
 
-/*Palleton Url: http://www.paletton.com/#uid=30P050kmdlz3Jrz6auuKQcgRXr3*/
-
 /*-----Bootstrap modification -------*/
 
 .btn:focus {
@@ -282,7 +280,7 @@ body {
   padding-left: 20px;
   margin-top: 10px;
   margin-bottom: 13px;
-  border-radius: 5px 5px 5px 5px;
+  /*border-radius: 5px 5px 5px 5px;*/
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 25px;
