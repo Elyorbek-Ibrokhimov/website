@@ -6,19 +6,13 @@ var gulp = require('gulp');
     jshint = require('gulp-jshint');
     nodemon = require('gulp-nodemon');
 
-// gulp.task('develop', function () {
-//   nodemon({
-//     script: '../app.js',
-//     ext: 'js html',
-//     env: { 'NODE_ENV': 'development' }
-//   })
-// })
-
-// gulp.task('lint', () => {
-//   gulp.src('../public/js/*.js')
-//     .pipe(jshint())
-//     .pipe(jshint.reporter('default'))
-// })
+gulp.task('develop', function () {
+  nodemon({
+    script: '../app.js',
+    ext: 'js html',
+    env: { 'NODE_ENV': 'development' }
+  })
+})
 
 gulp.task('script', () => {
   return gulp.src('../public/js/*.js')

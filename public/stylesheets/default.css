@@ -1,5 +1,4 @@
-/* 700 and 400*/
-/*-----Bootstrap modification -------*/
+/*-----Bootstrap-------*/
 .btn:focus {
   outline: none; }
 
@@ -10,8 +9,6 @@ input:focus {
 body {
   margin-left: 64px;
   margin-right: 64px;
-  /*background-image: url(../images/back.jpeg);*/
-  /*background-color: #F0F0F0;*/
   background-color: #e2e2e2;
   background-size: cover;
   background-attachment: fixed;
@@ -180,19 +177,8 @@ body {
   margin-left: 15px;
   margin-right: 15px;
   margin-bottom: 40px;
-  /* height: 200px; */
   display: inline-block;
-  vertical-align: middle;
-  /*-webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;*/ }
+  vertical-align: middle; }
 
 .flags {
   background-color: #4D4D4D;
@@ -222,7 +208,6 @@ body {
   padding-left: 20px;
   margin-top: 10px;
   margin-bottom: 13px;
-  /*border-radius: 5px 5px 5px 5px;*/
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 25px; }
@@ -361,10 +346,12 @@ body {
 
 /*-------------Flag Pictures----------------*/
 .usd {
-  background-image: url(../images/flags/usd.png); }
+  background-image: url(../images/flags/usd.png);
+  background-size: cover; }
 
 .cad {
-  background-image: url(../images/flags/cad.png); }
+  background-image: url(../images/flags/cad.png);
+  background-size: cover; }
 
 .eur {
   background-image: url(../images/flags/eur.png);

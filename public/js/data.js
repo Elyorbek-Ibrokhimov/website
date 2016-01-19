@@ -73,7 +73,7 @@ var cell = React.createClass({
       )
     )
   }    
-})
+});
 
 var dataCells = React.createClass({
   getInitialState: function () {
@@ -85,7 +85,7 @@ var dataCells = React.createClass({
       audChecked: true,
       cadChecked: true,
       nzdChecked: true        
-    })
+    });
   },
   filter: function (event) {    
     var filterId = event.target.getAttribute('id');
@@ -103,15 +103,15 @@ var dataCells = React.createClass({
         bid: bidList[i],
         ask: askList[i],
         spread: spreadList[i],
-      })
+      });
       return (    
         React.createElement('div', {
         className: 'cell',
         key: i,
         'data-filter': eachInstrument.displayName.slice(0,3).toLowerCase()
         }, eachCell) 
-      ) 
-    })
+      ); 
+    });
     return (
       React.createElement('div', {id: 'cell-list'}, 
         React.DOM.div({id: 'filters'}, 
@@ -148,9 +148,9 @@ var dataCells = React.createClass({
           )
         ),
       createCells)    
-    )        
+    );        
   }
-})
+});
 
 function dataProperties (data, property) {
   var list = [];
@@ -220,4 +220,3 @@ function gatherInstruments () {
 };
 
 setInterval(gatherInstruments, 2000);
-// gatherInstruments();

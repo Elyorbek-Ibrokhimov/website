@@ -3,8 +3,8 @@ function historyToggle () {
     $('#filters').toggleClass('hidden');
     $('#history-table').slideToggle();
     $('#data-table').slideToggle();
-  })
-}
+  });
+};
 
 function filterByName (name) {
   var allCells = document.getElementsByClassName('cell');
@@ -14,6 +14,6 @@ function filterByName (name) {
     }
     else if (eachCell.getAttribute('data-filter') === name) {
       eachCell.classList.toggle('hidden');
-    }    
-  })  
-}
+    };    
+  });  
+};

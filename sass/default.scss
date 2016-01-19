@@ -5,9 +5,9 @@ $navyBlue: #838892;
 $darkBlue: #031941;
 $lightGrey: rgb(238, 238, 238);
 $logo:'Exo', sans-serif;
-$numbers: 'Montserrat', sans-serif; /* 700 and 400*/
+$numbers: 'Montserrat', sans-serif;
 
-/*-----Bootstrap modification -------*/
+/*-----Bootstrap-------*/
 
 .btn:focus {
   outline: none;
@@ -22,8 +22,6 @@ input:focus {
 body {
   margin-left: 64px;
   margin-right: 64px;
-  /*background-image: url(../images/back.jpeg);*/
-  /*background-color: #F0F0F0;*/
   background-color: $chalk;
   background-size: cover;
   background-attachment: fixed;
@@ -120,17 +118,15 @@ body {
   padding-top:20px; 
   h4 {
     font-size: 25px;
-    font-family: helvetica;
- 
+    font-family: helvetica; 
   }
 }
 .tech-img {
-    display: inline-block;
-    height: 120px;
-    width: 250px;
-    margin-left: 50px;
-
-  }
+  display: inline-block;
+  height: 120px;
+  width: 250px;
+  margin-left: 50px;
+}
 
 .technologies {
   margin-top: 70px; 
@@ -188,7 +184,7 @@ body {
   bottom: 0;
   left: 0;
   background-color: white;
-   -webkit-box-shadow: 0px 0px 57px -27px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 57px -27px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 57px -27px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 57px -27px rgba(0,0,0,0.75);
 }
@@ -230,34 +226,21 @@ body {
   margin-left: 15px;
   margin-right: 15px;
   margin-bottom: 40px;
-  /* height: 200px; */
   display: inline-block;
   vertical-align: middle;
-  /*-webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;*/
 }
 
 .flags {
   background-color: #4D4D4D;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-
   div {
     padding: 8px;
     display: inline-block;
     height: 50px;
     width: 60px;
     background-size: 100%;
-    background-repeat: no-repeat;
-    
+    background-repeat: no-repeat;    
   }
   :last-child{
     margin-left: 9px;
@@ -271,7 +254,6 @@ body {
   margin-top: 10px;
   padding-left: 10px;
   letter-spacing: 1.5px;
-
 }
 
 .spread {
@@ -280,16 +262,14 @@ body {
   padding-left: 20px;
   margin-top: 10px;
   margin-bottom: 13px;
-  /*border-radius: 5px 5px 5px 5px;*/
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 25px;
-
-  :first-child{
+  :first-child {
     font-weight: 400;
     font-size: 15px;
     margin-right: 15px;
-  };
+  }
 }
 
 .bid-ask-prices {
@@ -299,7 +279,6 @@ body {
  font-family: $numbers;
  font-weight: 400;
  font-size: 15px;
-
 }
 
 .bid-price {
@@ -373,8 +352,6 @@ body {
   height: 100%;
 }
 
-
-
 .history-instrument {
   margin-left: 190px;
   display: inline-block;
@@ -443,11 +420,13 @@ body {
 /*-------------Flag Pictures----------------*/
 
 .usd {
-  background-image: url(../images/flags/usd.png); 
+  background-image: url(../images/flags/usd.png);
+  background-size: cover; 
 }
 
 .cad {
   background-image: url(../images/flags/cad.png);
+  background-size: cover;
 }
 
 .eur {
