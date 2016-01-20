@@ -6,3 +6,6 @@ node_modules
 
 #mock ups
 mock-ups
+
+#master currency list
+./public/json/instruments.json
