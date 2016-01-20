@@ -15,7 +15,7 @@ gulp.task('develop', function () {
 })
 
 gulp.task('script', () => {
-  return gulp.src('../public/js/*.js')
+  gulp.src('../public/js/*.js')
     .pipe(babel({presets:['es2015']}))
     .pipe(concat('all.min.js'))
     .pipe(uglify())
@@ -23,7 +23,7 @@ gulp.task('script', () => {
 })
 
 gulp.task('sass', () => {
-  return gulp.src('../sass/**/*.scss')
+  gulp.src('../sass/**/*.scss')
     .pipe(sass())
     .pipe(gulp.dest('../public/stylesheets'))
 })

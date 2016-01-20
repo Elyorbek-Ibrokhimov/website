@@ -23,7 +23,7 @@ instruments.post('/prices', parseText, function(req, res) {
 
 instruments.post('/history', parseText, function(req, res){
   var instrument = req.body;
-  var count = 360;
+  var count = 180;
   var url = 'https://api-fxpractice.oanda.com/v1/candles?' 
     + 'instrument='+ instrument + '&' 
     + 'count=' + count +'&' 

@@ -1,6 +1,6 @@
 var cell = React.createClass({
   openHistory: function () {
-     var historyDisplay = document.getElementById('history-table').getAttribute('style');
+    var historyDisplay = document.getElementById('history-table').getAttribute('style');
     var instrumentName = this.props.name;
     var firstInsturment = instrumentName.slice(0, 3);
     var secondInstrument = instrumentName.slice(4, 8);
