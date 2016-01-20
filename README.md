@@ -1,7 +1,7 @@
 # currency-trader
 A website for currency traders to receive live spread and historical data regarding various currencies. 
 
-**Built with the follow technologies:**
+**Built with the following technologies:**
  - React.js
  - Node.js
  - MongoDB
