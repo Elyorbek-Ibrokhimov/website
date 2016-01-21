@@ -4,11 +4,12 @@ A website for currency traders to receive live spread and historical data regard
 **Built with the following technologies:**
  - Javascript ES6
  - React.js
- - Node.js
- - MongoDB
+ - Node.js/Express
+ - MongoDB/Mongoose
  - Jquery
  - Underscore
- - SASS
+ - Gulp
+ - SASS/CSS3/Bootstrap/HTML5
  
 **Summary:**
 Forexpress was built to serve the purpose of providing real time price and spread updates as they change in the Foreign Exchange market. The application also allows currency traders to view candlestick charts for each pairing and filter based on their desired currencies. This website was built mainly with React.js for dynamic view updates, and Node.js/MongoDB for retrieving real time data through the Oanda API.
