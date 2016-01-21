@@ -2,6 +2,7 @@
 A website for currency traders to receive live spread and historical data regarding various currencies. 
 
 **Built with the following technologies:**
+ - Javascript ES6
  - React.js
  - Node.js
  - MongoDB
