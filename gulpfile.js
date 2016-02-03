@@ -1,10 +1,10 @@
-var gulp = require('gulp')
-var babel = require('gulp-babel')
-var uglify = require('gulp-uglify')
-var concat = require('gulp-concat')
-var sass = require('gulp-sass')
-var jshint = require('gulp-jshint')
-var nodemon = require('gulp-nodemon')
+var gulp = require('gulp');
+var babel = require('gulp-babel');
+var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
+var sass = require('gulp-sass');
+var jshint = require('gulp-jshint');
+var nodemon = require('gulp-nodemon');
 
 gulp.task('develop', function () {
   nodemon({
