@@ -16,9 +16,11 @@ Forexpress was built to serve the purpose of providing real time price and sprea
 
 ###Install:###
 **1.** 
-- Go to the root directory and run `npm install --save`
+-Go to the root directory and run `npm install --save`
+
 **2.** 
 - Create a free trade account with Oanda to obtain a bearer token: http://www.oanda.com/
+
 **3.** 
 - In the instrument.js folder, insert your Oanda bearer token in the /prices post request. 
 ```
