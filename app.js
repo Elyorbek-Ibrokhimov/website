@@ -24,4 +24,4 @@ app.get('/currencies', function (req, res) {
 
 var port = process.env.PORT || 3000;
 app.listen(port);
-console.log('ForExpress server running on' + port);
+console.log('ForExpress server running on ' + port);
