@@ -1,5 +1,5 @@
 # currency-trader
-A website for currency traders to receive live spread and historical data regarding various currencies. 
+A website for foreign exchange traders to receive live spread and historical data regarding various currencies. 
 
 ##Built with the following technologies:
  - Javascript ES6
