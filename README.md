@@ -1,5 +1,5 @@
 # currency-trader
-A website for currency traders to receive live spread and historical data regarding various currencies. 
+A website for foreign exchange traders to receive live spread and historical data regarding various currencies. 
 
 ##Built with the following technologies:
  - Javascript ES6
@@ -19,7 +19,7 @@ Forexpress was built to serve the purpose of providing real time price and sprea
 
 **2.** Create a free trade account with Oanda to obtain a bearer token: http://www.oanda.com/
 
-**3.** In the instrument.js folder, insert your Oanda bearer token in the /prices post request. 
+**3.** In the instrument.js file, insert your Oanda bearer token in the /prices post request. 
 ```
 instruments.post('/prices', parseText, function(req, res) { 
   var bearer;
