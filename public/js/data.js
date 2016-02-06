@@ -145,7 +145,8 @@ var dataCells = React.createClass({
           React.DOM.label({}, 
             React.DOM.input({type: 'checkbox', id:'nzdChecked', onChange: this.filter, defaultChecked: this.state.nzdChecked}),
             React.DOM.span({}, 'NZD')
-          )
+          ),
+           React.DOM.span({id:'disclaimer'}, 'Please note: Oanda\s trading platform is closed on weekends and holidays')
         ),
       createCells)    
     );        

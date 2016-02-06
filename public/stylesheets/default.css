@@ -120,6 +120,10 @@ body {
     #filters label span {
       padding-left: 5px; }
 
+#disclaimer {
+  font-style: italic;
+  color: red; }
+
 #data-buttons {
   list-style-type: none;
   margin-bottom: 0px;
