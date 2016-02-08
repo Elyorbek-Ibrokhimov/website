@@ -1,6 +1,7 @@
 # currency-trader
 A website for foreign exchange traders to receive live spread and historical data regarding various currencies. 
-viewable: https://forexpress.herokuapp.com/
+
+__viewable__: https://forexpress.herokuapp.com/
 
 ##Built with the following technologies:
  - Javascript ES6
