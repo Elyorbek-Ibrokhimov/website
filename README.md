@@ -1,4 +1,4 @@
-# currency-trader
+# ForExpress
 A website for foreign exchange traders to receive live spread and historical data regarding various currencies. 
 
 __viewable__: https://forexpress.herokuapp.com/
