@@ -7,18 +7,19 @@ var Currencies = require('./models/currency.js');
 
 mongoose.connect('mongodb://localhost/currencies');
 
-app.use(express.static('dist/public'));
+app.use(express.static('server/dist/public'));
+app.use(express.static('server/dist/vendor'));
 app.use('/instruments', instruments);
 
 app.get('/', function(req,res) {
-  res.sendFile( __dirname + 'dist/index.html');
+  res.sendFile( __dirname + '/dist/index.html');
 });
 
 app.get('/currencies', function (req, res) {
   Currencies.find({}).exec(function (err, currencies){
     res.send(JSON.stringify(currencies));
   });
-})
+});
 
 var port = process.env.PORT || 3000;
 app.listen(port);

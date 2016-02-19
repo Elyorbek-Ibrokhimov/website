@@ -18,13 +18,18 @@ gulp.task('develop', function () {
 
 gulp.task('html', () => {
   gulp.src('client/index.html')
-    .pipe(gulp.dest('server'));
+    .pipe(gulp.dest('server/dist'));
 });
 
 gulp.task('sass', () => {
   gulp.src('client/app/scss/**/*.scss')
     .pipe(sass())
     .pipe(gulp.dest('server/dist/public/stylesheets'))
+});
+
+gulp.task('assets', () => {
+  gulp.src('client/app/assets/**')
+    .pipe(gulp.dest('server/dist/public'))
 });
 
 gulp.task('scripts', () => {
@@ -44,9 +49,10 @@ gulp.task('watch', function () {
   gulp.watch('client/index.html', ['html']);
   gulp.watch('client/app/js/**/*.js', ['scripts']);
   gulp.watch('sass/**/*.scss', ['sass']);
+  gulp.watch('client/app/assets/**', ['assets']);
 })
 
-gulp.task('default', ['develop', 'html', 'vendor', 'scripts', 'sass', 'watch']);
+gulp.task('default', ['html', 'vendor', 'assets', 'scripts', 'sass', 'watch', 'develop']);
 
 
 
