@@ -1,0 +1,25 @@
+{
+  "name": "forexpress",
+  "description": "website for people who want to foreign exhange updates",
+  "main": "app.js",
+  "authors": [
+    "jordan chan"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jordac67/currency-trader",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./client/vendor/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "react": "^0.14.7",
+    "jquery": "^2.2.0",
+    "underscore": "^1.8.3"
+  }
+}

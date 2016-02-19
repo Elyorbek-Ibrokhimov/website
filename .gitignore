@@ -9,3 +9,6 @@ mock-ups
 
 #master currency list
 ./public/json/instruments.json
+
+#Bower RC
+/.bowerrc

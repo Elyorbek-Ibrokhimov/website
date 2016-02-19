@@ -26,13 +26,13 @@ gulp.task('sass', () => {
     .pipe(gulp.dest('server/dist/public/stylesheets'))
 })
 
-// gulp.task('script', () => {
-//   gulp.src('public/js/*.js')
-//     .pipe(babel({presets:['es2015']}))
-//     .pipe(concat('all.min.js'))
-//     .pipe(uglify())
-//     .pipe(gulp.dest('public/dist'))   
-// })
+gulp.task('scripts', () => {
+  gulp.src('public/js/*.js')
+    .pipe(babel({presets:['es2015']}))
+    .pipe(concat('all.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('public/dist'))   
+})
 
 
 
