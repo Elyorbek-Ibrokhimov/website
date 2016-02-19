@@ -8,11 +8,10 @@ var Currencies = require('./models/currency.js');
 mongoose.connect('mongodb://localhost/currencies');
 
 app.use(express.static('dist/public'));
-// app.use(express.static('vendor'));
 app.use('/instruments', instruments);
 
 app.get('/', function(req,res) {
-  res.sendFile( __dirname + '/index.html');
+  res.sendFile( __dirname + 'dist/index.html');
 });
 
 app.get('/currencies', function (req, res) {
