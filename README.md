@@ -46,11 +46,11 @@ curl http://api-status.oanda.com/api/v1/services
 ```
 
 **Currency Table:**
-<img src="public/images/demo-images/issue1.png" />
+<img src="client/app/assets/images/demo-images/issue1.png" />
 
 **Live Demo:**
 
-<img src="public/images/demo-images/spread.gif" />
+<img src="client/app/assets/images/demo-images/spread.gif" />
 
 **Historical Graph:**
-<img src="public/images/demo-images/issue2.png" />
+<img src="client/app/assets/images/demo-images/issue2.png" />
