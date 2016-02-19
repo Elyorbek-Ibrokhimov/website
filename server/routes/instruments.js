@@ -6,8 +6,8 @@ var bodyParser = require('body-parser');
 var parseText = bodyParser.text();
 
 instruments.post('/prices', parseText, function(req, res) { 
-  var bearer = '7c976fabc657d1e43ed9f9bb41e89384-3ed6e173de731a96ecc5399ba5a2377d';
-  var query = req.body
+  var bearer;
+  var query = req.body;
   var prices = 'https://api-fxpractice.oanda.com/v1/prices?instruments=' + query;
   request(prices, {
     'auth': {
