@@ -1,3 +1,8 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+var _ = require('underscore');
+var $ = require('jquery');
+
 var historyData = React.createClass({  
   closeHistory: function () {
     historyToggle();
