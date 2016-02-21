@@ -11,6 +11,7 @@ __viewable__: https://forexpress.herokuapp.com/
  - Jquery
  - Underscore
  - Gulp
+ - Webpack
  - SASS/CSS3/Bootstrap/HTML5
  
 ###Summary:###
