@@ -27,14 +27,14 @@ gulp.task('assets', () => {
     .pipe(gulp.dest('server/dist/public/images'))
 })
 
-gulp.task('bundle', () => {
-  browserify({entries: 'client/app/js/default.js', extensions: ['.js'], debug: true})
-    .transform('babelify', {presets:['es2015']})
-    .bundle()
-    .pipe(source('bundle.js'))
-    .pipe(gulp.dest('server/dist/public/js'));
-    console.log('bundle complete')
-});
+// gulp.task('bundle', () => {
+//   browserify({entries: 'client/app/js/default.js', extensions: ['.js'], debug: true})
+//     .transform('babelify', {presets:['es2015']})
+//     .bundle()
+//     .pipe(source('bundle.js'))
+//     .pipe(gulp.dest('server/dist/public/js'));
+//     console.log('bundle complete')
+// });
 
 gulp.task('watch', function () {
   gulp.watch('client/index.html', ['html']);

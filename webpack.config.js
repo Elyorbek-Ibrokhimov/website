@@ -6,18 +6,18 @@ module.exports = {
   devtool: debug ? "inline-sourcemap" : null,
   entry: "./client/app/js/scripts.js",
   module: {
-    loaders = [
+    loaders: [
       {
         test: /\.js?$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
           presets: ['react', 'es2015', 'stage-0'],
-          plugins: ['reat-html-attrs', 'transform-class-properties']
+          plugins: ['react-html-attrs', 'transform-class-properties']
         }
       }
     ]
-  }
+  },
   output: {
     path: __dirname + "/server/dist/public/js",
     filename: "scripts.min.js"
