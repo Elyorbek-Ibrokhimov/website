@@ -2,72 +2,45 @@ var gulp = require('gulp');
 var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
-var sass = require('gulp-sass');
 var nodemon = require('gulp-nodemon');
-var babel = require('gulp-babel');
 
-gulp.task('develop', function () {
+gulp.task('start', function () {
   nodemon({
-    script: 'server/app.js',
+    script:'server/app.js',
     ext: 'js html',
-    env: { 'NODE_ENV': 'development' }
+    env: {'NODE_ENV': 'development'}
   })
 })
 
 gulp.task('html', () => {
   gulp.src('client/index.html')
-    .pipe(gulp.dest('server/dist'));
-});
+    .pipe(gulp.dest('server/dist'))
+})
 
-gulp.task('sass', () => {
-  gulp.src('client/app/scss/**/*.scss')
-    .pipe(sass())
-    .pipe(gulp.dest('server/dist/public/stylesheets'))
-});
+gulp.task('css', () => {
+  gulp.src('client/app/css/**/*.css')
+    .pipe(gulp.dest('server/dist/public/css'))
+})
 
 gulp.task('assets', () => {
-  gulp.src('client/app/assets/**')
-    .pipe(gulp.dest('server/dist/public'))
-});
+  gulp.src('client/app/images/**')
+    .pipe(gulp.dest('server/dist/public/images'))
+})
 
-gulp.task('scripts', () => {
-  gulp.src('client/app/js/**/*.js')
-    .pipe(concat('all.min.js'))
-    .pipe(babel({presets: ['es2015']}))
-    .pipe(uglify())
-    .pipe(gulp.dest('server/dist/public/js'));
-});
-
-gulp.task('vendor', () => {
-  gulp.src('client/vendor/**')
-    .pipe(gulp.dest('server/dist/vendor'));
-});
+// gulp.task('bundle', () => {
+//   browserify({entries: 'client/app/js/default.js', extensions: ['.js'], debug: true})
+//     .transform('babelify', {presets:['es2015']})
+//     .bundle()
+//     .pipe(source('bundle.js'))
+//     .pipe(gulp.dest('server/dist/public/js'));
+//     console.log('bundle complete')
+// });
 
 gulp.task('watch', function () {
   gulp.watch('client/index.html', ['html']);
-  gulp.watch('client/app/js/**/*.js', ['scripts']);
-  gulp.watch('sass/**/*.scss', ['sass']);
-  gulp.watch('client/app/assets/**', ['assets']);
+  gulp.watch('client/app/css/**/*.css', ['css']);
+  gulp.watch('client/app/images/**', ['assets']);
+  // gulp.watch('client/app/js/**/*.js', ['bundle'])
 })
 
-gulp.task('default', ['html', 'vendor', 'assets', 'scripts', 'sass', 'watch', 'develop']);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+gulp.task('default', ['html', 'css', 'assets', 'start', 'watch']);

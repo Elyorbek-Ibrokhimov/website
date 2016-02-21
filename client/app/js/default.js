@@ -1,3 +1,6 @@
+var _ = require('underscore');
+var $ = require('jquery');
+
 function historyToggle () {
   $(document).ready(function () {
     $('#filters').toggleClass('hidden');
