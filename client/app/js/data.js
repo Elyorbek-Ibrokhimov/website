@@ -2,16 +2,24 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var _ = require('underscore');
 var $ = require('jquery');
+import {CellActions} from './default.js';
+import {DataHistory} from './history.js';
 
 var cell = React.createClass({
+  propTypes: {
+    displayName: React.PropTypes.string,
+    bid: React.PropTypes.number,
+    ask: React.PropTypes.number,
+    spread: React.PropTypes.number
+  },
   openHistory: function () {
     var historyDisplay = document.getElementById('history-table').getAttribute('style');
     var instrumentName = this.props.name;
     var firstInsturment = instrumentName.slice(0, 3);
     var secondInstrument = instrumentName.slice(4, 8);
     var fullName = firstInsturment + '_' + secondInstrument;
-    historyToggle()
-    getHistory(fullName, instrumentName);
+    CellActions.historyToggle();
+    DataHistory.getHistory(fullName, instrumentName);
   },
   highlight: function (event) {
     var historyDisplay = document.getElementById('history-table').getAttribute('style');   
@@ -42,40 +50,25 @@ var cell = React.createClass({
       spread.classList.remove('show-decrease');
     }
   },
-  propTypes: {
-    displayName: React.PropTypes.string,
-    bid: React.PropTypes.number,
-    ask: React.PropTypes.number,
-    spread: React.PropTypes.number
-  },
   render: function () {
-    var firstInsturment = (this.props.name).slice(0,3).toLowerCase();
+    var firstInstrument = (this.props.name).slice(0,3).toLowerCase();
     var secondInstrument = (this.props.name).slice(4,8).toLowerCase();
     return (
-      React.DOM.div({},
-        React.DOM.div({className: 'flags'},
-          React.DOM.div({className: firstInsturment}),
-          React.DOM.div({className: secondInstrument})
-        ),    
-        React.DOM.div({className: 'display-name'}, this.props.name
-        ),
-        React.DOM.div({className: 'bid-ask-prices'},
-          React.DOM.div({className: 'bid-price'}, 'bid: ' + this.props.bid),
-          React.DOM.div({className: 'ask-price'}, 'ask: ' + this.props.ask)
-        ),
-        React.DOM.div({
-          className: 'spread', 
-          ref: (spreadCont) => this.spreadCell = spreadCont
-          }, 
-          'Spread: ', this.props.spread
-        ),
-        React.DOM.input({
-          value: 'History',
-          type: 'button',
-          className: 'open-history btn btn-default',
-          onClick: this.openHistory
-        })
-      )
+      <div>
+        <div className= "flags">
+          <div className={firstInstrument}></div>
+          <div className={secondInstrument}></div>
+        </div>
+        <div className='display-name'>{this.props.name}</div>
+        <div className="bid-ask-prices">
+          <div className="bid-price">bid: {this.props.bid}</div>
+          <div className="ask-price">ask: {this.props.ask}</div>
+        </div>
+        <div className="spread" ref={(spreadCont) => this.spreadCell = spreadCont}>
+          Spread: {this.props.spread}
+        </div>
+        <input value="History" type="button" className="open-history btn btn-default" onClick={this.openHistory} />
+      </div>
     )
   }    
 });
@@ -96,7 +89,7 @@ var dataCells = React.createClass({
     var filterId = event.target.getAttribute('id');
     var filterName = filterId.slice(0,3);
     var filterNameState = filterName + 'Checked';
-    filterByName(filterName);
+    CellActions.filterByName(filterName);
   },
   render: function () {
     var bidList = this.props.bidList;
@@ -118,42 +111,40 @@ var dataCells = React.createClass({
       ); 
     });
     return (
-      React.createElement('div', {id: 'cell-list'}, 
-        React.DOM.div({id: 'filters'}, 
-          React.DOM.label({}, 
-            React.DOM.input({
-              type: 'checkbox', 
-              id:'eurChecked', 
-              onChange: this.filter, defaultChecked: this.state.eurChecked}),
-            React.DOM.span({}, 'EUR')
-          ), 
-          React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'usdChecked', onChange: this.filter, defaultChecked: this.state.usdChecked}),
-            React.DOM.span({}, 'USD')
-          ),
-          React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'gbpChecked', onChange: this.filter, defaultChecked: this.state.gbpChecked}),
-            React.DOM.span({}, 'GBP')
-          ),
-          React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'chfChecked', onChange: this.filter, defaultChecked: this.state.chfChecked}),
-            React.DOM.span({}, 'CHF')
-          ),
-          React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'audChecked', onChange: this.filter, defaultChecked: this.state.audChecked}),
-            React.DOM.span({}, 'AUD')
-          ),
-          React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'cadChecked', onChange: this.filter, defaultChecked: this.state.cadChecked}),
-            React.DOM.span({}, 'CAD')
-          ),
-          React.DOM.label({}, 
-            React.DOM.input({type: 'checkbox', id:'nzdChecked', onChange: this.filter, defaultChecked: this.state.nzdChecked}),
-            React.DOM.span({}, 'NZD')
-          ),
-           React.DOM.span({id:'disclaimer'}, 'Please note: Oanda\s trading platform is closed on weekends and holidays')
-        ),
-      createCells)    
+      <div id="cell-list">
+        <div id="filters">
+          <label>
+            <input type="checkbox" id="eurChecked" onChange={this.filter} defaultChecked={this.state.eurChecked} />
+            <span>EUR</span>
+          </label>
+          <label>
+            <input type="checkbox" id="usdChecked" onChange={this.filter} defaultChecked={this.state.usdChecked} />
+            <span>USD</span>
+          </label>
+          <label>
+            <input type="checkbox" id="gbpChecked" onChange={this.filter} defaultChecked={this.state.gbpChecked} />
+            <span>GBP</span>
+          </label>
+          <label>
+            <input type="checkbox" id="chfChecked" onChange={this.filter} defaultChecked={this.state.chfChecked} />
+            <span>CHF</span>
+          </label>
+          <label>
+            <input type="checkbox" id="audChecked" onChange={this.filter} defaultChecked={this.state.audChecked} />
+            <span>AUD</span>
+          </label>
+          <label>
+            <input type="checkbox" id="cadChecked" onChange={this.filter} defaultChecked={this.state.cadChecked} />
+            <span>CAD</span>
+          </label>
+          <label>
+            <input type="checkbox" id="nzdChecked" onChange={this.filter} defaultChecked={this.state.nzdChecked} />
+            <span>NZD</span>
+          </label>
+        </div>
+        {/*Instantiation of all the child cells*/}
+        {createCells}
+      </div>    
     );        
   }
 });

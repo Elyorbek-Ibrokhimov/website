@@ -2,10 +2,43 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var _ = require('underscore');
 var $ = require('jquery');
+import {CellActions} from './default.js';
+
+export const DataHistory = (function () {
+
+  function getHistory (fullName, instrumentName) {
+    var xhr = new XMLHttpRequest;
+    var historyHelp = document.getElementById('history-help');
+    var loadingImage = document.createElement('img');
+    var historyTable= document.getElementById('history-table');
+    loadingImage.setAttribute('id', 'history-load-icon');
+    loadingImage.setAttribute('src', '../images/loading.gif');  
+    function loading () {    
+      if (historyHelp) {historyHelp.textContent = ''};
+      if (!document.getElementById('graph')) {historyTable.appendChild(loadingImage)};
+    }
+    
+    xhr.addEventListener('loadstart', loading)
+    xhr.open('POST', '/instruments/history')
+    xhr.send(fullName); 
+    xhr.onload = function() {
+      var historyInfo = React.createElement(historyData, {displayName: instrumentName});
+      var responseObject = JSON.parse(xhr.responseText);
+      var dateList = responseObject.candles;    
+      ReactDOM.render(historyInfo, document.getElementById('history-table'))
+      drawChart(dateList);
+    } 
+  };
+
+  return {
+    getHistory: getHistory
+  }
+
+}());
 
 var historyData = React.createClass({  
   closeHistory: function () {
-    historyToggle();
+    CellActions.historyToggle();
   },
   propTypes: {
     displayName: React.PropTypes.string
@@ -33,30 +66,6 @@ var historyData = React.createClass({
   }
 });
 
-function getHistory (fullName, instrumentName) {
-  var xhr = new XMLHttpRequest;
-  var historyHelp = document.getElementById('history-help');
-  var loadingImage = document.createElement('img');
-  var historyTable= document.getElementById('history-table');
-  loadingImage.setAttribute('id', 'history-load-icon');
-  loadingImage.setAttribute('src', '../images/loading.gif');  
-  function loading () {    
-    if (historyHelp) {historyHelp.textContent = ''};
-    if (!document.getElementById('graph')) {historyTable.appendChild(loadingImage)};
-  }
-  
-  xhr.addEventListener('loadstart', loading)
-  xhr.open('POST', '/instruments/history')
-  xhr.send(fullName); 
-  xhr.onload = function() {
-    var historyInfo = React.createElement(historyData, {displayName: instrumentName});
-    responseObject = JSON.parse(xhr.responseText);
-    dateList = responseObject.candles;    
-    ReactDOM.render(historyInfo, document.getElementById('history-table'))
-    drawChart(dateList);
-  } 
-}
- 
 function drawChart(dateList) {
   var chartValues = (function () {
       var data = []
