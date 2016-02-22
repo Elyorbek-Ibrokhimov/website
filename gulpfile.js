@@ -27,20 +27,10 @@ gulp.task('assets', () => {
     .pipe(gulp.dest('server/dist/public/images'))
 })
 
-// gulp.task('bundle', () => {
-//   browserify({entries: 'client/app/js/default.js', extensions: ['.js'], debug: true})
-//     .transform('babelify', {presets:['es2015']})
-//     .bundle()
-//     .pipe(source('bundle.js'))
-//     .pipe(gulp.dest('server/dist/public/js'));
-//     console.log('bundle complete')
-// });
-
 gulp.task('watch', function () {
   gulp.watch('client/index.html', ['html']);
   gulp.watch('client/app/css/**/*.css', ['css']);
   gulp.watch('client/app/images/**', ['assets']);
-  // gulp.watch('client/app/js/**/*.js', ['bundle'])
 })
 
 gulp.task('default', ['html', 'css', 'assets', 'start', 'watch']);

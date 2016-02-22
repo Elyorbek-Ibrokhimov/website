@@ -49,13 +49,13 @@ var cell = React.createClass({
     spread: React.PropTypes.number
   },
   render: function () {
-    var firstInsturment = (this.props.name).slice(0,3);
-    var secondInstrument = (this.props.name).slice(4,8);
+    var firstInsturment = (this.props.name).slice(0,3).toLowerCase();
+    var secondInstrument = (this.props.name).slice(4,8).toLowerCase();
     return (
       React.DOM.div({},
         React.DOM.div({className: 'flags'},
-          React.DOM.div({className: firstInsturment.toLowerCase()}),
-          React.DOM.div({className: secondInstrument.toLowerCase()})
+          React.DOM.div({className: firstInsturment}),
+          React.DOM.div({className: secondInstrument})
         ),    
         React.DOM.div({className: 'display-name'}, this.props.name
         ),
