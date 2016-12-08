@@ -6,7 +6,7 @@ var nodemon = require('gulp-nodemon');
 
 gulp.task('start', function () {
   nodemon({
-    script:'server/app.js',
+    script:'app/app.js',
     ext: 'js html',
     env: {'NODE_ENV': 'development'}
   })
@@ -14,17 +14,17 @@ gulp.task('start', function () {
 
 gulp.task('html', () => {
   gulp.src('client/index.html')
-    .pipe(gulp.dest('server/dist'))
+    .pipe(gulp.dest('app/dist'))
 })
 
 gulp.task('css', () => {
   gulp.src('client/app/css/**/*.css')
-    .pipe(gulp.dest('server/dist/public/css'))
+    .pipe(gulp.dest('app/dist/public/css'))
 })
 
 gulp.task('assets', () => {
   gulp.src('client/app/images/**')
-    .pipe(gulp.dest('server/dist/public/images'))
+    .pipe(gulp.dest('app/dist/public/images'))
 })
 
 gulp.task('watch', function () {
