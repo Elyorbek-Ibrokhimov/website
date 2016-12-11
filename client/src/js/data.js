@@ -2,8 +2,8 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var _ = require('underscore');
 var $ = require('jquery');
-import {CellActions} from './default.js';
-import {DataHistory} from './history.js';
+import { CellActions } from './default.js';
+import { DataHistory } from './history.js';
 
 var cell = React.createClass({
   propTypes: {
@@ -138,11 +138,11 @@ var dataCells = React.createClass({
             <span>CAD</span>
           </label>
           <label>
-            <input type="checkbox" id="nzdChecked" onChange={this.filter} defaultChecked={this.state.nzdChecked} />
+            <input type="checkbox" i8="nzdChecked" onChange={this.filter} defaultChecked={this.state.nzdChecked} />
             <span>NZD</span>
           </label>
         </div>
-        {/*Instantiation of all the child cells*/}
+        {/* Instantiation of all the child cells */}
         {createCells}
       </div>    
     );        
