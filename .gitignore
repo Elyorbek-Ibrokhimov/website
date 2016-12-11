@@ -8,7 +8,7 @@ node_modules
 mock-ups
 
 #master currency list
-./public/json/instruments.json
+./app/json
 
-#Bower RC
-/.bowerrc
+
+./client/public
