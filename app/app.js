@@ -1,9 +1,9 @@
 var express = require('express');
 var app = express();
 var router = express.Router();
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 var instruments = require('./routes/instruments.js');
-var Currencies = require('./models/currency.js');
+// var Currencies = require('./models/currency.js');
 
 // mongoose.connect('mongodb://localhost/currencies');
 
