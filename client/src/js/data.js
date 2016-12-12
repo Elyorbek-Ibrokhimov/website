@@ -141,6 +141,7 @@ var dataCells = React.createClass({
             <input type="checkbox" i8="nzdChecked" onChange={this.filter} defaultChecked={this.state.nzdChecked} />
             <span>NZD</span>
           </label>
+          <button>HIDE ALL</button>
         </div>
         {/* Instantiation of all the child cells */}
         {createCells}
