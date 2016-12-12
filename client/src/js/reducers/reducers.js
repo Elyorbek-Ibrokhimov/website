@@ -6,15 +6,18 @@ const initialState = {
 }
 
 function mainApp (state = initialState, action) {
-  console.log('STATE INITIALIZED', state);
-
-  if (action.type === 'HIDE_ALL_CURRENCIES') {
-    console.log('hiding all currencies');
-    return Object.assign({}, currencyFilter, {
-      currencyFilter: action.filter
-    })
+  // console.log('STATE INITIALIZED', state);
+  switch (action.type) {
+    case 'HIDE_ALL_CURRENCIES':
+      console.log('hiding all currencies');
+      return {
+        type: 'HIDE_ALL_CURRENCIES'
+      }
+    
+  default:
+    return state;
   }
-  return state;
+    
 }
 
 const forexApp = combineReducers({

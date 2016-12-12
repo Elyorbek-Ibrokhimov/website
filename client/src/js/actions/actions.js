@@ -9,7 +9,7 @@ export const CurrencyFilters = {
 
 export function hideAllCurrencies () {
   return {
-    type: HIDE_ALL_CURRENCIES
+    type: 'HIDE_ALL_CURRENCIES'
   }
 }
 
