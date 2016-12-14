@@ -1,14 +1,5 @@
 # dependency direcotry
 node_modules
 
-#sass cache
-./public/.sass-cache
-
-#mock ups
-mock-ups
-
-#master currency list
-./app/json
-
-
-./client/public
+#public
+client/public
