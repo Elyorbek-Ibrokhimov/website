@@ -12,13 +12,3 @@ export function hideAllCurrencies () {
     type: 'HIDE_ALL_CURRENCIES'
   }
 }
-
-
-
-// eurChecked: true,
-//       usdChecked: true,
-//       gbpChecked: true, 
-//       chfChecked: true,
-//       audChecked: true,
-//       cadChecked: true,
-//       nzdChecked: true  
