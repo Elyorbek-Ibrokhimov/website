@@ -9,7 +9,7 @@ import { hideAllCurrencies } from './src/js/actions/actions.js'
 var store = createStore(forexApp);
 console.log(store.getState());
 
-render(App, document.getElementById('root'));
+render(<App store={store} />, document.getElementById('root'));
 store.dispatch(hideAllCurrencies());
 
 require('./index.html');

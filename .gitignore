@@ -1,14 +1,8 @@
 # dependency direcotry
 node_modules
 
-#sass cache
-./public/.sass-cache
-
-#mock ups
-mock-ups
+#public
+client/public
 
 #master currency list
-./public/json/instruments.json
-
-#Bower RC
-/.bowerrc
+public/json/instruments.json

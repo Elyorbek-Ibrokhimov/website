@@ -2,6 +2,8 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var _ = require('underscore');
 var $ = require('jquery');
+import { connect } from 'react-redux';
+import * as actionCreators from './actions/actions.js';
 import { CellActions } from './default.js';
 import { DataHistory } from './history.js';
 
@@ -91,6 +93,10 @@ var dataCells = React.createClass({
     var filterNameState = filterName + 'Checked';
     CellActions.filterByName(filterName);
   },
+  hideAllCurrencies: function () {
+    console.log('trying to hide currencies');
+    this.props.dispatch(actionCreators.hideAllCurrencies());
+  },
   render: function () {
     var bidList = this.props.bidList;
     var askList = this.props.bidList;
@@ -141,7 +147,7 @@ var dataCells = React.createClass({
             <input type="checkbox" i8="nzdChecked" onChange={this.filter} defaultChecked={this.state.nzdChecked} />
             <span>NZD</span>
           </label>
-          <button>HIDE ALL</button>
+          <button onClick={this.hideAllCurrencies}>HIDE ALL</button>
         </div>
         {/* Instantiation of all the child cells */}
         {createCells}
