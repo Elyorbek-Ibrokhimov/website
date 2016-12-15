@@ -1,19 +1,34 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import Jumbotron from './jumbotron.js';
+import {DataCells} from './data.js';
+import Test from './test.js';
+
+var test = {
+  nameList: [{
+    instrument : "EUR_AUD",
+    displayName : "EUR\/AUD",
+    pip : "0.0001",
+    maxTradeUnits : 10000000
+  }],
+  askList: 2.00000,
+  bidList: 1.00000,
+  spreadList: [1.00000]
+}
 
 class mainApp extends React.Component {
+  // getChildContext () {
+  //   return {
+  //     store: this.props.store
+  //   }
+  // }
   render() {
+    // console.log(`APP PROPS `, this.props);
     return (
       <Provider store={ this.props.store }>
         <div id="shadow-container" class="main-app">
           <div class="container-fluid">
-            <div id="hero">
-              <img class="hero-img img-responsive" src="app/assets/images/background2.jpg" />
-              <div>              
-                <h1 class="hero-title">For<span>€</span>xSpress</h1>
-                <p class= "sub-title">Receive live spread and historical data for currency trading</p>
-              </div>
-            </div>        
+            <Jumbotron />        
             <div id="info-section">
               <h4 id="info-section-title">Built and powered with</h4>
               <div class="technologies">
@@ -30,6 +45,8 @@ class mainApp extends React.Component {
               </div>
             </div>
           <div id="data-table">
+            <Test store={this.props.store} />
+            <DataCells nameList={test.nameList} spreadList={test.spreadList} />
             <div>
               <img src="app/assets/images/loading.gif" id="data-load-icon" />
             </div>

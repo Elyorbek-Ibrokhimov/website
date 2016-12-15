@@ -12,3 +12,10 @@ export function hideAllCurrencies () {
     type: 'HIDE_ALL_CURRENCIES'
   }
 }
+
+export function test (newNumber) {
+  return {
+    type: 'TEST_ACTION',
+    number: newNumber
+  }
+}
