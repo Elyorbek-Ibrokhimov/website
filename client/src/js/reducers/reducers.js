@@ -27,6 +27,10 @@ function mainApp (state = initialState, action) {
     
 }
 
+function currencyData () {
+  
+}
+
 function test (state = [], action) {
   switch (true) {
 
@@ -35,6 +39,8 @@ function test (state = [], action) {
   }
   
 }
+
+
 
 const forexApp = combineReducers({
   mainApp,

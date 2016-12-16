@@ -14,10 +14,8 @@ import test from './src/js/components/test.js';
 var store = createStore(forexApp);
 render(<App store={store} />, document.getElementById('root'));
 
-store.dispatch(hideAllCurrencies());
 require('./index.html');
 require('bootstrap-loader');
 require('./src/scss/default.scss');
-require('./src/js/index.js');
 require('./src/assets/images/_index.js');
 

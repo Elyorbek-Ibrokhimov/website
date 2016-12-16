@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 import instruments from '../constants/instruments.js';
+import Cell from './cell.js';
 // var _ = require('underscore');
 // var $ = require('jquery');
 // import { connect } from 'react-redux';
@@ -8,79 +9,10 @@ import instruments from '../constants/instruments.js';
 // import { CellActions } from './default.js';
 // import { DataHistory } from './history.js';
 
-var INSTRUMENTS;
-
-instruments.then((result) => {
-    setInterval(postData, 2000);
-  })
-  .catch((error) => {
-    console.log('instruments failed to load: ', error);
-  })
 
 // console.log('INSTRUMENTS', INSTRUMENTS);
 
-class cell extends React.Component {
-  
-  openHistory () {
-    var historyDisplay = document.getElementById('history-table').getAttribute('style');
-    var instrumentName = this.props.name;
-    var firstInsturment = instrumentName.slice(0, 3);
-    var secondInstrument = instrumentName.slice(4, 8);
-    var fullName = firstInsturment + '_' + secondInstrument;
-    CellActions.historyToggle();
-    DataHistory.getHistory(fullName, instrumentName);
-  }
-  highlight (event) {
-    var historyDisplay = document.getElementById('history-table').getAttribute('style');   
-    var cells = document.getElementsByClassName('select-box');
-    _.each(cells, function (eachCell) {
-      eachCell.classList.remove('highlight')
-    });
-    if (historyDisplay !== 'display: block;') {highlightToggle()};
-    this.openHistory(); 
-  }
-  componentWillReceiveProps (nextProps) {
-    var nextSpread = nextProps.spread;
-    var currentSpread = this.props.spread;
-    var spread = this.spreadCell;
-    if (currentSpread !== nextSpread && currentSpread > nextSpread) {
-      spread.classList.remove('show-decrease');
-      spread.classList.add('show-increase');
-      spread.classList.remove('show-no-change');
-    } 
-    else if (currentSpread !== nextSpread && currentSpread < nextSpread) {
-      spread.classList.remove('show-increase');
-      spread.classList.add('show-decrease');
-      spread.classList.remove('show-no-change');
-    } 
-    else {
-      spread.classList.add('show-no-change');
-      spread.classList.remove('show-increase');
-      spread.classList.remove('show-decrease');
-    }
-  }
-  render () {
-    var firstInstrument = (this.props.name).slice(0,3).toLowerCase();
-    var secondInstrument = (this.props.name).slice(4,8).toLowerCase();
-    return (
-      <div>
-        <div className= "flags">
-          <div className={firstInstrument}></div>
-          <div className={secondInstrument}></div>
-        </div>
-        <div className='display-name'>{this.props.name}</div>
-        <div className="bid-ask-prices">
-          <div className="bid-price">bid: {this.props.bid}</div>
-          <div className="ask-price">ask: {this.props.ask}</div>
-        </div>
-        <div className="spread" ref={(spreadCont) => this.spreadCell = spreadCont}>
-          Spread: {this.props.spread}
-        </div>
-        <input value="History" type="button" className="open-history btn btn-default" onClick={() => this.openHistory()} />
-      </div>
-    )
-  }    
-}
+
 
 export class DataCells extends React.Component {
 
@@ -96,7 +28,7 @@ export class DataCells extends React.Component {
     this.props.dispatch(actionCreators.hideAllCurrencies());
   }
   render () {
-    // console.log(this.props);
+    console.log('CELL PROPS ', this.props);
     var bidList = this.props.bidList;
     var askList = this.props.bidList;
     var spreadList = this.props.spreadList;
@@ -154,26 +86,6 @@ export class DataCells extends React.Component {
     );        
   }
 };
-
-// const mapStateToProps = function (state) {
-//   const boundActionCreators = bindActionCreators({}, dispatch);
-//   const allActionProps = {...boundActionCreators, dispatch}
-//   return allActionProps;
-//   // return {
-//   //   hide: state._filters.hide
-//   // }
-// }
-
-// const ConnectedFilters = connect(dataCells)
-// console.log(ConnectedFilters);
-
-// function dataProperties (data, property) {
-//   var list = [];
-//   for (var x=0; x<data.length; x++) {    
-//     list.push((data[x][property]));
-//   }
-//   return list;
-// }
 
 function postData (instrument, dataJSON) {
   var xhr = new XMLHttpRequest();
