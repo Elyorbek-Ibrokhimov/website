@@ -1,11 +1,23 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+import instruments from '../constants/instruments.js';
 // var _ = require('underscore');
 // var $ = require('jquery');
 // import { connect } from 'react-redux';
 // import * as actionCreators from './actions/actions.js';
 // import { CellActions } from './default.js';
 // import { DataHistory } from './history.js';
+
+var INSTRUMENTS;
+
+instruments.then((result) => {
+    setInterval(postData, 2000);
+  })
+  .catch((error) => {
+    console.log('instruments failed to load: ', error);
+  })
+
+// console.log('INSTRUMENTS', INSTRUMENTS);
 
 class cell extends React.Component {
   
@@ -79,12 +91,12 @@ export class DataCells extends React.Component {
     CellActions.filterByName(filterName);
   }
   hideAllCurrencies() {
-    console.log('trying to hide currencies');
-    console.log(this.props);
+    // console.log('trying to hide currencies');
+    // console.log(this.props);
     this.props.dispatch(actionCreators.hideAllCurrencies());
   }
   render () {
-    console.log(this.props);
+    // console.log(this.props);
     var bidList = this.props.bidList;
     var askList = this.props.bidList;
     var spreadList = this.props.spreadList;
@@ -202,25 +214,6 @@ function postData (instrument, dataJSON) {
     };
   };
 };
-
-// function gatherInstruments () {
-//   var xhr = new XMLHttpRequest;
-//   xhr.onerror = function () {
-//     console.log('gather error')
-//   }
-//   xhr.onload = function () {
-//     var currencyList = JSON.parse(xhr.responseText);
-//     var allInstruments = currencyList[0].instrument
-//     var instrumentString = (function () {       
-//       for (var i=1; i<currencyList.length; i++){           
-//         allInstruments += '%2C' + currencyList[i].instrument;      
-//       };     
-//     }());
-//     postData(allInstruments,currencyList)
-//   };
-//   xhr.open('GET', '/currencies', true);
-//   xhr.send();  
-// };
 
 // // setInterval(, 2000);
 // var instruments = gatherInstruments();

@@ -8,16 +8,16 @@ class Test extends React.Component {
     const { store } = this.props;
     
     let newNumber = store.getState().mainApp.test+1;
-    console.log('THIS IS THE NUMBER ', newNumber);
+    // console.log('THIS IS THE NUMBER ', newNumber);
     // console.log(actionCreators.test())
     store.dispatch( actionCreators.test(newNumber));
-    console.log('STTTATE ', store.getState());
+    // console.log('STTTATE ', store.getState());
   }
 
   render () {
     const { store, counter } = this.props;
     // let counter = store.getState().mainApp.test;
-    console.log('STTTATE ', store.getState());
+    // console.log('STTTATE ', store.getState());
     // console.log(`APP PROPS `, this.props);
 
     return (

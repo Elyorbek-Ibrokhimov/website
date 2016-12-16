@@ -16,11 +16,8 @@ function mainApp (state = initialState, action) {
         type: 'HIDE_ALL_CURRENCIES'
       }
     case 'TEST_ACTION':
-      console.log('TEST BUTTON BLICKELD');
-      console.log('THIS IS THE ACTION ', action);
       return {
         ...state,
-        // type: 'TEST_ACTION',
         test: action.number
       }
     

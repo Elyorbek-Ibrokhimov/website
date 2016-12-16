@@ -17,11 +17,7 @@ var test = {
 }
 
 class mainApp extends React.Component {
-  // getChildContext () {
-  //   return {
-  //     store: this.props.store
-  //   }
-  // }
+
   render() {
     // console.log(`APP PROPS `, this.props);
     return (
