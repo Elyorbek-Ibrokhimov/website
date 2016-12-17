@@ -13,6 +13,18 @@ export function hideAllCurrencies () {
   }
 }
 
+export const setSpreadTimer = () => {
+  return {
+    type: 'SET_SPREAD_TIMER'
+  }
+}
+
+export const getSpreadInfo = () => {
+  return {
+    type: 'GET_SPREAD'
+  }
+}
+
 export function test (newNumber) {
   return {
     type: 'TEST_ACTION',

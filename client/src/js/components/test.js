@@ -9,8 +9,8 @@ class Test extends React.Component {
     
     let newNumber = store.getState().mainApp.test+1;
     // console.log('THIS IS THE NUMBER ', newNumber);
-    // console.log(actionCreators.test())
-    store.dispatch( actionCreators.test(newNumber));
+    console.log('TEEEEEST ', actionCreators.test(newNumber));
+    store.dispatch(actionCreators.test(newNumber));
     // console.log('STTTATE ', store.getState());
   }
 

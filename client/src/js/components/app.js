@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import Jumbotron from './jumbotron.js';
 import {DataCells} from './data.js';
 import Test from './test.js';
-import instruments from '../constants/instruments.js';
 
 var test = {
   nameList: [{
@@ -20,17 +19,17 @@ var test = {
 }
 
 class mainApp extends React.Component {
-  setInstruments () {
-    let list;
-    instruments.then((result) => {
-      console.log('THE RESULT ', result);
-      list = result
-    })
-    .catch((error) => {
-      console.log('instruments failed to load: ', error);
-    })
-    return list;
-  }
+  // setInstruments () {
+  //   let list;
+  //   instruments.then((result) => {
+  //     console.log('THE RESULT ', result);
+  //     list = result
+  //   })
+  //   .catch((error) => {
+  //     console.log('instruments failed to load: ', error);
+  //   })
+  //   return list;
+  // }
 
   render() {
     // console.log(`APP PROPS `, this.props);
@@ -56,7 +55,7 @@ class mainApp extends React.Component {
             </div>
           <div id="data-table">
             <Test store={this.props.store} />
-            <DataCells store={this.props.store} nameList={this.setInstruments() || []} spreadList={test.spreadList} />
+            <DataCells store={this.props.store} spreadList={test.spreadList} />
             <div>
               <img src="app/assets/images/loading.gif" id="data-load-icon" />
             </div>

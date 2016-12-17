@@ -1,20 +1,28 @@
+'use strict';
+
 var React = require('react');
 var ReactDOM = require('react-dom');
-import instruments from '../constants/instruments.js';
 import Cell from './cell.js';
+import * as actionCreators from '../actions/actions.js';
 // var _ = require('underscore');
 // var $ = require('jquery');
 // import { connect } from 'react-redux';
-// import * as actionCreators from './actions/actions.js';
+
 // import { CellActions } from './default.js';
 // import { DataHistory } from './history.js';
 
-
-// console.log('INSTRUMENTS', INSTRUMENTS);
-
-
-
 export class DataCells extends React.Component {
+  constructor(props) {
+    super(props);
+    this.store = this.props.store;
+    this.getCurrencyList();
+  }
+
+  getCurrencyList () {
+    console.log('PRRRROPS ', this.props);
+    console.log('CLASS IS GETTING CURRENCY LIST');
+    this.store.dispatch(actionCreators.setSpreadTimer())
+  }
 
   filter (event) {    
     var filterId = event.target.getAttribute('id');
@@ -87,45 +95,7 @@ export class DataCells extends React.Component {
   }
 };
 
-function postData (instrument, dataJSON) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/instruments/prices');
-  xhr.send(instrument);  
-  xhr.onload = function () {
-    if (xhr.status !== 200) {
-      console.log('error')
-    }
-    else if (xhr.status === 200) {
-      var responseObject = JSON.parse(xhr.responseText);
-      var data = (JSON.parse(responseObject.body)).prices; 
-      var instrumentNames = dataJSON;
-      var askPrices = dataProperties(data, 'ask'); 
-      var bidPrices = dataProperties(data, 'bid');
-      var spread = makeSpread();
-      function makeSpread () {
-        var spreadArray =[];
-        function spreadRound (calculation) {
-          spreadArray.push(Math.round(calculation*100)/100)
-        };
-        function spreadCalculation () {
-          return Math.pow(10,4)*(askPrices[i] - bidPrices[i])
-        };
-        for (var i=0; i<instrumentNames.length; i++) {
-          var calculation = spreadCalculation()        
-          spreadRound(calculation);
-        };
-        return spreadArray;
-      };          
-      var cellTable = React.createElement(dataCells, {
-        nameList: instrumentNames,
-        askList: askPrices,
-        bidList: bidPrices,
-        spreadList: spread
-      });
-      ReactDOM.render(cellTable, document.getElementById('data-table'));      
-    };
-  };
-};
+
 
 // // setInterval(, 2000);
 // var instruments = gatherInstruments();
