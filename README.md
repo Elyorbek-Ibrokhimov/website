@@ -4,7 +4,7 @@ A website for foreign exchange traders to receive live spread and historical dat
 
 ##Built with the following technologies:
  - Javascript with EcmaScript 6
- - React.js
+ - React.js / Redux
  - Node.js/Express
  - MongoDB/Mongoose
  - Jquery
