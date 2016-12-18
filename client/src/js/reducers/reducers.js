@@ -5,7 +5,7 @@ const initialState = {
   currencyFilter: CurrencyFilters.SHOW_ALL_CURRENCIES
 }
 
-const spreadState = {
+const spreadState = { 
   spreadInfo: []
 }
 
@@ -23,13 +23,32 @@ function mainApp (state = initialState, action) {
 }
 
 const spread = (state=spreadState, action) => {
+  
   switch (action.type) {
-    case 'GET_SPREAD': 
-      console.log('REDUCER HIT, GETTING NEW SPREAD');
     case 'SET_SPREAD_TIMER':
       console.log('SETTING THE SPREAD TIMER');
+      return {
+        ...state,
+        interval: action.interval
+      }
+    case 'GET_SPREAD': 
+      console.log('REDUCER HIT, GETTING NEW SPREAD');
+      return state;
+      
     default: 
       return state
+  }
+}
+
+const test = (state={}, action) => {
+  console.log('ACTION TYPE ', action);
+  switch(action.type) {
+    case 'TEST_ACTION': 
+      console.log('TEST');
+      return state;
+  
+  default:
+    return state
   }
 }
 

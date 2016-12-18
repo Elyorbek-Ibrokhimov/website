@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 import forexApp from '../reducers/reducers.js'
-import instrumentMiddleware from '../middleware/instrumentMiddleware.js'
+import spreadMiddleware from '../middleware/spreadMiddleware.js'
 
-var store = createStore(forexApp, instrumentMiddleware);
+var store = createStore(forexApp, spreadMiddleware);
 
 export default store;

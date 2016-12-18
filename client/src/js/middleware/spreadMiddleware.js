@@ -1,13 +1,34 @@
 import {applyMiddleware} from 'redux';
+import store from '../lib/store.js';
+import * as actionCreators from '../actions/actions.js'
 const Promise = require("bluebird");
 
 const spreadMiddleware = (store) => (next) => (action) => {
   if (action.type === 'SET_SPREAD_TIMER') {
-    console.log('SPREAD TIMER BEING SET');
+    
+    gatherInstruments.then((result) => {
+      let spreadAction = actionCreators.getSpreadInfo(result)
 
+      action.interval = setInterval(() => {
+        console.log('INTERVAL');
+        store.dispatch(spreadAction);
+      }, 2000)
+      // let action = {type: 'GET_SPREAD'};
+      // console.log('WTF ', setInterval(() => {
+      //   console.log('INTERVAL');
+      //   store.dispatch(() => action);
+      // }, 2000));
+      // action.interval = setInterval(() => {
+        
+      // }, 2000);
+      next(action);
+    });
+    
+  } else {
+    next(action);
   }
 
-next(action);
+  
 };
 
 function postData (instrument, dataJSON) {
@@ -59,13 +80,18 @@ const gatherInstruments = new Promise ((resolve, reject) => {
     var instrumentString = (function () {       
       for (var i=1; i<currencyList.length; i++){           
         allInstruments += '%2C' + currencyList[i].instrument;      
-      };     
-    }());
-    console.log('RESPONSE TEXT', currencyList);
-    resolve(currencyList);
-  }  
+        };     
+      }());
+      resolve(currencyList);
+    }  
   xhr.open('GET', '/currencies', true);
   xhr.send(null);    
+  // }).then((result) => {
+  //   instruments = result;
+  // })
+  //   .catch((error) => {
+  //     console.log('error loading instruments: ', error);
+  //   })
 })
 
 const middleware = applyMiddleware(spreadMiddleware);

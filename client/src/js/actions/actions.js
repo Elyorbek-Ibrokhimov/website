@@ -13,21 +13,22 @@ export function hideAllCurrencies () {
   }
 }
 
-export const setSpreadTimer = () => {
+export const setSpreadTimer = (interval) => {
   return {
-    type: 'SET_SPREAD_TIMER'
+    type: 'SET_SPREAD_TIMER',
+    interval
   }
 }
 
 export const getSpreadInfo = () => {
   return {
     type: 'GET_SPREAD'
+    // currencyList: currencyList
   }
 }
 
 export function test (newNumber) {
   return {
     type: 'TEST_ACTION',
-    number: newNumber
   }
 }

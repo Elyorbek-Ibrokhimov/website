@@ -21,7 +21,7 @@ export class DataCells extends React.Component {
   getCurrencyList () {
     console.log('PRRRROPS ', this.props);
     console.log('CLASS IS GETTING CURRENCY LIST');
-    this.store.dispatch(actionCreators.setSpreadTimer())
+    this.store.dispatch(actionCreators.setSpreadTimer());
   }
 
   filter (event) {    
@@ -40,21 +40,23 @@ export class DataCells extends React.Component {
     var bidList = this.props.bidList;
     var askList = this.props.bidList;
     var spreadList = this.props.spreadList;
-    var createCells = this.props.nameList.map(function (eachInstrument, i) {
-      var eachCell =  React.createElement(cell, {
-        name: eachInstrument.displayName,
-        // bid: bidList[i],
-        // ask: askList[i],
-        spread: spreadList[i],
+    var createCells = () => {
+      this.props.nameList.map(function (eachInstrument, i) {
+        var eachCell =  React.createElement(cell, {
+          name: eachInstrument.displayName,
+          // bid: bidList[i],
+          // ask: askList[i],
+          spread: spreadList[i],
+        });
+        return (    
+          React.createElement('div', {
+          className: 'cell',
+          key: i,
+          'data-filter': eachInstrument.displayName.slice(0,3).toLowerCase()
+          }, eachCell) 
+        ); 
       });
-      return (    
-        React.createElement('div', {
-        className: 'cell',
-        key: i,
-        'data-filter': eachInstrument.displayName.slice(0,3).toLowerCase()
-        }, eachCell) 
-      ); 
-    });
+    } 
     return (
       <div id="cell-list">
         <div id="filters">
@@ -89,7 +91,7 @@ export class DataCells extends React.Component {
           <button onClick={() => this.hideAllCurrencies()}>HIDE ALL</button>
         </div>
         {/* Instantiation of all the child cells */}
-        {createCells}
+        {this.props.nameList ? createCells : undefined}
       </div>    
     );        
   }

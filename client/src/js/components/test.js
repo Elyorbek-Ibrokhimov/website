@@ -9,8 +9,9 @@ class Test extends React.Component {
     
     let newNumber = store.getState().mainApp.test+1;
     // console.log('THIS IS THE NUMBER ', newNumber);
-    console.log('TEEEEEST ', actionCreators.test(newNumber));
-    store.dispatch(actionCreators.test(newNumber));
+    console.log('DISPATCH');
+    console.log('THE STORE ', store);
+    store.dispatch(actionCreators.test());
     // console.log('STTTATE ', store.getState());
   }
 
@@ -30,7 +31,6 @@ class Test extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('CONNECT ', state);
   return {
     counter: state.mainApp.test
   }
