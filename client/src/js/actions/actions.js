@@ -20,10 +20,10 @@ export const setSpreadTimer = (interval) => {
   }
 }
 
-export const getSpreadInfo = () => {
+export const getSpreadInfo = (currencyList) => {
   return {
-    type: 'GET_SPREAD'
-    // currencyList: currencyList
+    type: 'GET_SPREAD',
+    currencyList
   }
 }
 

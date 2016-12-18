@@ -2,6 +2,7 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+import { connect } from 'react-redux';
 import Cell from './cell.js';
 import * as actionCreators from '../actions/actions.js';
 // var _ = require('underscore');
@@ -11,7 +12,7 @@ import * as actionCreators from '../actions/actions.js';
 // import { CellActions } from './default.js';
 // import { DataHistory } from './history.js';
 
-export class DataCells extends React.Component {
+class DataCells extends React.Component {
   constructor(props) {
     super(props);
     this.store = this.props.store;
@@ -22,6 +23,10 @@ export class DataCells extends React.Component {
     console.log('PRRRROPS ', this.props);
     console.log('CLASS IS GETTING CURRENCY LIST');
     this.store.dispatch(actionCreators.setSpreadTimer());
+  }
+
+  componentWillReceiveProps () {
+    console.log('REEIVING PROPS');
   }
 
   filter (event) {    
@@ -37,16 +42,18 @@ export class DataCells extends React.Component {
   }
   render () {
     console.log('CELL PROPS ', this.props);
-    var bidList = this.props.bidList;
-    var askList = this.props.bidList;
-    var spreadList = this.props.spreadList;
-    var createCells = () => {
-      this.props.nameList.map(function (eachInstrument, i) {
-        var eachCell =  React.createElement(cell, {
+    // var bidList = this.props.bidList;
+    // var askList = this.props.bidList;
+    // var spreadList = this.props.spreadList;
+
+    var createCells = (list) => {
+      console.log('creating cells')
+      return list.map(function (eachInstrument, i) {
+        var eachCell =  React.createElement(Cell, {
           name: eachInstrument.displayName,
           // bid: bidList[i],
           // ask: askList[i],
-          spread: spreadList[i],
+          // spread: spreadList[i]
         });
         return (    
           React.createElement('div', {
@@ -57,8 +64,10 @@ export class DataCells extends React.Component {
         ); 
       });
     } 
+
     return (
       <div id="cell-list">
+        <div></div>
         <div id="filters">
           <label>
             <input type="checkbox" id="eurChecked" onChange={this.filter} defaultChecked={() => this.state.eurChecked} />
@@ -85,20 +94,23 @@ export class DataCells extends React.Component {
             <span>CAD</span>
           </label>
           <label>
-            <input type="checkbox" i8="nzdChecked" onChange={this.filter} defaultChecked={() => this.state.nzdChecked} />
+            <input type="checkbox" id="nzdChecked" onChange={this.filter} defaultChecked={() => this.state.nzdChecked} />
             <span>NZD</span>
           </label>
           <button onClick={() => this.hideAllCurrencies()}>HIDE ALL</button>
         </div>
         {/* Instantiation of all the child cells */}
-        {this.props.nameList ? createCells : undefined}
+        {this.props.currencyList ? createCells(this.props.currencyList) : []}
       </div>    
     );        
   }
 };
 
+const mapStateToProps = (state) => {
+  return {
+    currencyList: state.spread.currencyList
+  }
+}
 
 
-// // setInterval(, 2000);
-// var instruments = gatherInstruments();
-// console.log(instruments);
+export default connect(mapStateToProps, actionCreators)(DataCells);

@@ -8,19 +8,12 @@ const spreadMiddleware = (store) => (next) => (action) => {
     
     gatherInstruments.then((result) => {
       let spreadAction = actionCreators.getSpreadInfo(result)
-
-      action.interval = setInterval(() => {
-        console.log('INTERVAL');
-        store.dispatch(spreadAction);
-      }, 2000)
-      // let action = {type: 'GET_SPREAD'};
-      // console.log('WTF ', setInterval(() => {
-      //   console.log('INTERVAL');
-      //   store.dispatch(() => action);
-      // }, 2000));
+      store.dispatch(spreadAction);
       // action.interval = setInterval(() => {
-        
-      // }, 2000);
+      //   console.log('INTERVAL');
+      //   store.dispatch(spreadAction);
+      // }, 2000)
+
       next(action);
     });
     
@@ -28,7 +21,7 @@ const spreadMiddleware = (store) => (next) => (action) => {
     next(action);
   }
 
-  
+  // next(action);
 };
 
 function postData (instrument, dataJSON) {

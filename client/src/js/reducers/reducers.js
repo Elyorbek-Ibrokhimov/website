@@ -12,7 +12,6 @@ const spreadState = {
 function mainApp (state = initialState, action) {
   switch (action.type) {
     case 'HIDE_ALL_CURRENCIES':
-      console.log('hiding all currencies');
       return {
         ...state,
         type: 'HIDE_ALL_CURRENCIES'
@@ -33,7 +32,10 @@ const spread = (state=spreadState, action) => {
       }
     case 'GET_SPREAD': 
       console.log('REDUCER HIT, GETTING NEW SPREAD');
-      return state;
+      return {
+        ...state,
+        currencyList: action.currencyList
+      };
       
     default: 
       return state
@@ -41,7 +43,6 @@ const spread = (state=spreadState, action) => {
 }
 
 const test = (state={}, action) => {
-  console.log('ACTION TYPE ', action);
   switch(action.type) {
     case 'TEST_ACTION': 
       console.log('TEST');
