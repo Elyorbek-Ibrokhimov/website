@@ -8,6 +8,9 @@ import {CellActions} from './default.js';
 
 export const DataHistory = (function () {
 
+  /**
+   * Loads the graph
+   */
   function getHistory (fullName, instrumentName) {
     var xhr = new XMLHttpRequest;
     var historyHelp = document.getElementById('history-help');
@@ -38,6 +41,7 @@ export const DataHistory = (function () {
 
 }());
 
+/** Class representing the graph component */
 var historyData = React.createClass({  
   closeHistory: function () {
     CellActions.historyToggle();

@@ -98,6 +98,7 @@ const gatherInstruments = new Promise ((resolve, reject) => {
  
 /**
  * Formats any list of currencies to Ooanda price fetching requreiments
+ * @param {list} - The list of all the currency pairs
  */
 const formatCurrencyList = (list) => {
   let newList = list[0].instrument;

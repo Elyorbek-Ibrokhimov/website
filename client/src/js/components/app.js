@@ -6,6 +6,7 @@ import Jumbotron from './jumbotron.js';
 import DataCells from './data.js';
 import Test from './test.js';
 
+/** Class representing main application */
 class mainApp extends React.Component {
 
   render() {

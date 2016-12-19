@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Cell from './cell.js';
 import * as actionCreators from '../actions/actions.js';
 
+/** Class representing the table that contains all the currency pairs */
 class DataCells extends React.Component {
   constructor(props) {
     super(props);
@@ -13,20 +14,36 @@ class DataCells extends React.Component {
     this.getCurrencyList();
   }
 
+  /**
+   * Sets the interval for the cells to retreve updated pricing
+   */
   getCurrencyList () {
     this.store.dispatch(actionCreators.setSpreadTimer());
   }
 
+  /**
+   * filters out pairs based on one currency type
+   */
   filter (event) {    
     var filterId = event.target.getAttribute('id');
     var filterName = filterId.slice(0,3);
     var filterNameState = filterName + 'Checked';
     CellActions.filterByName(filterName);
   }
+
+  /**
+   * Hides all the currencies
+   */
   hideAllCurrencies() {
     this.props.dispatch(actionCreators.hideAllCurrencies());
   }
+
   render () {
+
+    /**
+     * Creates each individual cell based on the current master list
+     * @param {list} - represents all the currency pairs that are being used
+     */
     var createCells = (list) => {
       console.log('creating cells')
       return list.map(function (eachInstrument, i) {

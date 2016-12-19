@@ -3,6 +3,7 @@
 import React from 'react';
 import { render } from 'react-dom'
 
+/** Class for jumbotron */
 class Jumbotron extends React.Component {
   render () {
     return (

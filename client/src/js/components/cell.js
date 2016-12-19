@@ -2,7 +2,12 @@
 
 import React from 'react';
 
+/** Class representing each individual currency cells */
 class Cell extends React.Component {  
+
+  /**
+   * Opens the history graph for the currency pair
+   */
   openHistory () {
     var historyDisplay = document.getElementById('history-table').getAttribute('style');
     var instrumentName = this.props.name;
@@ -12,6 +17,10 @@ class Cell extends React.Component {
     CellActions.historyToggle();
     DataHistory.getHistory(fullName, instrumentName);
   }
+
+  /**
+   * Highlights increases or decreases in spread
+   */
   highlight (event) {
     var historyDisplay = document.getElementById('history-table').getAttribute('style');   
     var cells = document.getElementsByClassName('select-box');
@@ -21,6 +30,7 @@ class Cell extends React.Component {
     if (historyDisplay !== 'display: block;') {highlightToggle()};
     this.openHistory(); 
   }
+  
   componentWillReceiveProps (nextProps) {
     var nextSpread = nextProps.spread;
     var currentSpread = this.props.spread;
