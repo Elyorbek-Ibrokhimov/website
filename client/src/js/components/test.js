@@ -1,6 +1,8 @@
+'use strict';
+
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actionCreators from '../actions/actions.js'
+import * as actionCreators from '../actions/actions.js';
 
 class Test extends React.Component {
   constructor (props) {
@@ -10,19 +12,12 @@ class Test extends React.Component {
   testClick () {
     const { store } = this.props;
     
-    let newNumber = store.getState().mainApp.test+1;
-    // console.log('THIS IS THE NUMBER ', newNumber);
-    console.log('THE STORE ', store.getState());
+    let newNumber = store.getState().mainApp.test + 1;
     store.dispatch(actionCreators.test());
-    // console.log('STTTATE ', store.getState());
   }
 
   render () {
     const { store, counter } = this.props;
-    // let counter = store.getState().mainApp.test;
-    // console.log('STTTATE ', store.getState());
-    // console.log(`APP PROPS `, this.props);
-
     return (
       <div>
         <h1>{this.props.currencyList ? this.props.currencyList[0].displayName : this.props.currencyList}</h1>

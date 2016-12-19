@@ -1,3 +1,5 @@
+'use strict';
+
 import { combineReducers } from 'redux';
 import { CurrencyFilters } from '../actions/actions.js';
 
@@ -25,16 +27,18 @@ const spread = (state=spreadState, action) => {
   
   switch (action.type) {
     case 'SET_SPREAD_TIMER':
-      console.log('SETTING THE SPREAD TIMER');
       return {
         ...state,
         interval: action.interval
       }
-    case 'GET_SPREAD': 
-      console.log('REDUCER HIT, GETTING NEW SPREAD');
+    case 'GET_CURRENCIES': 
       return {
         ...state,
         currencyList: action.currencyList
+      };
+    case 'GET_CURRENCY_SPREADS': 
+      return {
+        ...state
       };
       
     default: 

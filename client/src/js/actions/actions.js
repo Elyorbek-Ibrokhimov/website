@@ -1,18 +1,18 @@
+'use strict';
+
 /**
- * Action Types
+ * Action to filter out all currencies
  */
-
-export const CurrencyFilters = {
-  SHOW_ALL_CURRENCIES: 'SHOW_ALL_CURRENCIES',
-  HIDE_ALL_CURRENCIES: 'HIDE_ALL_CURRENCIES' 
-}
-
 export function hideAllCurrencies () {
   return {
     type: 'HIDE_ALL_CURRENCIES'
   }
 }
 
+/**
+ * Sets interval for cells to query new currency information
+ * @callback {interval} - The interval function to use
+ */
 export const setSpreadTimer = (interval) => {
   return {
     type: 'SET_SPREAD_TIMER',
@@ -20,10 +20,23 @@ export const setSpreadTimer = (interval) => {
   }
 }
 
+/**
+ * gets the currencies needed to display
+ * @param {currencyList} - array of currencies 
+ */
 export const getSpreadInfo = (currencyList) => {
   return {
-    type: 'GET_SPREAD',
+    type: 'GET_CURRENCIES',
     currencyList
+  }
+}
+
+/**
+ * Sets the pricing info for currencies
+ */
+export const setCurrencySpreads = () => {
+  return {
+    type: 'GET_CURRENCY_SPREADS'
   }
 }
 

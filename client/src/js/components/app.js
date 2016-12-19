@@ -6,33 +6,9 @@ import Jumbotron from './jumbotron.js';
 import DataCells from './data.js';
 import Test from './test.js';
 
-var test = {
-  nameList: [{
-    instrument : "EUR_AUD",
-    displayName : "EUR\/AUD",
-    pip : "0.0001",
-    maxTradeUnits : 10000000
-  }],
-  askList: 2.00000,
-  bidList: 1.00000,
-  spreadList: [1.00000]
-}
-
 class mainApp extends React.Component {
-  // setInstruments () {
-  //   let list;
-  //   instruments.then((result) => {
-  //     console.log('THE RESULT ', result);
-  //     list = result
-  //   })
-  //   .catch((error) => {
-  //     console.log('instruments failed to load: ', error);
-  //   })
-  //   return list;
-  // }
 
   render() {
-    // console.log(`APP PROPS `, this.props);
     return (
       <Provider store={ this.props.store }>
         <div id="shadow-container" class="main-app">
@@ -66,7 +42,6 @@ class mainApp extends React.Component {
   }
 }
   
-
 export default mainApp;
 
   

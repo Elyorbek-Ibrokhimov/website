@@ -5,12 +5,6 @@ var ReactDOM = require('react-dom');
 import { connect } from 'react-redux';
 import Cell from './cell.js';
 import * as actionCreators from '../actions/actions.js';
-// var _ = require('underscore');
-// var $ = require('jquery');
-// import { connect } from 'react-redux';
-
-// import { CellActions } from './default.js';
-// import { DataHistory } from './history.js';
 
 class DataCells extends React.Component {
   constructor(props) {
@@ -20,13 +14,7 @@ class DataCells extends React.Component {
   }
 
   getCurrencyList () {
-    console.log('PRRRROPS ', this.props);
-    console.log('CLASS IS GETTING CURRENCY LIST');
     this.store.dispatch(actionCreators.setSpreadTimer());
-  }
-
-  componentWillReceiveProps () {
-    console.log('REEIVING PROPS');
   }
 
   filter (event) {    
@@ -36,16 +24,9 @@ class DataCells extends React.Component {
     CellActions.filterByName(filterName);
   }
   hideAllCurrencies() {
-    // console.log('trying to hide currencies');
-    // console.log(this.props);
     this.props.dispatch(actionCreators.hideAllCurrencies());
   }
   render () {
-    console.log('CELL PROPS ', this.props);
-    // var bidList = this.props.bidList;
-    // var askList = this.props.bidList;
-    // var spreadList = this.props.spreadList;
-
     var createCells = (list) => {
       console.log('creating cells')
       return list.map(function (eachInstrument, i) {
