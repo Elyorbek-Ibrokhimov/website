@@ -32,7 +32,7 @@ class mainApp extends React.Component {
             </div>
           <div id="data-table">
             <Test store={this.props.store} />
-            <DataTable store={this.props.store} spreadList={test.spreadList} currencyList={[]}/>
+            <DataTable store={this.props.store} />
             <div>
               <img src="app/assets/images/loading.gif" id="data-load-icon" />
             </div>

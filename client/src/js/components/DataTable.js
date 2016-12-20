@@ -43,23 +43,16 @@ class DataCells extends React.Component {
    * @param {list} - represents all the currency pairs that are being used
    */
   createCells(list) {
-    console.log('HERE IT IS', list)
     return list.map(function (eachInstrument, i) {
-      var eachCell =  React.createElement(Cell, {
-        name: eachInstrument.instrument,
-        bid: eachInstrument.bid,
-        ask: eachInstrument.ask,
-        spread: eachInstrument.spread
-      });
-      return (    
-        React.createElement('div', {
-        className: 'cell',
-        key: i,
-        'data-filter': eachInstrument.instrument.slice(0,3).toLowerCase()
-        }, eachCell) 
-      ); 
-    });
-  }
+      var eachCell =  
+        <Cell name={eachInstrument.instrument} bid={eachInstrument.bid} ask={eachInstrument.ask} spread={eachInstrument.spread}/>
+      return (
+        <div className="cell" key={i}> 
+          {eachCell}
+        </div>    
+    );
+  })
+}
 
   render () {
     return (

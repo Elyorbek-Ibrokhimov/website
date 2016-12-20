@@ -11,10 +11,10 @@ const spreadMiddleware = (store) => (next) => (action) => {
       gatherInstruments.then((result) => {
         let formattedList = formatCurrencyList(result);
         store.dispatch(actionCreators.getSpreadInfo(result, formattedList));
-        action.interval = setInterval(() => {
-          store.dispatch(actionCreators.getCurrencySpreads());
-        }, 2000)
-        // store.dispatch(actionCreators.getCurrencySpreads());
+        // action.interval = setInterval(() => {
+        //   store.dispatch(actionCreators.getCurrencySpreads());
+        // }, 2000)
+        store.dispatch(actionCreators.getCurrencySpreads());
         next(action);      
       })
     break;
@@ -23,7 +23,6 @@ const spreadMiddleware = (store) => (next) => (action) => {
       let currencyNames = store.getState().spread.queryString;
       updateSpreadPrices(currencyNames).then((result) => {
         action.updatedSpread = makeSpread(result);
-        console.log('ACTION', action);
         next(action)
       });     
     break;
