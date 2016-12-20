@@ -8,8 +8,7 @@ A website for foreign exchange traders to receive live spread and historical dat
  - Node.js/Express
  - MongoDB/Mongoose
  - Jquery
- - Underscore
- - Gulp
+ - Lodash
  - Webpack
  - SASS/CSS3/Bootstrap/HTML5
  
