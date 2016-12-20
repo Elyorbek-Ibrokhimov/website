@@ -32,10 +32,12 @@ class DataCells extends React.Component {
   }
 
   /**
-   * Hides all the currencies
+   * Hides an individual currency 
+   * @param {name} - name of the currency to hide
    */
-  hideAllCurrencies() {
-    this.props.dispatch(actionCreators.hideAllCurrencies());
+  hideCurrency (name) {
+    console.log('FILTER CLICKED');
+    this.store.dispatch(actionCreators.hideCurrencies(name));
   }
 
   /**
@@ -45,7 +47,12 @@ class DataCells extends React.Component {
   createCells(list) {
     return list.map(function (eachInstrument, i) {
       var eachCell =  
-        <Cell name={eachInstrument.instrument} bid={eachInstrument.bid} ask={eachInstrument.ask} spread={eachInstrument.spread}/>
+        <Cell name={eachInstrument.instrument} 
+              bid={eachInstrument.bid} 
+              ask={eachInstrument.ask} 
+              spread={eachInstrument.spread}
+              filterName={eachInstrument.instrument.slice(0,3)}
+              />
       return (
         <div className="cell" key={i}> 
           {eachCell}
@@ -60,7 +67,7 @@ class DataCells extends React.Component {
         <div></div>
         <div id="filters">
           <label>
-            <input type="checkbox" id="eurChecked" onChange={this.filter} defaultChecked={() => this.state.eurChecked} />
+            <input type="checkbox" id="eurChecked" defaultChecked={() => this.props.eur} onChange={ () => this.hideCurrency('eur')} />
             <span>EUR</span>
           </label>
           <label>
@@ -99,7 +106,8 @@ class DataCells extends React.Component {
 const mapStateToProps = (state) => {
   return {
     // currencyList: state.spread.currencyList,
-    updatedSpread: state.spread.updatedSpread
+    updatedSpread: state.spread.updatedSpread,
+    eur: state.filters.eur
   }
 }
 

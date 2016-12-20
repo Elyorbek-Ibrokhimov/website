@@ -3,21 +3,22 @@
 import { combineReducers } from 'redux';
 import { CurrencyFilters } from '../actions/actions.js';
 
-// const initialState = {
-//   currencyFilter: CurrencyFilters.SHOW_ALL_CURRENCIES
-// }
-
-const spreadState = { 
-  spreadInfo: []
+/**
+ * Initial state for all the currency filters
+ */
+const initialFilterState = {
+  eur: true,
+  usd: true,
+  gbp: true,
+  chf: true,
+  aud: true,
+  cad: true,
+  nzd: true
 }
 
+
 function mainApp (state = {}, action) {
-  switch (action.type) {
-    case 'HIDE_ALL_CURRENCIES':
-      return {
-        ...state,
-        type: 'HIDE_ALL_CURRENCIES'
-      }    
+  switch (action.type) {  
   default:
     return state;
   }   
@@ -48,6 +49,21 @@ const spread = (state={}, action) => {
   }
 }
 
+const filters = (state=initialFilterState, action) => {
+  switch (action.type) {
+  
+  case 'HIDE_CURRENCIES':
+  console.log('HERES THE CURRENCY ', action);
+    return {
+      ...state,
+      [action.currency]: false
+    }
+
+  default: 
+    return state
+  } 
+}
+
 const test = (state={}, action) => {
   switch(action.type) {
     case 'TEST_ACTION': 
@@ -62,6 +78,7 @@ const test = (state={}, action) => {
 const forexApp = combineReducers({
   mainApp,
   spread,
+  filters,
   test
 })
 

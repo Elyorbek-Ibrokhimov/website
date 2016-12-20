@@ -4,6 +4,9 @@ import React from 'react';
 
 /** Class representing each individual currency cells */
 class Cell extends React.Component {  
+  contructor (props) {
+    super(props)
+  }
 
   /**
    * Opens the history graph for the currency pair

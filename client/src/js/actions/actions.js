@@ -3,9 +3,10 @@
 /**
  * Action to filter out all currencies
  */
-export function hideAllCurrencies () {
+export function hideCurrencies (name) {
   return {
-    type: 'HIDE_ALL_CURRENCIES'
+    type: 'HIDE_CURRENCIES',
+    name
   }
 }
 
