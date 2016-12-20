@@ -9,10 +9,7 @@ const spreadMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case 'SET_SPREAD_TIMER': 
       gatherInstruments.then((result) => {
-      
-      resolve(currencyList);
         store.dispatch(actionCreators.getSpreadInfo(result));
-        store.dispatch(actionCreators.getSpreadInfo())
         // action.interval = setInterval(() => {
         //   store.dispatch(actionCreators.setCurrencySpreads());
         // }, 2000)
@@ -91,6 +88,12 @@ const gatherInstruments = new Promise ((resolve, reject) => {
   xhr.onload = function () {
     var currencyList = JSON.parse(xhr.responseText);
     var allInstruments = currencyList[0].instrument
+    var instrumentString = (function () {       
+      for (var i=1; i<currencyList.length; i++){           
+        allInstruments += '%2C' + currencyList[i].instrument;      
+        };     
+      }());
+      resolve(currencyList);
     }  
   xhr.open('GET', '/currencies', true);
   xhr.send(null);    

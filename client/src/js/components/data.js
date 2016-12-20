@@ -38,30 +38,29 @@ class DataCells extends React.Component {
     this.props.dispatch(actionCreators.hideAllCurrencies());
   }
 
-  render () {
-
-    /**
-     * Creates each individual cell based on the current master list
-     * @param {list} - represents all the currency pairs that are being used
-     */
-    var createCells = (list) => {
-      console.log('creating cells')
-      return list.map(function (eachInstrument, i) {
-        var eachCell =  React.createElement(Cell, {
-          name: eachInstrument.displayName,
-          // bid: bidList[i],
-          // ask: askList[i],
-          // spread: spreadList[i]
-        });
-        return (    
-          React.createElement('div', {
-          className: 'cell',
-          key: i,
-          'data-filter': eachInstrument.displayName.slice(0,3).toLowerCase()
-          }, eachCell) 
-        ); 
+  /**
+   * Creates each individual cell based on the current master list
+   * @param {list} - represents all the currency pairs that are being used
+   */
+  createCells(list) {
+    return list.map(function (eachInstrument, i) {
+      var eachCell =  React.createElement(Cell, {
+        name: eachInstrument.displayName,
+        // bid: bidList[i],
+        // ask: askList[i],
+        // spread: spreadList[i]
       });
-    } 
+      return (    
+        React.createElement('div', {
+        className: 'cell',
+        key: i,
+        'data-filter': eachInstrument.displayName.slice(0,3).toLowerCase()
+        }, eachCell) 
+      ); 
+    });
+  }
+
+  render () {
 
     return (
       <div id="cell-list">
@@ -98,7 +97,7 @@ class DataCells extends React.Component {
           <button onClick={() => this.hideAllCurrencies()}>HIDE ALL</button>
         </div>
         {/* Instantiation of all the child cells */}
-        {this.props.currencyList ? createCells(this.props.currencyList) : []}
+        {this.props.currencyList ? this.createCells(this.props.currencyList) : []}
       </div>    
     );        
   }

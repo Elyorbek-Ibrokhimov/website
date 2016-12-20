@@ -3,15 +3,15 @@
 import { combineReducers } from 'redux';
 import { CurrencyFilters } from '../actions/actions.js';
 
-const initialState = {
-  currencyFilter: CurrencyFilters.SHOW_ALL_CURRENCIES
-}
+// const initialState = {
+//   currencyFilter: CurrencyFilters.SHOW_ALL_CURRENCIES
+// }
 
 const spreadState = { 
   spreadInfo: []
 }
 
-function mainApp (state = initialState, action) {
+function mainApp (state = {}, action) {
   switch (action.type) {
     case 'HIDE_ALL_CURRENCIES':
       return {
