@@ -42,26 +42,26 @@ class DataCells extends React.Component {
    * Creates each individual cell based on the current master list
    * @param {list} - represents all the currency pairs that are being used
    */
-  createCells(list, prices) {
+  createCells(list) {
+    console.log('HERE IT IS', list)
     return list.map(function (eachInstrument, i) {
       var eachCell =  React.createElement(Cell, {
-        name: eachInstrument.displayName,
-        // bid: bidList[i],
-        // ask: askList[i],
-        // spread: spreadList[i]
+        name: eachInstrument.instrument,
+        bid: eachInstrument.bid,
+        ask: eachInstrument.ask,
+        spread: eachInstrument.spread
       });
       return (    
         React.createElement('div', {
         className: 'cell',
         key: i,
-        'data-filter': eachInstrument.displayName.slice(0,3).toLowerCase()
+        'data-filter': eachInstrument.instrument.slice(0,3).toLowerCase()
         }, eachCell) 
       ); 
     });
   }
 
   render () {
-
     return (
       <div id="cell-list">
         <div></div>
@@ -97,7 +97,7 @@ class DataCells extends React.Component {
           <button onClick={() => this.hideAllCurrencies()}>HIDE ALL</button>
         </div>
         {/* Instantiation of all the child cells */}
-        {this.props.currencyList ? this.createCells(this.props.currencyList) : []}
+        {this.props.updatedSpread ? this.createCells(this.props.updatedSpread) : []}
       </div>    
     );        
   }
@@ -105,7 +105,8 @@ class DataCells extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    currencyList: state.spread.currencyList
+    // currencyList: state.spread.currencyList,
+    updatedSpread: state.spread.updatedSpread
   }
 }
 
