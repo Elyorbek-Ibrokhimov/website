@@ -3,7 +3,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import Jumbotron from './jumbotron.js';
-import DataCells from './data.js';
+import DataTable from './DataTable.js';
 import Test from './test.js';
 
 /** Class representing main application */
@@ -32,7 +32,7 @@ class mainApp extends React.Component {
             </div>
           <div id="data-table">
             <Test store={this.props.store} />
-            <DataCells store={this.props.store} spreadList={test.spreadList} currencyList={[]}/>
+            <DataTable store={this.props.store} spreadList={test.spreadList} currencyList={[]}/>
             <div>
               <img src="app/assets/images/loading.gif" id="data-load-icon" />
             </div>

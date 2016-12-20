@@ -23,7 +23,7 @@ function mainApp (state = {}, action) {
   }   
 }
 
-const spread = (state=spreadState, action) => {
+const spread = (state={}, action) => {
   
   switch (action.type) {
     case 'SET_SPREAD_TIMER':
@@ -34,11 +34,13 @@ const spread = (state=spreadState, action) => {
     case 'GET_CURRENCIES': 
       return {
         ...state,
-        currencyList: action.currencyList
+        currencyList: action.currencyList,
+        queryString: action.queryString
       };
     case 'GET_CURRENCY_SPREADS': 
       return {
-        ...state
+        ...state,
+        updatedSpread: action.updatedSpread
       };
       
     default: 

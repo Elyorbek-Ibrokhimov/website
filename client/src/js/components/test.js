@@ -11,7 +11,7 @@ class Test extends React.Component {
 
   testClick () {
     const { store } = this.props;
-    
+    console.log('STORE', store.getState());
     let newNumber = store.getState().mainApp.test + 1;
     store.dispatch(actionCreators.test());
   }
@@ -20,7 +20,6 @@ class Test extends React.Component {
     const { store, counter } = this.props;
     return (
       <div>
-        <h1>{this.props.currencyList ? this.props.currencyList[0].displayName : this.props.currencyList}</h1>
         <button onClick={() => this.testClick()} >TEEEEEEEEST</button>
       </div>
     )

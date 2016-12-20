@@ -42,7 +42,7 @@ class DataCells extends React.Component {
    * Creates each individual cell based on the current master list
    * @param {list} - represents all the currency pairs that are being used
    */
-  createCells(list) {
+  createCells(list, prices) {
     return list.map(function (eachInstrument, i) {
       var eachCell =  React.createElement(Cell, {
         name: eachInstrument.displayName,

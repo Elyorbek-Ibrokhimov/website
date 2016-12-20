@@ -22,21 +22,24 @@ export const setSpreadTimer = (interval) => {
 
 /**
  * gets the currencies needed to display
- * @param {currencyList} - array of currencies 
+ * @param {currencyList} - array of currencies
+ * @param {queryString} - String of insturments Oanda needs to return prices 
  */
-export const getSpreadInfo = (currencyList) => {
+export const getSpreadInfo = (currencyList, queryString) => {
   return {
     type: 'GET_CURRENCIES',
-    currencyList
+    currencyList,
+    queryString
   }
 }
 
 /**
  * Sets the pricing info for currencies
  */
-export const setCurrencySpreads = () => {
+export const getCurrencySpreads = (updatedSpread) => {
   return {
-    type: 'GET_CURRENCY_SPREADS'
+    type: 'GET_CURRENCY_SPREADS',
+    updatedSpread
   }
 }
 
