@@ -3,8 +3,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 import { connect } from 'react-redux';
-import Cell from './cell.js';
-import * as actionCreators from '../actions/actions.js';
+import Cell from '../cell.js';
+import * as actionCreators from '../../actions/actions.js';
 
 /** Class representing the table that contains all the currency pairs */
 class DataCells extends React.Component {

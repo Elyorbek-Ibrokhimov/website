@@ -3,7 +3,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import Jumbotron from './jumbotron.js';
-import DataTable from './DataTable.js';
+import DataTable from './DataTable/DataTable.js';
 import Test from './test.js';
 
 /** Class representing main application */
