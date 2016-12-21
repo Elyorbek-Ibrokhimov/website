@@ -4,7 +4,7 @@ import React from 'react';
 
 /** Class representing each individual currency cells */
 class Cell extends React.Component {  
-  contructor (props) {
+  constructor (props) {
     super(props)
   }
 
