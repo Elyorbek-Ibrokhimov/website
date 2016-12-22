@@ -3,7 +3,7 @@
 import React from 'react';
 
 /** Class representing each individual currency cells */
-class Cell extends React.Component {  
+export class Cell extends React.Component {  
   constructor (props) {
     super(props)
   }

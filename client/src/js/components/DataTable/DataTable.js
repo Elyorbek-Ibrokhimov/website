@@ -3,11 +3,11 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 import { connect } from 'react-redux';
-import Cell from '../cell.js';
+import Cell from '../Cell/Cell.js';
 import * as actionCreators from '../../actions/actions.js';
 
 /** Class representing the table that contains all the currency pairs */
-class DataCells extends React.Component {
+export class DataTable extends React.Component {
   constructor(props) {
     super(props);
     this.store = this.props.store;
@@ -112,4 +112,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, actionCreators)(DataCells);
+export default connect(mapStateToProps, actionCreators)(DataTable);
