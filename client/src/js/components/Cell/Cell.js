@@ -56,6 +56,7 @@ export class Cell extends React.Component {
       spread.classList.remove('show-decrease');
     }
   }
+
   render () {
     return (
       <div>
@@ -68,13 +69,14 @@ export class Cell extends React.Component {
           <div className="bid-price">bid: {this.props.bid}</div>
           <div className="ask-price">ask: {this.props.ask}</div>
         </div>
-        <div className="spread" ref={(spreadCont) => this.spreadCell = spreadCont}>
+        <div className="spread" >
           Spread: {this.props.spread}
         </div>
-        <input value="History" type="button" className="open-history btn btn-default" onClick={() => this.openHistory()} />
+        <input value="History" type="button" className="open-history btn btn-default" />
       </div>
     )
   }    
 }
 
 export default Cell;
+
