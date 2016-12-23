@@ -6,6 +6,8 @@ import React from 'react';
 export class Cell extends React.Component {  
   constructor (props) {
     super(props)
+    this.firstInstrument = this.props.name.slice(0,3).toLowerCase();
+    this.secondInstrument = this.props.name.slice(4,8).toLowerCase();
   }
 
   /**
@@ -55,13 +57,11 @@ export class Cell extends React.Component {
     }
   }
   render () {
-    var firstInstrument = (this.props.name).slice(0,3).toLowerCase();
-    var secondInstrument = (this.props.name).slice(4,8).toLowerCase();
     return (
       <div>
         <div className= "flags">
-          <div className={firstInstrument}></div>
-          <div className={secondInstrument}></div>
+          <div className={this.firstInstrument}></div>
+          <div className={this.secondInstrument}></div>
         </div>
         <div className='display-name'>{this.props.name}</div>
         <div className="bid-ask-prices">

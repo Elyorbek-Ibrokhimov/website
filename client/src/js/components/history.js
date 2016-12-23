@@ -1,5 +1,7 @@
 'use strict'
 
+// TODO: Update this component to modern react
+
 var React = require('react');
 var ReactDOM = require('react-dom');
 var _ = require('underscore');
