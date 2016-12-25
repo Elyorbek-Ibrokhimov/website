@@ -4,10 +4,24 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import Jumbotron from './jumbotron.js';
 import DataTable from './DataTable/DataTable.js';
+import { connect } from 'react-redux';
+import * as actionCreators from '../actions/actions.js';
 import Test from './test.js';
 
 /** Class representing main application */
-class mainApp extends React.Component {
+class MainApp extends React.Component {
+  constructor (props) {
+    super(props);
+    this.store = this.props.store;
+    this.getCurrencyList();
+  }
+
+  /**
+   * Sets the interval for the cells to retreve updated pricing
+   */
+  getCurrencyList () {
+    this.store.dispatch(actionCreators.setSpreadTimer());
+  }
 
   render() {
     return (
@@ -32,7 +46,7 @@ class mainApp extends React.Component {
             </div>
           <div id="data-table">
             <Test store={this.props.store} />
-            <DataTable store={this.props.store} />
+            <DataTable store={this.props.store} spread={this.props.spread} />
             <div>
               <img src="app/assets/images/loading.gif" id="data-load-icon" />
             </div>
@@ -42,7 +56,14 @@ class mainApp extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    spread: state.spread.updatedSpread
+  }
   
-export default mainApp;
+}
+  
+export default connect(mapStateToProps, actionCreators)(MainApp);
 
   

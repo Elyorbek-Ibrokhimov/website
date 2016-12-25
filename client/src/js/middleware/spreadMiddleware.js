@@ -34,7 +34,6 @@ const spreadMiddleware = (store) => (next) => (action) => {
 
 /**
  * @promise Fetches spread prices for a currency list
- * TODO: refactor to redux
  */
 const updateSpreadPrices = (instrument) => {
   return new Promise ((resolve, reject) => {
@@ -93,7 +92,6 @@ const formatCurrencyList = (list) => {
  * Calculates spread for all the currency pairs
  * @param {list} - The list of all the currency pairs
  */
-
 const makeSpread = (list) => {
   return list.map((currency, i, array) => {
     let calculation = Math.pow(10,4)*(currency.ask - currency.bid);

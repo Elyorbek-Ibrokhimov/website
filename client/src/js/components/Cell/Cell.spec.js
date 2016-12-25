@@ -15,12 +15,14 @@ data.firstInstrument = data.instrument.slice(0,3).toLowerCase();
 data.secondInstrument = data.instrument.slice(4,8).toLowerCase();
 
 const renderer = TestUtils.createRenderer();
+
 renderer.render(<Cell 
       name={data.instrument}
       bid={data.bid} 
       ask={data.ask} 
       spread={data.spread}
       filterName={data.instrument.slice(0,3)}/>);
+
 const output = renderer.getRenderOutput();
 
 describe('Cell Component', () => {

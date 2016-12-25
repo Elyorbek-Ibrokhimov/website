@@ -10,15 +10,6 @@ import * as actionCreators from '../../actions/actions.js';
 export class DataTable extends React.Component {
   constructor(props) {
     super(props);
-    this.store = this.props.store;
-    this.getCurrencyList();
-  }
-
-  /**
-   * Sets the interval for the cells to retreve updated pricing
-   */
-  getCurrencyList () {
-    this.store.dispatch(actionCreators.setSpreadTimer());
   }
 
   /**
@@ -37,7 +28,7 @@ export class DataTable extends React.Component {
    */
   hideCurrency (name) {
     console.log('FILTER CLICKED');
-    this.store.dispatch(actionCreators.hideCurrencies(name));
+    this.props.store.dispatch(actionCreators.hideCurrencies(name));
   }
 
   /**
@@ -45,26 +36,29 @@ export class DataTable extends React.Component {
    * @param {list} - represents all the currency pairs that are being used
    */
   createCells(list) {
-    return list.map(function (eachInstrument, i) {
-      var eachCell =  
-        <Cell name={eachInstrument.instrument} 
-              bid={eachInstrument.bid} 
-              ask={eachInstrument.ask} 
-              spread={eachInstrument.spread}
-              filterName={eachInstrument.instrument.slice(0,3)}
-              />
-      return (
-        <div className="cell" key={i}> 
-          {eachCell}
-        </div>    
-    );
-  })
-}
+    if (!list) {
+      return [];
+    } else {
+      return list.map(function (eachInstrument, i) {
+        var eachCell =  
+          <Cell name={eachInstrument.instrument} 
+                bid={eachInstrument.bid} 
+                ask={eachInstrument.ask} 
+                spread={eachInstrument.spread}
+                filterName={eachInstrument.instrument.slice(0,3)}
+                />
+        return (
+          <div className="cell" key={i}> 
+            {eachCell}
+          </div>    
+        );
+      })
+    }   
+  }
 
   render () {
     return (
       <div id="cell-list">
-        <div></div>
         <div id="filters">
           <label>
             <input type="checkbox" id="eurChecked" defaultChecked={() => this.props.eur} onChange={ () => this.hideCurrency('eur')} />
@@ -97,7 +91,7 @@ export class DataTable extends React.Component {
           <button onClick={() => this.hideAllCurrencies()}>HIDE ALL</button>
         </div>
         {/* Instantiation of all the child cells */}
-        {this.props.updatedSpread ? this.createCells(this.props.updatedSpread) : []}
+        {this.createCells(this.props.spread)}
       </div>    
     );        
   }
@@ -106,7 +100,6 @@ export class DataTable extends React.Component {
 const mapStateToProps = (state) => {
   return {
     // currencyList: state.spread.currencyList,
-    updatedSpread: state.spread.updatedSpread,
     eur: state.filters.eur
   }
 }
