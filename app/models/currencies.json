@@ -1,3 +1,5 @@
+// TODO: Move to Postgres
+
 [
   {
     "instrument" : "EUR_AUD",
