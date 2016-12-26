@@ -6,9 +6,8 @@ A website for foreign exchange traders to receive live spread and historical dat
  - Javascript with EcmaScript 6
  - React.js / Redux
  - Node.js/Express
- - MongoDB/Mongoose
+ - MongoDB
  - Jquery
- - Lodash
  - Webpack
  - SASS/CSS3/Bootstrap/HTML5
  

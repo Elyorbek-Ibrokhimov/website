@@ -43,9 +43,3 @@ export const getCurrencySpreads = (updatedSpread) => {
     updatedSpread
   }
 }
-
-export function test (newNumber) {
-  return {
-    type: 'TEST_ACTION',
-  }
-}

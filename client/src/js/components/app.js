@@ -6,7 +6,6 @@ import Jumbotron from './jumbotron.js';
 import DataTable from './DataTable/DataTable.js';
 import { connect } from 'react-redux';
 import * as actionCreators from '../actions/actions.js';
-import Test from './test.js';
 
 /** Class representing main application */
 class MainApp extends React.Component {
@@ -45,7 +44,6 @@ class MainApp extends React.Component {
               </div>
             </div>
           <div id="data-table">
-            <Test store={this.props.store} />
             <DataTable store={this.props.store} spread={this.props.spread} />
             <div>
               <img src="app/assets/images/loading.gif" id="data-load-icon" />

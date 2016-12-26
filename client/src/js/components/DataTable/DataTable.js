@@ -99,7 +99,6 @@ export class DataTable extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    // currencyList: state.spread.currencyList,
     eur: state.filters.eur
   }
 }
