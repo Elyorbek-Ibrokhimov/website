@@ -20,6 +20,7 @@ class MainApp extends React.Component {
    */
   getCurrencyList () {
     this.store.dispatch(actionCreators.setSpreadTimer());
+    console.log('TEST', this.store.getState());
   }
 
   render() {

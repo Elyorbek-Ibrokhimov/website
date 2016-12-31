@@ -6,7 +6,7 @@ import { CurrencyFilters } from '../actions/actions.js';
 /**
  * Initial state for all the currency filters
  */
-const initialFilterState = {
+const FILTER_STATE = {
   eur: true,
   usd: true,
   gbp: true,

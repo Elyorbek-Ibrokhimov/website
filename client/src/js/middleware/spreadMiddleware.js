@@ -103,30 +103,3 @@ const makeSpread = (list) => {
 const middleware = applyMiddleware(spreadMiddleware);
 
 export default middleware;
-
-
-      // var instrumentNames = dataJSON;
-      // var askPrices = dataProperties(data, 'ask'); 
-      // var bidPrices = dataProperties(data, 'bid');
-      // var spread = makeSpread();
-      // function makeSpread () {
-      //   var spreadArray =[];
-      //   function spreadRound (calculation) {
-      //     spreadArray.push(Math.round(calculation*100)/100)
-      //   };
-      //   function spreadCalculation () {
-      //     return Math.pow(10,4)*(askPrices[i] - bidPrices[i])
-      //   };
-      //   for (var i=0; i<instrumentNames.length; i++) {
-      //     var calculation = spreadCalculation()        
-      //     spreadRound(calculation);
-      //   };
-      //   return spreadArray;
-      // };          
-      // var cellTable = React.createElement(dataCells, {
-      //   nameList: instrumentNames,
-      //   askList: askPrices,
-      //   bidList: bidPrices,
-      //   spreadList: spread
-      // });
-      // ReactDOM.render(cellTable, document.getElementById('data-table')); 

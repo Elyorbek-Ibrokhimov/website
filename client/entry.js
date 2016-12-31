@@ -5,7 +5,6 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import store from './src/js/lib/store.js'
 import MainApp from './src/js/components/app.js'
-import { hideAllCurrencies } from './src/js/actions/actions.js'
 
 render(<MainApp store={store} />, document.getElementById('root'));
 
