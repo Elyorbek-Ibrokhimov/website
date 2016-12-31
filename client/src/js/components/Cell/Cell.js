@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+/* TODO: migrate to modern react */
+
 /** Class representing each individual currency cells */
 export class Cell extends React.Component {  
   constructor (props) {
