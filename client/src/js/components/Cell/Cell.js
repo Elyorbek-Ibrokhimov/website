@@ -8,6 +8,11 @@ import React from 'react';
 export class Cell extends React.Component {  
   constructor (props) {
     super(props)
+
+    this.state = {
+      spreadChange: 'show-no-change'
+    }
+
     this.firstInstrument = this.props.name.slice(0,3).toLowerCase();
     this.secondInstrument = this.props.name.slice(4,8).toLowerCase();
   }
@@ -16,13 +21,13 @@ export class Cell extends React.Component {
    * Opens the history graph for the currency pair
    */
   openHistory () {
-    var historyDisplay = document.getElementById('history-table').getAttribute('style');
-    var instrumentName = this.props.name;
-    var firstInsturment = instrumentName.slice(0, 3);
-    var secondInstrument = instrumentName.slice(4, 8);
-    var fullName = firstInsturment + '_' + secondInstrument;
-    CellActions.historyToggle();
-    DataHistory.getHistory(fullName, instrumentName);
+    // var historyDisplay = document.getElementById('history-table').getAttribute('style');
+    // var instrumentName = this.props.name;
+    // var firstInsturment = instrumentName.slice(0, 3);
+    // var secondInstrument = instrumentName.slice(4, 8);
+    // var fullName = firstInsturment + '_' + secondInstrument;
+    // CellActions.historyToggle();
+    // DataHistory.getHistory(fullName, instrumentName);
   }
 
   /**
@@ -43,19 +48,11 @@ export class Cell extends React.Component {
     var currentSpread = this.props.spread;
     var spread = this.spreadCell;
     if (currentSpread !== nextSpread && currentSpread > nextSpread) {
-      spread.classList.remove('show-decrease');
-      spread.classList.add('show-increase');
-      spread.classList.remove('show-no-change');
-    } 
-    else if (currentSpread !== nextSpread && currentSpread < nextSpread) {
-      spread.classList.remove('show-increase');
-      spread.classList.add('show-decrease');
-      spread.classList.remove('show-no-change');
-    } 
-    else {
-      spread.classList.add('show-no-change');
-      spread.classList.remove('show-increase');
-      spread.classList.remove('show-decrease');
+      this.setState({spreadChange: 'show-increase'});
+    } else if (currentSpread !== nextSpread && currentSpread < nextSpread) {
+      this.setState({spreadChange: 'show-decrease'});
+    } else {
+      this.setState({spreadChange: 'show-no-change'});
     }
   }
 
@@ -71,8 +68,8 @@ export class Cell extends React.Component {
           <div className="bid-price">bid: {this.props.bid}</div>
           <div className="ask-price">ask: {this.props.ask}</div>
         </div>
-        <div className="spread" >
-          Spread: {this.props.spread}
+        <div className={this.state.spreadChange}>
+          <p className="spread">Spread: {this.props.spread}</p>       
         </div>
         <input value="History" type="button" className="open-history btn btn-default" />
       </div>

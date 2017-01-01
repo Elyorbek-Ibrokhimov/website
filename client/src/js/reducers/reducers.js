@@ -49,7 +49,7 @@ const spread = (state={}, action) => {
   }
 }
 
-const filters = (state=initialFilterState, action) => {
+const filters = (state=FILTER_STATE, action) => {
   switch (action.type) {
   
   case 'HIDE_CURRENCIES':

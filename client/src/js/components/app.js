@@ -20,7 +20,6 @@ class MainApp extends React.Component {
    */
   getCurrencyList () {
     this.store.dispatch(actionCreators.setSpreadTimer());
-    console.log('TEST', this.store.getState());
   }
 
   render() {
@@ -46,9 +45,6 @@ class MainApp extends React.Component {
             </div>
           <div id="data-table">
             <DataTable store={this.props.store} spread={this.props.spread} />
-            <div>
-              <img src="app/assets/images/loading.gif" id="data-load-icon" />
-            </div>
           </div>    
         </div>
       </Provider>

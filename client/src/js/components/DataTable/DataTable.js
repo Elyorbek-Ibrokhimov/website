@@ -4,6 +4,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 import { connect } from 'react-redux';
 import Cell from '../Cell/Cell.js';
+import LoadIcon from '../LoadIcon/LoadIcon.js';
 import * as actionCreators from '../../actions/actions.js';
 
 /** Class representing the table that contains all the currency pairs */
@@ -30,7 +31,7 @@ export class DataTable extends React.Component {
     console.log('FILTER CLICKED');
     this.props.store.dispatch(actionCreators.hideCurrencies(name));
   }
-
+  
   /**
    * Creates each individual cell based on the current master list
    * @param {list} - represents all the currency pairs that are being used
@@ -91,7 +92,7 @@ export class DataTable extends React.Component {
           <button onClick={() => this.hideAllCurrencies()}>HIDE ALL</button>
         </div>
         {/* Instantiation of all the child cells */}
-        {this.createCells(this.props.spread)}
+        {this.props.spread ? this.createCells(this.props.spread) : <LoadIcon />}
       </div>    
     );        
   }
