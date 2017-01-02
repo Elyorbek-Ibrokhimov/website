@@ -11,6 +11,17 @@ import * as actionCreators from '../../actions/actions.js';
 export class DataTable extends React.Component {
   constructor(props) {
     super(props);
+    
+    this.state = {
+      eur: true,
+      usd: true,
+      gbp: true,
+      chf: true,
+      aud: true,
+      cad: true,
+      nzd: true
+    }
+
   }
 
   /**
@@ -28,10 +39,12 @@ export class DataTable extends React.Component {
    * @param {name} - name of the currency to hide
    */
   hideCurrency (name) {
-    console.log('FILTER CLICKED');
-    this.props.store.dispatch(actionCreators.hideCurrencies(name));
+    // console.log('FILTER CLICKED');
+    // this.props.store.dispatch(actionCreators.hideCurrencies(name));
+    // this.setState({name: !this.state[name]})
+    // console.log('FILTER CLICKED: ', this.state);
   }
-  
+
   /**
    * Creates each individual cell based on the current master list
    * @param {list} - represents all the currency pairs that are being used
@@ -40,19 +53,23 @@ export class DataTable extends React.Component {
     if (!list) {
       return [];
     } else {
-      return list.map(function (eachInstrument, i) {
-        var eachCell =  
-          <Cell name={eachInstrument.instrument} 
-                bid={eachInstrument.bid} 
-                ask={eachInstrument.ask} 
-                spread={eachInstrument.spread}
-                filterName={eachInstrument.instrument.slice(0,3)}
-                />
-        return (
-          <div className="cell" key={i}> 
-            {eachCell}
-          </div>    
-        );
+      return list.map((eachInstrument, i) => {
+        let currencyName = eachInstrument.instrument.slice(0,3).toLowerCase();
+        console.log(currencyName);
+        if (this.state[currencyName]) {
+          let eachCell = 
+            <Cell name={eachInstrument.instrument} 
+              bid={eachInstrument.bid} 
+              ask={eachInstrument.ask} 
+              spread={eachInstrument.spread}
+            />
+          return (
+            <div className="cell" key={i}> 
+              {eachCell}
+            </div>    
+          );
+        }
+
       })
     }   
   }
@@ -62,31 +79,32 @@ export class DataTable extends React.Component {
       <div id="cell-list">
         <div id="filters">
           <label>
-            <input type="checkbox" id="eurChecked" defaultChecked={() => this.props.eur} onChange={ () => this.hideCurrency('eur')} />
+            <input type="checkbox" id="eurChecked" defaultChecked={() => this.state.eur} onChange={ () => { this.setState({eur: !this.state.eur}) } } />
             <span>EUR</span>
           </label>
           <label>
-            <input type="checkbox" id="usdChecked" onChange={this.filter} defaultChecked={() => this.state.usdChecked} />
+            <input type="checkbox" id="usdChecked" defaultChecked={() => this.state.usd} onChange={ () => { this.setState({usd: !this.state.usd}) } } />
             <span>USD</span>
           </label>
           <label>
-            <input type="checkbox" id="gbpChecked" onChange={this.filter} defaultChecked={() => this.state.gbpChecked} />
+            <input type="checkbox" id="gbpChecked" defaultChecked={() => this.state.gbp} 
+              onChange={ () => { this.setState({gbp: !this.state.gbp}) } } />
             <span>GBP</span>
           </label>
           <label>
-            <input type="checkbox" id="chfChecked" onChange={this.filter} defaultChecked={() => this.state.chfChecked} />
+            <input type="checkbox" id="chfChecked" defaultChecked={() => this.state.chf} onChange={ () => { this.setState({chf: !this.state.chf}) } } />
             <span>CHF</span>
           </label>
           <label>
-            <input type="checkbox" id="audChecked" onChange={this.filter} defaultChecked={() => this.state.audChecked} />
+            <input type="checkbox" id="audChecked" defaultChecked={() => this.state.aud} onChange={ () => { this.setState({aud: !this.state.aud}) } } />
             <span>AUD</span>
           </label>
           <label>
-            <input type="checkbox" id="cadChecked" onChange={this.filter} defaultChecked={() => this.state.cadChecked} />
+            <input type="checkbox" id="cadChecked" defaultChecked={() => this.state.cad} onChange={ () => { this.setState({cad: !this.state.cad}) } }/>
             <span>CAD</span>
           </label>
           <label>
-            <input type="checkbox" id="nzdChecked" onChange={this.filter} defaultChecked={() => this.state.nzdChecked} />
+            <input type="checkbox" id="nzdChecked" defaultChecked={() => this.state.nzd} onChange={ () => { this.setState({nzd: !this.state.nzd}) } } />
             <span>NZD</span>
           </label>
           <button onClick={() => this.hideAllCurrencies()}>HIDE ALL</button>
@@ -99,9 +117,7 @@ export class DataTable extends React.Component {
 };
 
 const mapStateToProps = (state) => {
-  return {
-    eur: state.filters.eur
-  }
+  return {}
 }
 
 
