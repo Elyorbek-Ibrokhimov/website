@@ -31,10 +31,10 @@ class MainApp extends React.Component {
             <div id="info-section">
               <h4 id="info-section-title">Built and powered with</h4>
               <div class="technologies">
-                <img src="app/assets/images/technologies/mongodb.png" class="tech-img img-responsive" />
-                <img src="app/assets/images/technologies/node.png" class="tech-img img-responsive" />
-                <img src="app/assets/images/technologies/react.png" class="tech-img img-responsive" />
-                <img src="app/assets/images/technologies/oanda.png" class="tech-img img-responsive" />
+                <img src="/assets/images/technologies/mongodb.png" class="tech-img img-responsive" />
+                <img src="/assets/images/technologies/node.png" class="tech-img img-responsive" />
+                <img src="/assets/images/technologies/react.png" class="tech-img img-responsive" />
+                <img src="/assets/images/technologies/oanda.png" class="tech-img img-responsive" />
               </div>
             </div>
           </div>  

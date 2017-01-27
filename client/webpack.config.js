@@ -2,14 +2,14 @@ var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 
 module.exports = {
-  context: __dirname,
+  context: __dirname + '/src',
   devtool: debug ? "inline-sourcemap" : null,
   entry: [
     "webpack-dev-server/client?http://localhost:8080",
-    "./entry.js"
+    __dirname + "/entry.js"
   ],
   output: {
-    path: "./public",
+    path: __dirname + "/public",
     filename: "scripts.min.js"
   },
   module: {
@@ -47,7 +47,7 @@ module.exports = {
     ]
   }, 
   devServer: {
-    contentBase: "./public",
+    contentBase: __dirname + "/public",
     noInfo: true,
     inline: true,
     hot: true,
