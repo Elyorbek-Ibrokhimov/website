@@ -1,9 +1,13 @@
 'use strict';
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import forexApp from '../reducers/reducers.js'
 import spreadMiddleware from '../middleware/spreadMiddleware.js'
 
-var store = createStore(forexApp, spreadMiddleware);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(forexApp, composeEnhancers(
+  applyMiddleware(spreadMiddleware)
+))
 
 export default store;

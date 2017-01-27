@@ -38,7 +38,7 @@ const spreadMiddleware = (store) => (next) => (action) => {
 const updateSpreadPrices = (instrument) => {
   return new Promise ((resolve, reject) => {
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', '/instruments/prices');
+    xhr.open('POST', 'api/instruments/prices');
     xhr.send(instrument);  
 
     xhr.onload = function () {
@@ -71,7 +71,7 @@ const gatherInstruments = new Promise ((resolve, reject) => {
       }());
       resolve(currencyList);
     }  
-  xhr.open('GET', '/currencies', true);
+  xhr.open('GET', 'api/currencies', true);
   xhr.send(null);    
 })
  
@@ -100,6 +100,8 @@ const makeSpread = (list) => {
   })
 }
 
-const middleware = applyMiddleware(spreadMiddleware);
+// const middleware = applyMiddleware(spreadMiddleware);
 
-export default middleware;
+// export default middleware;
+
+export default spreadMiddleware;

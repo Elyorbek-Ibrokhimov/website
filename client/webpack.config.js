@@ -4,7 +4,14 @@ var webpack = require('webpack');
 module.exports = {
   context: __dirname,
   devtool: debug ? "inline-sourcemap" : null,
-  entry: "./entry.js",
+  entry: [
+    "webpack-dev-server/client?http://localhost:8080",
+    "./entry.js"
+  ],
+  output: {
+    path: "./public",
+    filename: "scripts.min.js"
+  },
   module: {
     loaders: [
       {
@@ -38,10 +45,19 @@ module.exports = {
         loader: 'file-loader?name=[name].[ext]'
       }
     ]
-  },
-  output: {
-    path: "./public",
-    filename: "scripts.min.js"
+  }, 
+  devServer: {
+    contentBase: "./public",
+    noInfo: true,
+    inline: true,
+    hot: true,
+    proxy: {
+      '/api/**': {
+        target: 'http://localhost:3000/',
+        secure: false,
+        changeOrigin: true
+      }
+    }
   },
   plugins: debug ? [] : [
     new webpack.optimize.DedupePlugin(),

@@ -5,13 +5,13 @@ var instruments = require('./routes/instruments.js');
 var currencies = require('./models/currency.js');
 
 app.use(express.static('../client/public'));
-app.use('/instruments', instruments);
+app.use('/api/instruments', instruments);
 
 app.get('/', function(req,res) {
   res.sendFile( __dirname + '/client/public/index.html');
 });
 
-app.get('/currencies', function (req, res) {
+app.get('/api/currencies', function (req, res) {
   res.send(JSON.stringify(currencies));
 });
 

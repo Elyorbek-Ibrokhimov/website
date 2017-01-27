@@ -101,8 +101,22 @@ function drawChart(dateList) {
   var chart = new google.visualization.CandlestickChart(document.getElementById('graph'));
   chart.draw(data, options);
 }
+// 'abc boob tg ghost abc tick'
+(function duplicateFiner(string) {
+  var words = string.split(' ');
+  var duplicates = {};
 
+  for (var i=0; i<words.length; i++) {
+    duplicates[words[i]] ? duplicates[words[i]]++ : duplicates[words[i]] = 0    
+  }
 
+  for (var prop in duplicates) {
+    if (duplicates[prop] > 0) {
+      console.log(prop);
+    }    
+  }
+
+})('abc boob tg ghost abc tick abc tt tt yy yy');
 
 
 
