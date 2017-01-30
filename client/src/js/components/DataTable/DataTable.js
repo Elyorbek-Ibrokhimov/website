@@ -19,8 +19,10 @@ export class DataTable extends React.Component {
       chf: true,
       aud: true,
       cad: true,
-      nzd: true
+      nzd: true,
     }
+
+    this.hideCurrency.bind(this);
 
   }
 
@@ -36,6 +38,21 @@ export class DataTable extends React.Component {
 
   hideAllCurrencies() {
     console.log('hiding');
+    this.setState({
+      eur: false,
+      usd: false,
+      gbp: false,
+      chf: false,
+      aud: false,
+      cad: false,
+      nzd: false,
+    })
+  }
+
+  hideCurrency(name) {
+    const filterName = {};
+    filterName[name] = !this.state[name]
+    this.setState(filterName);
   }
 
   /**
@@ -71,32 +88,32 @@ export class DataTable extends React.Component {
       <div id="cell-list">
         <div id="filters">
           <label>
-            <input type="checkbox" id="eurChecked" defaultChecked={() => this.state.eur} onChange={ () => { this.setState({eur: !this.state.eur}) } } />
+            <input type="checkbox" id="eurChecked" defaultChecked={() => this.state.eur} onChange={ () => this.hideCurrency('eur') } />
             <span>EUR</span>
           </label>
           <label>
-            <input type="checkbox" id="usdChecked" defaultChecked={() => this.state.usd} onChange={ () => { this.setState({usd: !this.state.usd}) } } />
+            <input type="checkbox" id="usdChecked" defaultChecked={() => this.state.usd} onChange={ () => this.hideCurrency('usd') } />
             <span>USD</span>
           </label>
           <label>
-            <input type="checkbox" id="gbpChecked" defaultChecked={() => this.state.gbp} 
-              onChange={ () => { this.setState({gbp: !this.state.gbp}) } } />
+            <input type="checkbox" id="gbpChecked" defaultChecked={ () => this.state.gbp } 
+              onChange={ () => { this.hideCurrency('gbp') } } />
             <span>GBP</span>
           </label>
           <label>
-            <input type="checkbox" id="chfChecked" defaultChecked={() => this.state.chf} onChange={ () => { this.setState({chf: !this.state.chf}) } } />
+            <input type="checkbox" id="chfChecked" defaultChecked={() => this.state.chf} onChange={ () => this.hideCurrency('chf') } />
             <span>CHF</span>
           </label>
           <label>
-            <input type="checkbox" id="audChecked" defaultChecked={() => this.state.aud} onChange={ () => { this.setState({aud: !this.state.aud}) } } />
+            <input type="checkbox" id="audChecked" defaultChecked={() => this.state.aud} onChange={ () => this.hideCurrency('aud')} />
             <span>AUD</span>
           </label>
           <label>
-            <input type="checkbox" id="cadChecked" defaultChecked={() => this.state.cad} onChange={ () => { this.setState({cad: !this.state.cad}) } }/>
+            <input type="checkbox" id="cadChecked" defaultChecked={() => this.state.cad} onChange={ () => this.hideCurrency('cad')}/>
             <span>CAD</span>
           </label>
           <label>
-            <input type="checkbox" id="nzdChecked" defaultChecked={() => this.state.nzd} onChange={ () => { this.setState({nzd: !this.state.nzd}) } } />
+            <input type="checkbox" id="nzdChecked" defaultChecked={() => this.state.nzd} onChange={ () => this.hideCurrency('nzd')} />
             <span>NZD</span>
           </label>
           <button onClick={() => this.hideAllCurrencies()}>HIDE ALL</button>
