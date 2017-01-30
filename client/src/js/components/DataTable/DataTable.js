@@ -34,15 +34,8 @@ export class DataTable extends React.Component {
     CellActions.filterByName(filterName);
   }
 
-  /**
-   * Hides an individual currency 
-   * @param {name} - name of the currency to hide
-   */
-  hideCurrency (name) {
-    // console.log('FILTER CLICKED');
-    // this.props.store.dispatch(actionCreators.hideCurrencies(name));
-    // this.setState({name: !this.state[name]})
-    // console.log('FILTER CLICKED: ', this.state);
+  hideAllCurrencies() {
+    console.log('hiding');
   }
 
   /**
@@ -55,7 +48,6 @@ export class DataTable extends React.Component {
     } else {
       return list.map((eachInstrument, i) => {
         let currencyName = eachInstrument.instrument.slice(0,3).toLowerCase();
-        console.log(currencyName);
         if (this.state[currencyName]) {
           let eachCell = 
             <Cell name={eachInstrument.instrument} 

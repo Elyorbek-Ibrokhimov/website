@@ -48,7 +48,6 @@ const updateSpreadPrices = (instrument) => {
       else if (xhr.status === 200) {
         var responseObject = JSON.parse(xhr.responseText);
         var data = JSON.parse(responseObject.body).prices; 
-        console.log('NEW DATA', data);
         resolve(data);     
       };
     }

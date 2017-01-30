@@ -49,25 +49,9 @@ const spread = (state={}, action) => {
   }
 }
 
-const filters = (state=FILTER_STATE, action) => {
-  switch (action.type) {
-  
-  case 'HIDE_CURRENCIES':
-  console.log('HERES THE CURRENCY ', action);
-    return {
-      ...state,
-      [action.currency]: false
-    }
-
-  default: 
-    return state
-  } 
-}
-
 const test = (state={}, action) => {
   switch(action.type) {
     case 'TEST_ACTION': 
-      console.log('TEST');
       return state;
   
   default:
@@ -78,7 +62,6 @@ const test = (state={}, action) => {
 const forexApp = combineReducers({
   mainApp,
   spread,
-  filters,
   test
 })
 
