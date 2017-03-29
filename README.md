@@ -15,7 +15,7 @@ A website for foreign exchange traders to receive live spread and historical dat
 Forexpress was built to serve the purpose of providing real time price and spread updates as they change in the Foreign Exchange market. The application also allows currency traders to view candlestick charts for each pairing and filter based on their desired currencies. This website was built mainly with React.js for dynamic view updates, and Node.js/MongoDB for retrieving real time data through the Oanda API.
 
 ###Install:###
-**1.** Go to the root directory and run `npm install --save`
+**1.** Go to the root directory and run `npm install`
 
 **2.** Create a free trade account with Oanda to obtain a bearer token: http://www.oanda.com/
 
